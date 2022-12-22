@@ -1,0 +1,24 @@
+:root {
+  font-family: "Kanit", sans-serif;
+
+  line-height: 1.2;
+  --speed: 500ms;
+  --accentcolor: #c79334;
+  --bgbase: 15, 15, 15;
+  --bgopacity: 1;
+  --bgcolor: rgba(var(--bgbase), var(--bgopacity));
+  // --bgcolor: #01273dbe;
+  // --textcolor: #cdd1d4;
+  --textcolor: white;
+  --titlecolor: #96d7f3;
+  --errorcolor: rgb(212, 53, 53);
+  --shadowsetting: 0px 0px 3px black;
+  --borderradius: 0.5rem;
+  --dropshadow: drop-shadow(1px 1px 1px black);
+  --transitionduration: 200ms;
+  --scale: 1.05;
+
+  height: 1080px;
+  width: 1920px;
+  font-size: 16px;
+}
