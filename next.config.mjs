@@ -14,7 +14,11 @@ const config = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["www.datocms-assets.com", "www.tranquility.gg"],
+    domains: [
+      "www.datocms-assets.com",
+      "www.tranquility.gg",
+      "via.placeholder.com",
+    ],
   },
 };
 export default config;
