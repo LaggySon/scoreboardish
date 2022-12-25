@@ -29,6 +29,22 @@
     }
     .score {
       font-size: 3rem;
+      .enter {
+        opacity: 0;
+      }
+      .exit {
+        opacity: 1;
+      }
+      .enter-active {
+        opacity: 1;
+      }
+      .exit-active {
+        opacity: 0;
+      }
+      .enter-active,
+      .exit-active {
+        transition: opacity 500ms;
+      }
     }
     .logoContainer {
       overflow: hidden;

@@ -5,6 +5,7 @@ import { NextPage } from "next/types";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { env } from "../env/client.mjs";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 type PageProps = {
   team1: Team;
@@ -56,10 +57,33 @@ const Home: NextPage<PageProps> = (props) => {
               height="133"
             />
           </div>
-          <div className={styles.score}>{data?.team1?.score}</div>
+
+          <SwitchTransition>
+            <CSSTransition
+              key={data?.team1?.score ?? "none"}
+              addEndListener={(node, done) => {
+                // use the css transitionend event to mark the finish of a transition
+                node.addEventListener("transitionend", done, false);
+              }}
+              classNames="fade"
+            >
+              <div className={styles.score}>{data?.team1?.score}</div>
+            </CSSTransition>
+          </SwitchTransition>
         </div>
         <div className={[styles.team, styles.team2].join(" ")}>
-          <div className={styles.score}>{data?.team2?.score}</div>
+          <SwitchTransition>
+            <CSSTransition
+              key={data?.team2?.score ?? "none"}
+              addEndListener={(node, done) => {
+                // use the css transitionend event to mark the finish of a transition
+                node.addEventListener("transitionend", done, false);
+              }}
+              classNames="fade"
+            >
+              <div className={styles.score}>{data?.team2?.score}</div>
+            </CSSTransition>
+          </SwitchTransition>
           <div className={styles.logoContainer}>
             <Image
               className={styles.logo}

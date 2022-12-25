@@ -25,3 +25,23 @@
     margin: 0;
   }
 }
+.fade-enter {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.fade-enter-active,
+.fade-exit-active {
+  transition: opacity 500ms, transform 500ms;
+}
