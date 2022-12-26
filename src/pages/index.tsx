@@ -35,7 +35,6 @@ export async function getServerSideProps() {
 const Home: NextPage<PageProps> = (props) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
-    refreshWhenOffline: true,
     refreshInterval: 10000,
   });
 

@@ -1,5 +1,11 @@
 :root {
-  font-family: "Kanit", sans-serif;
+  @font-face {
+    font-family: "Industry-Bold";
+    src: url("../../public/fonts/Industry-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+  }
+  font-family: "Industry-Bold", sans-serif;
 
   line-height: 1.2;
   --speed: 500ms;
@@ -13,7 +19,7 @@
   --titlecolor: #96d7f3;
   --errorcolor: rgb(212, 53, 53);
   --shadowsetting: 0px 0px 3px black;
-  --borderradius: 0.5rem;
+  --borderradius: 1rem;
   --dropshadow: drop-shadow(1px 1px 1px black);
   --transitionduration: 200ms;
   --scale: 1.05;

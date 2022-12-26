@@ -14,6 +14,13 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           }
           );
         </style>
+        <link
+          rel="preload"
+          href="/fonts/Industry-Bold.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin=""
+        />
       </Head>
 
       <Component {...pageProps} />

@@ -3,12 +3,13 @@
   justify-content: space-between;
   max-width: 100%;
   font-size: 2rem;
-  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  font-family: "Industry-Bold";
   height: 100%;
 
   .team {
-    background-color: var(--bgcolor);
-    color: var(--textcolor);
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -29,22 +30,6 @@
     }
     .score {
       font-size: 3rem;
-      .enter {
-        opacity: 0;
-      }
-      .exit {
-        opacity: 1;
-      }
-      .enter-active {
-        opacity: 1;
-      }
-      .exit-active {
-        opacity: 0;
-      }
-      .enter-active,
-      .exit-active {
-        transition: opacity 500ms;
-      }
     }
     .logoContainer {
       overflow: hidden;
@@ -55,13 +40,13 @@
     }
     &.team1 {
       text-align: right;
-      border-radius: 0rem 0rem 0.5rem 0rem;
+      border-radius: 0rem 0rem var(--borderradius) 0rem;
       .logoContainer {
         background-color: #cc922e;
       }
     }
     &.team2 {
-      border-radius: 0rem 0rem 0rem 0.5rem;
+      border-radius: 0rem 0rem 0rem var(--borderradius);
       .logoContainer {
         background-color: #0f1f2e;
       }
