@@ -16,10 +16,10 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         </style>
         <link
           rel="preload"
-          href="/fonts/Industry-Bold.ttf"
+          href="/fonts/Industry-Bold.woff2"
           as="font"
-          type="font/ttf"
-          crossOrigin=""
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
       </Head>
 
