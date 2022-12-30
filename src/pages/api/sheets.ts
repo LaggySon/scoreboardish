@@ -20,6 +20,7 @@ type Team = {
   logoPath: string;
   info: string;
   score: string;
+  atkDef: string;
 };
 
 export default async function handler(
@@ -54,12 +55,14 @@ export default async function handler(
       logoPath: data[0][4],
       info: data[0][2],
       score: data[0][1],
+      atkDef: data[0][7],
     },
     team2: {
       name: data[1][0],
       logoPath: data[1][4],
       info: data[1][2],
       score: data[1][1],
+      atkDef: data[1][7],
     },
   };
   res.status(200).json(result);

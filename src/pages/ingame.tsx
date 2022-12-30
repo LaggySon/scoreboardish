@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { env } from "../env/client.mjs";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import SvgAttack from "../components/icons/Attack";
+import SvgDefense from "../components/icons/Defense";
 
 type PageProps = {
   team1: Team;
@@ -17,6 +19,7 @@ type Team = {
   logoPath: string;
   info: string;
   score: string;
+  atkDef: string;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -43,6 +46,16 @@ const InGame: NextPage<PageProps> = (props) => {
       <div className={styles.scoreboard}>
         <div className={[styles.team, styles.team1].join(" ")}>
           <div className={styles.teamMain}>
+            <div className={styles.outsideAccent} />
+            {["ATTACK", "DEFENSE"].includes(data?.team1?.atkDef) && (
+              <div className={styles.atkDef}>
+                {data?.team1?.atkDef === "ATTACK" ? (
+                  <SvgAttack />
+                ) : (
+                  <SvgDefense />
+                )}
+              </div>
+            )}
             <div className={styles.record}>{data?.team1?.info}</div>
             <div className={styles.name}>{data?.team1?.name}</div>
             <div className={styles.logoContainer}>
@@ -57,34 +70,42 @@ const InGame: NextPage<PageProps> = (props) => {
                 height="133"
               />
             </div>
+            <div className={styles.insideAccent} />
           </div>
-          <SwitchTransition>
-            <CSSTransition
-              key={data?.team1?.score ?? "none"}
-              addEndListener={(node, done) => {
-                // use the css transitionend event to mark the finish of a transition
-                node.addEventListener("transitionend", done, false);
-              }}
-              classNames="fade"
-            >
-              <div className={styles.score}>{data?.team1?.score}</div>
-            </CSSTransition>
-          </SwitchTransition>
+          <div className={styles.scoreBox}>
+            <SwitchTransition>
+              <CSSTransition
+                key={data?.team1?.score ?? "none"}
+                addEndListener={(node, done) => {
+                  // use the css transitionend event to mark the finish of a transition
+                  node.addEventListener("transitionend", done, false);
+                }}
+                classNames="fade"
+              >
+                <div className={styles.score}>{data?.team1?.score}</div>
+              </CSSTransition>
+            </SwitchTransition>
+          </div>
         </div>
+        {/* START TEAM 2 */}
         <div className={[styles.team, styles.team2].join(" ")}>
-          <SwitchTransition>
-            <CSSTransition
-              key={data?.team2?.score ?? "none"}
-              addEndListener={(node, done) => {
-                // use the css transitionend event to mark the finish of a transition
-                node.addEventListener("transitionend", done, false);
-              }}
-              classNames="fade"
-            >
-              <div className={styles.score}>{data?.team2?.score}</div>
-            </CSSTransition>
-          </SwitchTransition>
+          <div className={styles.scoreBox}>
+            <SwitchTransition>
+              <CSSTransition
+                key={data?.team2?.score ?? "none"}
+                addEndListener={(node, done) => {
+                  // use the css transitionend event to mark the finish of a transition
+                  node.addEventListener("transitionend", done, false);
+                }}
+                classNames="fade"
+              >
+                <div className={styles.score}>{data?.team2?.score}</div>
+              </CSSTransition>
+            </SwitchTransition>
+          </div>
           <div className={styles.teamMain}>
+            <div className={styles.insideAccent} />
+
             <div className={styles.logoContainer}>
               <Image
                 className={styles.logo}
@@ -99,6 +120,16 @@ const InGame: NextPage<PageProps> = (props) => {
             </div>
             <div className={styles.name}>{data?.team2?.name}</div>
             <div className={styles.record}>{data?.team2?.info}</div>
+            {["ATTACK", "DEFENSE"].includes(data?.team1?.atkDef) && (
+              <div className={styles.atkDef}>
+                {data?.team2?.atkDef === "ATTACK" ? (
+                  <SvgAttack />
+                ) : (
+                  <SvgDefense />
+                )}
+              </div>
+            )}
+            <div className={styles.outsideAccent} />
           </div>
         </div>
       </div>
