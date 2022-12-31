@@ -21,6 +21,7 @@ type Team = {
   info: string;
   score: string;
   atkDef: string;
+  color: string;
 };
 
 export default async function handler(
@@ -55,6 +56,7 @@ export default async function handler(
       logoPath: data[0][4],
       info: data[0][2],
       score: data[0][1],
+      color: data[0][5],
       atkDef: data[0][7],
     },
     team2: {
@@ -62,6 +64,7 @@ export default async function handler(
       logoPath: data[1][4],
       info: data[1][2],
       score: data[1][1],
+      color: data[1][5],
       atkDef: data[1][7],
     },
   };

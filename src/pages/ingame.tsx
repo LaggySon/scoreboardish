@@ -20,6 +20,7 @@ type Team = {
   info: string;
   score: string;
   atkDef: string;
+  color: string;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -43,10 +44,18 @@ const InGame: NextPage<PageProps> = (props) => {
 
   return (
     <>
+      <style jsx global>
+        {`
+          :root {
+            --team1Color: ${data?.team1?.color ?? "black"};
+            --team2Color: ${data?.team2?.color ?? "black"};
+          }
+        `}
+      </style>
       <div className={styles.scoreboard}>
         <div className={[styles.team, styles.team1].join(" ")}>
           <div className={styles.teamMain}>
-            <div className={styles.outsideAccent} />
+            <div className={[styles.accent, styles.outside1].join(" ")} />
             {["ATTACK", "DEFENSE"].includes(data?.team1?.atkDef) && (
               <div className={styles.atkDef}>
                 {data?.team1?.atkDef === "ATTACK" ? (
@@ -70,7 +79,7 @@ const InGame: NextPage<PageProps> = (props) => {
                 height="133"
               />
             </div>
-            <div className={styles.insideAccent} />
+            <div className={[styles.accent, styles.inside1].join(" ")} />
           </div>
           <div className={styles.scoreBox}>
             <SwitchTransition>
@@ -104,7 +113,7 @@ const InGame: NextPage<PageProps> = (props) => {
             </SwitchTransition>
           </div>
           <div className={styles.teamMain}>
-            <div className={styles.insideAccent} />
+            <div className={[styles.accent, styles.inside2].join(" ")} />
 
             <div className={styles.logoContainer}>
               <Image
@@ -120,7 +129,7 @@ const InGame: NextPage<PageProps> = (props) => {
             </div>
             <div className={styles.name}>{data?.team2?.name}</div>
             <div className={styles.record}>{data?.team2?.info}</div>
-            {["ATTACK", "DEFENSE"].includes(data?.team1?.atkDef) && (
+            {["ATTACK", "DEFENSE"].includes(data?.team2?.atkDef) && (
               <div className={styles.atkDef}>
                 {data?.team2?.atkDef === "ATTACK" ? (
                   <SvgAttack />
@@ -129,7 +138,7 @@ const InGame: NextPage<PageProps> = (props) => {
                 )}
               </div>
             )}
-            <div className={styles.outsideAccent} />
+            <div className={[styles.accent, styles.outside2].join(" ")} />
           </div>
         </div>
       </div>
