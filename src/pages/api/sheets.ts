@@ -24,6 +24,34 @@ type Team = {
   color: string;
 };
 
+type MatchInfo = {
+  tier: string;
+  region: string;
+  dateTime: string;
+  stageRound: string;
+};
+
+type Map = {
+  name: string;
+  homeScore: string;
+  awayScore: string;
+  winner: string;
+};
+
+type MapInfo = {
+  maps: Map[];
+};
+
+type TwitchStaff = {
+  title: string;
+  name: string;
+  social: string;
+};
+
+type TwitchInfo = {
+  staff: TwitchStaff[];
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -39,7 +67,7 @@ export default async function handler(
 
   const sheets = google.sheets({ version: "v4", auth });
 
-  const spreadsheetId = "1UTt-KfVo59GgaW6NqEgJmsQ6ANkr2w9x2QB0GJhimiU";
+  const spreadsheetId = "15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o";
   const range = `MAIN!B2:Q3`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({

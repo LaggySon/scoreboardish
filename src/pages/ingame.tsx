@@ -24,15 +24,13 @@ type Team = {
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
-// const API = env.URL + "/api/sheets";
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/sheets";
-// const API = "http://localhost:3000/api/sheets";
 
 export async function getServerSideProps() {
-  const _props: PageProps = await fetcher(API);
+  const data: PageProps = await fetcher(API);
   return {
-    props: _props,
+    props: data,
   };
 }
 
@@ -41,7 +39,9 @@ const InGame: NextPage<PageProps> = (props) => {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
-
+  if (!data) {
+    return <>Loading...</>;
+  }
   return (
     <>
       <style jsx global>
@@ -53,6 +53,10 @@ const InGame: NextPage<PageProps> = (props) => {
         `}
       </style>
       <div className={styles.scoreboard}>
+        <div className={styles.tierTag}>
+          <span className={styles.tierTagTier}>Transcendence Tier</span>
+          <span className={styles.tierTagSubtitle}>Diamond 4 - Masters 1</span>
+        </div>
         <div className={[styles.team, styles.team1].join(" ")}>
           <div className={styles.teamMain}>
             <div className={[styles.accent, styles.outside1].join(" ")} />
@@ -96,6 +100,8 @@ const InGame: NextPage<PageProps> = (props) => {
             </SwitchTransition>
           </div>
         </div>
+        {/* INFO BOX */}
+        <div className={styles.infoBox}>MAP 5 - BEST OF 7</div>
         {/* START TEAM 2 */}
         <div className={[styles.team, styles.team2].join(" ")}>
           <div className={styles.scoreBox}>

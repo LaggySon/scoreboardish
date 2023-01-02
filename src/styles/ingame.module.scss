@@ -1,12 +1,54 @@
+@keyframes scaleDown {
+  0% {
+    scale: 2.75;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
 .scoreboard {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
-  font-size: 2.5rem;
+  font-size: 2rem;
   // font-weight: bold;
   font-family: "Industry";
   height: 100%;
   margin-top: 1rem;
+  .tierTag {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+    flex-direction: column;
+    margin-left: auto;
+    background-color: black;
+    padding-inline: 2rem;
+    padding-block: 0.2rem;
+    & > * {
+      background-color: black;
+      color: white;
+    }
+    .tierTagTier {
+      font-size: 1.5rem;
+    }
+    .tierTagSubtitle {
+      font-size: 0.8rem;
+    }
+  }
+  .infoBox {
+    transform: translateY(-1.5rem);
+    font-size: 1.5rem;
+    height: 1.5rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    background-color: black;
+    color: white;
+  }
 
   .team {
     display: flex;
@@ -34,15 +76,19 @@
         z-index: 1;
         max-width: 290px;
         flex-shrink: 1;
+        white-space: nowrap;
       }
       .accent {
         z-index: 2;
+        // animation: 1s ease-out 0s 1 scaleDown;
+        --accentScale: 1;
+        transition: all 1500ms;
         &.outside1 {
           position: absolute;
           background-color: var(--team1Color);
           height: 200px;
           width: 200px;
-          transform: rotate(-45deg) translateX(9.2rem);
+          transform: rotate(-45deg) translateX(9.2rem) scale(var(--accentScale));
         }
         &.inside1 {
           position: absolute;
@@ -51,7 +97,7 @@
           width: 200px;
           left: -5rem;
           top: 0;
-          transform: rotate(-45deg);
+          transform: rotate(-45deg) scale(var(--accentScale));
           overflow: hidden;
           // z-index: 0;
 
@@ -61,7 +107,7 @@
             background: url("/tranqLogo.png") 0 0 no-repeat;
             width: 250%;
             height: 200%;
-            transform: scale(0.5) rotate(45deg);
+            transform: scale(0.5) rotate(45deg) scale(var(--accentScale));
             top: -9rem;
             left: -7.5rem;
             z-index: -1;
@@ -75,7 +121,7 @@
           width: 200px;
           top: 0;
           right: -5rem;
-          transform: rotate(-45deg);
+          transform: rotate(-45deg) scale(var(--accentScale));
           // z-index: 0;
           overflow: hidden;
           &::before {
@@ -97,7 +143,7 @@
           background-color: var(--team2Color);
           height: 200px;
           width: 200px;
-          transform: rotate(45deg) translateX(-9.2rem);
+          transform: rotate(45deg) translateX(-9.2rem) scale(var(--accentScale));
         }
       }
 
@@ -105,17 +151,15 @@
       color: var(--bgcolor);
       display: flex;
       align-items: center;
-      // justify-content: space-evenly;
       height: 65px;
       width: 567px;
       gap: 0.5rem;
-      // box-shadow: var(--shadowsetting);
       overflow: hidden;
       padding: 0;
       position: relative;
 
       .record {
-        font-size: 1.85rem;
+        font-size: 1.2rem;
         margin-top: 0.5rem;
       }
 
