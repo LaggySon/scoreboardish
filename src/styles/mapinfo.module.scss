@@ -1,0 +1,102 @@
+//normal map size: 72px
+//up next map size: 48px
+//big map size: 96px
+//clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+
+.teams {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 3rem;
+  width: 600px;
+  .team {
+    gap: 1rem;
+    display: flex;
+    .logoContainer {
+      overflow: hidden;
+      max-height: 250px;
+      .logo {
+        filter: drop-shadow(-2px 2px 1px black);
+      }
+    }
+    .scoreBox {
+      height: 250px;
+      width: 250px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16rem;
+      line-height: 1px;
+      color: white;
+      background-color: black;
+      .score {
+        position: relative;
+        bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+.mapInfo {
+  display: flex;
+  .mapBox {
+    margin-top: 2.5rem;
+    margin-right: 3.5rem;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    // overflow: hidden;
+    .mapTypeImage {
+      filter: drop-shadow(-2px 2px 1px black);
+    }
+    .logoContainer {
+      overflow: hidden;
+      max-height: 100px;
+    }
+    .map {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1200px;
+      max-height: 120px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      .mapText {
+        color: white;
+        font-size: 4.5rem;
+        filter: drop-shadow(-2px 2px 1px black);
+      }
+      .mapImageContainer {
+        position: absolute;
+        display: flex;
+        z-index: -1;
+        overflow: hidden;
+        width: 1200px;
+
+        .mapImageMask {
+          height: 120px;
+          clip-path: polygon(12% 0%, 92% 0%, 88% 100%, 8% 100%);
+          .mapImage {
+            overflow: hidden;
+            position: relative;
+            top: -50%;
+            max-width: 1200px;
+          }
+        }
+      }
+    }
+  }
+  .teams {
+    .team1 {
+      .logoContainer {
+        background-color: var(--team1PrimaryColor);
+      }
+    }
+    .team2 {
+      .logoContainer {
+        background-color: var(--team2PrimaryColor);
+      }
+    }
+  }
+}

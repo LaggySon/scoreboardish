@@ -42,16 +42,16 @@ const Home: NextPage<PageProps> = (props) => {
     <>
       <div className={styles.scoreboard}>
         <div className={[styles.team, styles.team1].join(" ")}>
-          <div className={styles.record}>{data?.team1?.info}</div>
-          <div className={styles.name}>{data?.team1?.name}</div>
+          <div className={styles.record}>{data?.teams?.team1?.info}</div>
+          <div className={styles.name}>{data?.teams?.team1?.name}</div>
           <div className={styles.logoContainer}>
             <Image
               className={styles.logo}
               src={
-                data?.team1?.logoPath ??
+                data?.teams?.team1.logoPath ??
                 "https://www.tranquility.gg/package/Temp/Tranquility%20Logos/sp_Tranq.png"
               }
-              alt={data?.team1?.name + " logo"}
+              alt={data?.teams?.team1.name + " logo"}
               width="65"
               height="133"
             />
@@ -59,44 +59,44 @@ const Home: NextPage<PageProps> = (props) => {
 
           <SwitchTransition>
             <CSSTransition
-              key={data?.team1?.score ?? "none"}
+              key={data?.teams?.team1.score ?? "none"}
               addEndListener={(node, done) => {
                 // use the css transitionend event to mark the finish of a transition
                 node.addEventListener("transitionend", done, false);
               }}
               classNames="fade"
             >
-              <div className={styles.score}>{data?.team1?.score}</div>
+              <div className={styles.score}>{data?.teams?.team1.score}</div>
             </CSSTransition>
           </SwitchTransition>
         </div>
         <div className={[styles.team, styles.team2].join(" ")}>
           <SwitchTransition>
             <CSSTransition
-              key={data?.team2?.score ?? "none"}
+              key={data?.teams?.team2.score ?? "none"}
               addEndListener={(node, done) => {
                 // use the css transitionend event to mark the finish of a transition
                 node.addEventListener("transitionend", done, false);
               }}
               classNames="fade"
             >
-              <div className={styles.score}>{data?.team2?.score}</div>
+              <div className={styles.score}>{data?.teams?.team2.score}</div>
             </CSSTransition>
           </SwitchTransition>
           <div className={styles.logoContainer}>
             <Image
               className={styles.logo}
               src={
-                data?.team2?.logoPath ??
+                data?.teams?.team2.logoPath ??
                 "https://www.tranquility.gg/package/Temp/Tranquility%20Logos/sp_Tranq.png"
               }
-              alt={data?.team2?.name + " logo"}
+              alt={data?.teams?.team2.name + " logo"}
               width="65"
               height="133"
             />
           </div>
-          <div className={styles.name}>{data?.team2?.name}</div>
-          <div className={styles.record}>{data?.team2?.info}</div>
+          <div className={styles.name}>{data?.teams?.team2.name}</div>
+          <div className={styles.record}>{data?.teams?.team2.info}</div>
         </div>
       </div>
     </>

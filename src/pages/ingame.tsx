@@ -1,8 +1,6 @@
 import styles from "../styles/ingame.module.scss";
 import Image from "next/image";
-// import getSheets from "../lib/getSheets";
 import { NextPage } from "next/types";
-import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { env } from "../env/client.mjs";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
@@ -27,13 +25,6 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/sheets";
 
-export async function getServerSideProps() {
-  const data: PageProps = await fetcher(API);
-  return {
-    props: data,
-  };
-}
-
 const InGame: NextPage<PageProps> = (props) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
@@ -47,38 +38,42 @@ const InGame: NextPage<PageProps> = (props) => {
       <style jsx global>
         {`
           :root {
-            --team1Color: ${data?.team1?.color ?? "black"};
-            --team2Color: ${data?.team2?.color ?? "black"};
+            --team1PrimaryColor: ${data?.teams?.team1.primaryCol ?? "black"};
+            --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
+            "black"};
+            --team2PrimaryColor: ${data?.teams?.team2.primaryCol ?? "black"};
+            --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
+            "black"};
           }
         `}
       </style>
       <div className={styles.scoreboard}>
         <div className={styles.tierTag}>
-          <span className={styles.tierTagTier}>Transcendence Tier</span>
-          <span className={styles.tierTagSubtitle}>Diamond 4 - Masters 1</span>
+          <span className={styles.tierTagTier}>{data?.match?.tier}</span>
+          <span className={styles.tierTagSubtitle}>{data?.match?.tierTag}</span>
         </div>
         <div className={[styles.team, styles.team1].join(" ")}>
           <div className={styles.teamMain}>
             <div className={[styles.accent, styles.outside1].join(" ")} />
-            {["ATTACK", "DEFENSE"].includes(data?.team1?.atkDef) && (
+            {["ATTACK", "DEFENSE"].includes(data?.teams?.team1.atkDef) && (
               <div className={styles.atkDef}>
-                {data?.team1?.atkDef === "ATTACK" ? (
+                {data?.teams?.team1.atkDef === "ATTACK" ? (
                   <SvgAttack />
                 ) : (
                   <SvgDefense />
                 )}
               </div>
             )}
-            <div className={styles.record}>{data?.team1?.info}</div>
-            <div className={styles.name}>{data?.team1?.name}</div>
+            <div className={styles.record}>{data?.teams?.team1.info}</div>
+            <div className={styles.name}>{data?.teams?.team1.name}</div>
             <div className={styles.logoContainer}>
               <Image
                 className={styles.logo}
                 src={
-                  data?.team1?.logoPath ??
+                  data?.teams?.team1.logoPath ??
                   "https://www.tranquility.gg/package/Temp/Tranquility%20Logos/sp_Tranq.png"
                 }
-                alt={data?.team1?.name + " logo"}
+                alt={data?.teams?.team1.name + " logo"}
                 width="65"
                 height="133"
               />
@@ -88,14 +83,14 @@ const InGame: NextPage<PageProps> = (props) => {
           <div className={styles.scoreBox}>
             <SwitchTransition>
               <CSSTransition
-                key={data?.team1?.score ?? "none"}
+                key={data?.teams?.team1.score ?? "none"}
                 addEndListener={(node, done) => {
                   // use the css transitionend event to mark the finish of a transition
                   node.addEventListener("transitionend", done, false);
                 }}
                 classNames="fade"
               >
-                <div className={styles.score}>{data?.team1?.score}</div>
+                <div className={styles.score}>{data?.teams?.team1.score}</div>
               </CSSTransition>
             </SwitchTransition>
           </div>
@@ -107,14 +102,14 @@ const InGame: NextPage<PageProps> = (props) => {
           <div className={styles.scoreBox}>
             <SwitchTransition>
               <CSSTransition
-                key={data?.team2?.score ?? "none"}
+                key={data?.teams?.team2.score ?? "none"}
                 addEndListener={(node, done) => {
                   // use the css transitionend event to mark the finish of a transition
                   node.addEventListener("transitionend", done, false);
                 }}
                 classNames="fade"
               >
-                <div className={styles.score}>{data?.team2?.score}</div>
+                <div className={styles.score}>{data?.teams?.team2.score}</div>
               </CSSTransition>
             </SwitchTransition>
           </div>
@@ -125,19 +120,19 @@ const InGame: NextPage<PageProps> = (props) => {
               <Image
                 className={styles.logo}
                 src={
-                  data?.team2?.logoPath ??
+                  data?.teams?.team2.logoPath ??
                   "https://www.tranquility.gg/package/Temp/Tranquility%20Logos/sp_Tranq.png"
                 }
-                alt={data?.team2?.name + " logo"}
+                alt={data?.teams?.team2.name + " logo"}
                 width="65"
                 height="133"
               />
             </div>
-            <div className={styles.name}>{data?.team2?.name}</div>
-            <div className={styles.record}>{data?.team2?.info}</div>
-            {["ATTACK", "DEFENSE"].includes(data?.team2?.atkDef) && (
+            <div className={styles.name}>{data?.teams?.team2.name}</div>
+            <div className={styles.record}>{data?.teams?.team2.info}</div>
+            {["ATTACK", "DEFENSE"].includes(data?.teams?.team2.atkDef) && (
               <div className={styles.atkDef}>
-                {data?.team2?.atkDef === "ATTACK" ? (
+                {data?.teams?.team2.atkDef === "ATTACK" ? (
                   <SvgAttack />
                 ) : (
                   <SvgDefense />
