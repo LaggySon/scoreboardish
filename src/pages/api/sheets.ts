@@ -83,7 +83,7 @@ export default async function handler(
           type: row[1],
           winner: row[2],
           info: row[3],
-          isComplete: row[4],
+          isComplete: row[4] === "TRUE",
         };
       }),
     match: {
