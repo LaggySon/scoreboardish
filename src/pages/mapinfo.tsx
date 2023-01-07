@@ -36,11 +36,15 @@ const MapInfo = (props: any) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
+    onSuccess: (data, key, config) => {
+      if (data && data.maps.length > 8) {
+        divRef.current?.scrollIntoView();
+      } else {
+        window.scrollTo(0, 0);
+      }
+    },
   });
   const divRef = useRef<null | HTMLDivElement>(null);
-  useEffect(() => {
-    divRef.current?.scrollIntoView();
-  }, data);
   if (!data) {
     return <>Loading...</>;
   }
