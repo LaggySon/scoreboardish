@@ -60,14 +60,15 @@
   --bigheight: 300px;
   --regheight: 90px;
   display: flex;
+  // max-height: 100vh;
   .mapBox {
-    margin-bottom: 2.5rem;
+    margin-block: 2rem;
     margin-inline: auto;
     max-width: 1100px;
-    min-height: 100vh;
+    height: 95vh;
     display: flex;
     // gap: 3rem;
-    flex-basis: var(--regheight);
+
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -82,8 +83,12 @@
     }
 
     .map {
-      flex-shrink: 0;
-      // flex-grow: 1;
+      flex-shrink: 1;
+      flex-grow: 1;
+      min-height: 0;
+      // flex-basis: 10rem;
+      // background-color: aquamarine;
+      position: relative;
       &::before {
         content: "";
         // background-color: black;
@@ -92,7 +97,7 @@
         width: 1100px; //change maybe;
         // text-align: center;
         // font-size: 2rem;
-        margin-bottom: var(--regheight);
+        //!margin-bottom: var(--regheight);
         margin-top: 2rem;
         transition: all 1000ms;
       }
@@ -100,41 +105,45 @@
       justify-content: space-between;
       align-items: center;
       width: 1100px; //change maybe;
-      max-height: var(--regheight);
-      overflow: hidden;
-      margin-bottom: 0.5rem;
+      //! max-height: var(--regheight);
+      // overflow: hidden;
+      margin-bottom: 1rem;
       transition: width 1000ms, height 1000ms, margin 1000ms;
       &.active {
         transition: width 1000ms, height 1000ms, margin 1000ms;
         margin-top: 1rem;
+        flex-grow: 8;
+        flex-basis: 50rem;
         &::before {
           content: "UP NEXT";
           background-color: black;
           color: white;
           position: absolute;
+          top: -1.5rem;
           width: 1100px;
           text-align: center;
           font-size: 2rem;
-          margin-bottom: var(--bigheight);
+          //!margin-bottom: var(--bigheight);
           margin-top: 0.5rem;
           transition: all 1000ms;
         }
         width: 1100px;
 
-        height: var(--bigheight);
-        max-height: var(--bigheight);
+        // height: var(--bigheight);
+        // max-height: var(--bigheight);
 
         .mapImageContainer {
           width: 1100px;
           .mapImageMask {
             transition: width 1000ms, height 1000ms,
               margin 1000ms clip-path 1000ms;
-            height: var(--bigheight);
+            //!height: var(--bigheight);
             clip-path: polygon(14% 0%, 94% 0%, 86% 100%, 6% 100%);
             width: 1100px;
+
             .mapImage {
               min-width: 1100px;
-              min-height: 500px;
+              // min-height: 500px;
               top: -50%;
             }
           }
@@ -174,14 +183,17 @@
         z-index: -1;
         overflow: hidden;
         width: 1100px; //change maybe;
+        height: 100%;
         background-color: var(--winnerPrimaryCol);
+        // height: inherit;
 
         .mapImageMask {
-          height: var(--regheight);
           transition: width 1000ms, height 1000ms, margin 1000ms;
-
+          height: inherit;
+          width: 100%;
           clip-path: polygon(12% 0%, 92% 0%, 88% 100%, 8% 100%);
           .mapImage {
+            min-height: 720px;
             overflow: hidden;
             position: relative;
             top: -50%;

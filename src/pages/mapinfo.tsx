@@ -129,8 +129,9 @@ const MapInfo = (props: any) => {
                       src={map.image}
                       alt={map.map}
                       quality={50}
-                      width="1280"
-                      height="720"
+                      // width="1280"
+                      // height="720"
+                      fill={true}
                     />
                   </div>
                 </div>
