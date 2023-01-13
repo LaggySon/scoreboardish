@@ -124,15 +124,23 @@ const MapInfo = (props: any) => {
                   }
                 >
                   <div className={styles.mapImageMask}>
-                    <Image
-                      className={styles.mapImage}
-                      src={map.image}
-                      alt={map.map}
-                      quality={50}
-                      // width="1280"
-                      // height="720"
-                      fill={true}
-                    />
+                    {!isActive ? (
+                      <Image
+                        className={styles.mapImage}
+                        src={map.image}
+                        alt={map.map}
+                        quality={50}
+                        // width="1280"
+                        // height="720"
+                        fill={true}
+                      />
+                    ) : (
+                      <video
+                        autoPlay
+                        loop
+                        src={`https://tranquility.gg/package/Maps/Cinematics/${map.map}.mp4`}
+                      ></video>
+                    )}
                   </div>
                 </div>
 

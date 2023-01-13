@@ -8,6 +8,18 @@
 // gap: 1rem;
 // margin: 3rem;
 // // width: 600px;
+// .team1 {
+//   .codeBox {
+//     background-color: var(--team1PrimaryColor);
+//     color: var(--team1SecondaryColor);
+//   }
+// }
+// .team2 {
+//   .codeBox {
+//     background-color: var(--team2PrimaryColor);
+//     color: var(--team2SecondaryColor);
+//   }
+// }
 .team {
   position: fixed;
   width: 410px;
@@ -31,6 +43,7 @@
     justify-content: center;
     background-color: black;
     color: white;
+
     font-size: 3rem;
     .code {
       // width: 250px;
@@ -114,6 +127,7 @@
         margin-top: 1rem;
         flex-grow: 8;
         flex-basis: 50rem;
+        max-height: 619px;
         &::before {
           content: "UP NEXT";
           background-color: black;
@@ -145,6 +159,9 @@
               min-width: 1100px;
               // min-height: 500px;
               top: -50%;
+            }
+            video {
+              width: 1100px;
             }
           }
         }
