@@ -28,6 +28,9 @@ const Landing = (props: any) => {
       <Link className={styles.link} href="/mapinfo">
         Map Info Scene
       </Link>
+      <Link className={styles.link} href="/casters">
+        Casters Scene
+      </Link>
     </div>
   );
 };

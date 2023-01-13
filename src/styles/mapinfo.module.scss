@@ -89,10 +89,20 @@
     .mapTypeImage {
       filter: drop-shadow(-2px 2px 1px black);
     }
-    .logoContainer {
-      overflow: hidden;
+    .logoSizer {
+      height: 100%;
+      position: relative;
       max-height: 100px;
-      filter: drop-shadow(-2px 2px 1px black);
+      .logoContainer {
+        position: absolute;
+        top: 0;
+        right: 500%;
+        overflow: hidden;
+        height: 215%;
+        aspect-ratio: 1 / 2;
+        max-width: 100px;
+        filter: drop-shadow(-2px 2px 1px black);
+      }
     }
 
     .map {
@@ -101,7 +111,9 @@
       min-height: 0;
       // flex-basis: 10rem;
       // background-color: aquamarine;
+      overflow: hidden;
       position: relative;
+      padding-block: 0.2rem;
       &::before {
         content: "";
         // background-color: black;
@@ -124,7 +136,7 @@
       transition: width 1000ms, height 1000ms, margin 1000ms;
       &.active {
         transition: width 1000ms, height 1000ms, margin 1000ms;
-        margin-top: 1rem;
+        // margin-top: 1rem;
         flex-grow: 8;
         flex-basis: 50rem;
         max-height: 619px;
@@ -133,12 +145,12 @@
           background-color: black;
           color: white;
           position: absolute;
-          top: -1.5rem;
+          top: -2rem;
           width: 1100px;
           text-align: center;
           font-size: 2rem;
           //!margin-bottom: var(--bigheight);
-          margin-top: 0.5rem;
+          // margin-top: 0.5rem;
           transition: all 1000ms;
         }
         width: 1100px;
@@ -181,18 +193,25 @@
       }
 
       .mapType {
-        font-size: 6rem;
+        // font-size: 6rem;
         color: white;
         display: flex;
         justify-content: center;
         align-items: center;
-
+        // max-height: inherit;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        max-width: 100px;
         filter: drop-shadow(-2px 2px 1px black);
       }
       .mapText {
         color: white;
         font-size: 3rem;
         filter: drop-shadow(-2px 2px 1px black);
+        position: relative;
+        .active & {
+        }
+        // margin-inline: auto;
       }
       .mapImageContainer {
         position: absolute;

@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { NextPage } from "next/types";
 import styles from "../styles/mapinfo.module.scss";
 import Image from "next/image";
-import { Control, Hybrid, Escort, Push } from "../components/icons";
+import { Control, Hybrid, Escort, Push } from "../components/svgs";
 import React, {
   ReactNode,
   ReactSVGElement,
@@ -12,6 +12,7 @@ import React, {
   useState,
 } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import useFitText from "use-fit-text";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -36,15 +37,16 @@ const MapInfo = (props: any) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
-    onSuccess: (data, key, config) => {
-      if (data && data.maps.length > 8) {
-        divRef.current?.scrollIntoView();
-      } else {
-        window.scrollTo(0, 0);
-      }
-    },
+    // onSuccess: (data, key, config) => {
+    //   if (data && data.maps.length > 8) {
+    //     divRef.current?.scrollIntoView();
+    //   } else {
+    //     window.scrollTo(0, 0);
+    //   }
+    // },
   });
   const divRef = useRef<null | HTMLDivElement>(null);
+  const { fontSize, ref } = useFitText({ minFontSize: 80 });
   if (!data) {
     return <>Loading...</>;
   }
@@ -105,8 +107,14 @@ const MapInfo = (props: any) => {
                   map.isComplete && styles.complete,
                 ].join(" ")}
                 key={map.map + index}
+                ref={ref}
               >
-                <div className={styles.mapType}>{mapTypeSvg(map)}</div>
+                <div
+                  className={styles.mapType}
+                  style={{} as React.CSSProperties}
+                >
+                  {mapTypeSvg(map)}
+                </div>
                 <span className={styles.mapText}>{map.info}</span>
                 <div
                   className={styles.mapImageContainer}
@@ -144,25 +152,26 @@ const MapInfo = (props: any) => {
                   </div>
                 </div>
 
-                <div className={styles.logoContainer}>
-                  <Image
-                    className={styles.logo}
-                    src={
-                      [
-                        data?.teams?.team1?.short,
-                        data?.teams?.team2?.short,
-                      ].includes(map.winner)
-                        ? map.winner === data?.teams?.team1?.short
-                          ? data?.teams.team1.logoPath
-                          : data?.teams.team2.logoPath
-                        : index === findActive()
-                        ? "/elipses.png"
-                        : "/hyphen.png"
-                    }
-                    alt={"Winning Team Logo"}
-                    height="200"
-                    width="100"
-                  ></Image>
+                <div className={styles.logoSizer}>
+                  <div className={styles.logoContainer}>
+                    <Image
+                      className={styles.logo}
+                      src={
+                        [
+                          data?.teams?.team1?.short,
+                          data?.teams?.team2?.short,
+                        ].includes(map.winner)
+                          ? map.winner === data?.teams?.team1?.short
+                            ? data?.teams.team1.logoPath
+                            : data?.teams.team2.logoPath
+                          : index === findActive()
+                          ? "/elipses.png"
+                          : "/hyphen.png"
+                      }
+                      alt={"Winning Team Logo"}
+                      fill={true}
+                    ></Image>
+                  </div>
                 </div>
               </div>
             );
