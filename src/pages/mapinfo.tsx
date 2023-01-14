@@ -12,7 +12,6 @@ import React, {
   useState,
 } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import useFitText from "use-fit-text";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -46,7 +45,6 @@ const MapInfo = (props: any) => {
     // },
   });
   const divRef = useRef<null | HTMLDivElement>(null);
-  const { fontSize, ref } = useFitText({ minFontSize: 80 });
   if (!data) {
     return <>Loading...</>;
   }
@@ -107,7 +105,6 @@ const MapInfo = (props: any) => {
                   map.isComplete && styles.complete,
                 ].join(" ")}
                 key={map.map + index}
-                ref={ref}
               >
                 <div
                   className={styles.mapType}

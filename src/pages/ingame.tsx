@@ -65,7 +65,7 @@ const InGame: NextPage<PageProps> = (props) => {
               </div>
             )}
             <div className={styles.record}>{data?.teams?.team1.info}</div>
-            <div className={styles.name}>{data?.teams?.team1.name}</div>
+            <div className={styles.name}>{data?.teams?.team1.short}</div>
             <div className={styles.logoContainer}>
               <Image
                 className={styles.logo}
@@ -96,7 +96,7 @@ const InGame: NextPage<PageProps> = (props) => {
           </div>
         </div>
         {/* INFO BOX */}
-        <div className={styles.infoBox}>MAP 5 - BEST OF 7</div>
+        <div className={styles.infoBox}>{data?.match?.mapInfo}</div>
         {/* START TEAM 2 */}
         <div className={[styles.team, styles.team2].join(" ")}>
           <div className={styles.scoreBox}>
@@ -128,7 +128,7 @@ const InGame: NextPage<PageProps> = (props) => {
                 height="133"
               />
             </div>
-            <div className={styles.name}>{data?.teams?.team2.name}</div>
+            <div className={styles.name}>{data?.teams?.team2.short}</div>
             <div className={styles.record}>{data?.teams?.team2.info}</div>
             {["ATTACK", "DEFENSE"].includes(data?.teams?.team2.atkDef) && (
               <div className={styles.atkDef}>
