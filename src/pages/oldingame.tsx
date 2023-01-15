@@ -53,7 +53,7 @@ const Home: NextPage<PageProps> = (props) => {
               }
               alt={data?.teams?.team1.name + " logo"}
               width="65"
-              height="133"
+              height="65"
             />
           </div>
 
@@ -92,7 +92,7 @@ const Home: NextPage<PageProps> = (props) => {
               }
               alt={data?.teams?.team2.name + " logo"}
               width="65"
-              height="133"
+              height="65"
             />
           </div>
           <div className={styles.name}>{data?.teams?.team2.name}</div>

@@ -72,7 +72,7 @@ const MapInfo = (props: any) => {
                   className={styles.logo}
                   src={data?.teams?.team1?.logoPath}
                   alt="Team 1 Logo"
-                  height="240"
+                  height="120"
                   width="120"
                 />
               </div>
@@ -100,7 +100,7 @@ const MapInfo = (props: any) => {
                   className={styles.logo}
                   src={data?.teams?.team2?.logoPath}
                   alt="Team 1 Logo"
-                  height="240"
+                  height="120"
                   width="120"
                 />
               </div>
