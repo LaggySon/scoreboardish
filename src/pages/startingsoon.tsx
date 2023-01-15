@@ -47,7 +47,67 @@ const InGame: NextPage<PageProps> = (props) => {
           }
         `}
       </style>
-      <div className={styles.startingSoon}></div>
+      <div className={styles.startingSoon}>
+        <div className={styles.teams}>
+          <div className={[styles.team, styles.team1].join(" ")}>
+            <div className={styles.logoContainer}>
+              <Image
+                src={data?.teams?.team1?.logoPath}
+                alt={data?.teams?.team1?.name + " logo"}
+                className="logo"
+                height="350"
+                width="350"
+              ></Image>
+            </div>
+            <div className={styles.teamInfo}>
+              <span className={styles.name}>{data?.teams?.team1?.name}</span>
+              <span className={styles.info}>{data?.teams?.team1?.info}</span>
+            </div>
+          </div>
+          <div className={[styles.team, styles.team2].join(" ")}>
+            <div className={styles.logoContainer}>
+              <Image
+                src={data?.teams?.team2?.logoPath}
+                alt={data?.teams?.team2?.name + " logo"}
+                className="logo"
+                height="350"
+                width="350"
+              ></Image>
+            </div>
+            <div className={styles.teamInfo}>
+              <span className={styles.name}>{data?.teams?.team2?.name}</span>
+              <span className={styles.info}>{data?.teams?.team2?.info}</span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.starting}>
+          <span className={styles.startingText}>Starting Soon</span>
+          <div className={styles.startingAccent}></div>
+          <span className={styles.startingTimer}>10:00</span>
+        </div>
+        <div className={styles.botBar}>
+          <div className={styles.matchInfo}>
+            <span className={styles.line1}>
+              {data?.match?.stage + " | Week " + data?.match?.week}
+            </span>
+            <span className={styles.line2}>{data?.match?.tier}</span>
+          </div>
+          <div className={styles.ticker}>
+            <div className={[styles.scrollText, styles.tickerText].join(" ")}>
+              {data?.match?.ticker1}
+            </div>
+          </div>
+          <div className={styles.branding}>
+            <Image
+              className={styles.tranqLogo}
+              src="/tranquilityLogoMono.png"
+              width="334"
+              height="113"
+              alt="Tranq Logo"
+            ></Image>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
