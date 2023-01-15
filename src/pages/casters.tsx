@@ -40,7 +40,9 @@ const Casters = (props: any) => {
         <div className={styles.topBox}>
           <div className={styles.teams}>
             <div className={styles.team1}>
-              <div className={styles.code}>{data?.teams?.team1?.code}</div>
+              <div className={styles.code}>
+                <span>{data?.teams?.team1?.code}</span>
+              </div>
               <div className={styles.logoContainer}>
                 <Image
                   className={styles.logo}
@@ -68,7 +70,9 @@ const Casters = (props: any) => {
               </div>
             </div>
             <div className={styles.team2}>
-              <div className={styles.code}>{data?.teams?.team2?.code}</div>
+              <div className={styles.code}>
+                <span>{data?.teams?.team2?.code}</span>
+              </div>
               <div className={styles.logoContainer}>
                 <Image
                   className={styles.logo}

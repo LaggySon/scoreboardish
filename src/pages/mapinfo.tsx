@@ -63,34 +63,32 @@ const MapInfo = (props: any) => {
         `}
       </style>
       <div className={styles.mapInfo}>
-        <div className={styles.teams}>
-          <div className={[styles.team1, styles.team].join(" ")}>
-            <div className={styles.logoContainer}>
-              <Image
-                className={styles.logo}
-                src={data?.teams?.team1?.logoPath}
-                alt={data?.teams?.team1?.name + " Logo"}
-                width="250"
-                height="500"
-              />
-            </div>
-            <div className={styles.codeBox}>
-              <span className={styles.code}>{data?.teams?.team1.code}</span>
-            </div>
-            <div className={styles.scoreBox}>
-              <SwitchTransition>
-                <CSSTransition
-                  key={data?.teams?.team1.score ?? "none"}
-                  addEndListener={(node, done) => {
-                    // use the css transitionend event to mark the finish of a transition
-                    node.addEventListener("transitionend", done, false);
-                  }}
-                  classNames="fade"
-                >
-                  <div className={styles.score}>{data?.teams?.team1.score}</div>
-                </CSSTransition>
-              </SwitchTransition>
-            </div>
+        <div className={[styles.team1, styles.team].join(" ")}>
+          <div className={styles.logoContainer}>
+            <Image
+              className={styles.logo}
+              src={data?.teams?.team1?.logoPath}
+              alt={data?.teams?.team1?.name + " Logo"}
+              width="250"
+              height="250"
+            />
+          </div>
+          <div className={styles.codeBox}>
+            <span className={styles.code}>{data?.teams?.team1.code}</span>
+          </div>
+          <div className={styles.scoreBox}>
+            <SwitchTransition>
+              <CSSTransition
+                key={data?.teams?.team1.score ?? "none"}
+                addEndListener={(node, done) => {
+                  // use the css transitionend event to mark the finish of a transition
+                  node.addEventListener("transitionend", done, false);
+                }}
+                classNames="fade"
+              >
+                <div className={styles.score}>{data?.teams?.team1.score}</div>
+              </CSSTransition>
+            </SwitchTransition>
           </div>
         </div>
         <div className={styles.mapBox}>
@@ -150,25 +148,23 @@ const MapInfo = (props: any) => {
                 </div>
 
                 <div className={styles.logoSizer}>
-                  <div className={styles.logoContainer}>
-                    <Image
-                      className={styles.logo}
-                      src={
-                        [
-                          data?.teams?.team1?.short,
-                          data?.teams?.team2?.short,
-                        ].includes(map.winner)
-                          ? map.winner === data?.teams?.team1?.short
-                            ? data?.teams.team1.logoPath
-                            : data?.teams.team2.logoPath
-                          : index === findActive()
-                          ? "/elipses.png"
-                          : "/hyphen.png"
-                      }
-                      alt={"Winning Team Logo"}
-                      fill={true}
-                    ></Image>
-                  </div>
+                  <Image
+                    className={styles.winnerLogo}
+                    src={
+                      [
+                        data?.teams?.team1?.short,
+                        data?.teams?.team2?.short,
+                      ].includes(map.winner)
+                        ? map.winner === data?.teams?.team1?.short
+                          ? data?.teams.team1.logoPath
+                          : data?.teams.team2.logoPath
+                        : index === findActive()
+                        ? "/elipses.png"
+                        : "/hyphen.png"
+                    }
+                    alt={"Winning Team Logo"}
+                    fill={true}
+                  ></Image>
                 </div>
               </div>
             );
@@ -182,7 +178,7 @@ const MapInfo = (props: any) => {
               src={data?.teams?.team2?.logoPath}
               alt={data?.teams?.team2?.name + " Logo"}
               width="250"
-              height="500"
+              height="250"
             />
           </div>
           <div className={styles.codeBox}>

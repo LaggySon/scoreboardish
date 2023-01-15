@@ -16,8 +16,11 @@
       .logoContainer {
         overflow: hidden;
         max-height: 120px;
+
         .logo {
           filter: drop-shadow(-2px 2px 1px black);
+          position: relative;
+          top: 3px;
         }
       }
       .team1,
@@ -40,10 +43,17 @@
           }
         }
         .code {
-          font-size: 6rem;
+          font-size: 5.4rem;
           min-width: 16rem;
           text-align: center;
           height: 120px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span {
+            position: relative;
+            top: -3px;
+          }
         }
       }
       .team1 {
@@ -86,7 +96,7 @@
       z-index: -1;
       position: absolute;
       background-color: black;
-      width: 1rem;
+      width: 0.5rem;
     }
     .caster1,
     .caster2 {
