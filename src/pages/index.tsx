@@ -7,6 +7,7 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 import SvgAttack from "../components/icons/Attack";
 import SvgDefense from "../components/icons/Defense";
 import Link from "next/link";
+import dayjs from "dayjs";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;

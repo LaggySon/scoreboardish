@@ -111,6 +111,26 @@
       height: 0.5rem;
       background-color: red;
       margin-bottom: 0.5rem;
+      position: relative;
+      transition: all 1000ms;
+      &::after {
+        transition: all 1000ms linear;
+        width: var(--percentage);
+        content: "";
+        background-color: green;
+        height: 100%;
+        position: absolute;
+        left: 0;
+      }
+      &::before {
+        transition: all 1000ms linear;
+        width: var(--percentage);
+        content: "";
+        background-color: green;
+        height: 100%;
+        position: absolute;
+        right: 0;
+      }
     }
     .startingTimer {
       background-color: black;
@@ -128,11 +148,13 @@
     justify-content: space-between;
     align-items: center;
     .matchInfo {
+      padding-left: 1rem;
       font-size: 2rem;
       display: flex;
       flex-direction: column;
       //   padding-inline: 1rem;
-      width: 334px;
+      width: 318px;
+      text-align: left;
     }
     .ticker {
       border-inline: 2px solid white;

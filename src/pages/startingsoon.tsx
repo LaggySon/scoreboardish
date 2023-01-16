@@ -6,6 +6,9 @@ import { env } from "../env/client.mjs";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import SvgAttack from "../components/icons/Attack";
 import SvgDefense from "../components/icons/Defense";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import { useEffect, useState } from "react";
 
 type PageProps = {
   team1: Team;
@@ -30,6 +33,28 @@ const InGame: NextPage<PageProps> = (props) => {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
+
+  //TIMER STUFF
+  dayjs.extend(duration);
+
+  const endTime = dayjs(data?.match?.dateTime * 1000);
+
+  const [dayjsLeft, setDayjsLeft] = useState(
+    dayjs.duration(endTime.diff(dayjs()))
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const diffMilli = endTime.diff(dayjs());
+      if (diffMilli > 0) {
+        setDayjsLeft(dayjs.duration(diffMilli));
+      } else {
+        setDayjsLeft(dayjs.duration(0));
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  });
+
   if (!data) {
     return <>Loading...</>;
   }
@@ -82,8 +107,24 @@ const InGame: NextPage<PageProps> = (props) => {
         </div>
         <div className={styles.starting}>
           <span className={styles.startingText}>Starting Soon</span>
-          <div className={styles.startingAccent}></div>
-          <span className={styles.startingTimer}>10:00</span>
+          <div
+            className={styles.startingAccent}
+            style={
+              {
+                "--percentage": `${
+                  (100 -
+                    ((dayjs(data?.match?.dateTime * 1000).diff(dayjs()) %
+                      30000) /
+                      30000) *
+                      100) /
+                  2
+                }%`,
+              } as React.CSSProperties
+            }
+          ></div>
+          <span className={styles.startingTimer}>
+            {dayjsLeft.format("mm:ss")}
+          </span>
         </div>
         <div className={styles.botBar}>
           <div className={styles.matchInfo}>
