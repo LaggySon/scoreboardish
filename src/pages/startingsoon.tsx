@@ -51,9 +51,22 @@ const InGame: NextPage<PageProps> = (props) => {
       } else {
         setDayjsLeft(dayjs.duration(0));
       }
-    }, 1000);
+    }, 250);
     return () => clearInterval(interval);
   });
+
+  console.log(
+    (100 -
+      ((dayjs(data?.match?.dateTime * 1000).diff(dayjs()) % 30000) / 30000) *
+        100) /
+      2 >
+      1 &&
+      (100 -
+        ((dayjs(data?.match?.dateTime * 1000).diff(dayjs()) % 30000) / 30000) *
+          100) /
+        2 <
+        48
+  );
 
   if (!data) {
     return <>Loading...</>;
@@ -108,7 +121,22 @@ const InGame: NextPage<PageProps> = (props) => {
         <div className={styles.starting}>
           <span className={styles.startingText}>Starting Soon</span>
           <div
-            className={styles.startingAccent}
+            className={[
+              styles.startingAccent,
+              (100 -
+                ((dayjs(data?.match?.dateTime * 1000).diff(dayjs()) % 30000) /
+                  30000) *
+                  100) /
+                2 >
+                1 &&
+                (100 -
+                  ((dayjs(data?.match?.dateTime * 1000).diff(dayjs()) % 30000) /
+                    30000) *
+                    100) /
+                  2 <
+                  50 &&
+                styles.animate,
+            ].join(" ")}
             style={
               {
                 "--percentage": `${
@@ -117,7 +145,8 @@ const InGame: NextPage<PageProps> = (props) => {
                       30000) /
                       30000) *
                       100) /
-                  2
+                    2 +
+                  1
                 }%`,
               } as React.CSSProperties
             }

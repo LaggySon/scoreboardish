@@ -6,7 +6,7 @@
 
   -moz-animation: my-animation 15s linear infinite;
   -webkit-animation: my-animation 15s linear infinite;
-  animation: my-animation 15s linear infinite;
+  animation: my-animation 25s linear infinite;
 }
 
 /* for Firefox */
@@ -113,8 +113,14 @@
       margin-bottom: 0.5rem;
       position: relative;
       transition: all 1000ms;
+      &.animate::before,
+      &.animate::after {
+        transition: all 500ms linear;
+      }
       &::after {
-        transition: all 1000ms linear;
+        &.animate {
+          transition: all 1000ms linear;
+        }
         width: var(--percentage);
         content: "";
         background-color: green;
@@ -123,7 +129,9 @@
         left: 0;
       }
       &::before {
-        transition: all 1000ms linear;
+        &.animate {
+          transition: all 1000ms linear;
+        }
         width: var(--percentage);
         content: "";
         background-color: green;
@@ -163,7 +171,7 @@
       .tickerText {
         font-size: 2rem;
         // min-width: 100rem;
-        // width: fit-content;
+        width: fit-content;
         white-space: nowrap;
       }
     }
