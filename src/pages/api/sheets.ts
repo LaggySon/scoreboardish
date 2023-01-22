@@ -49,6 +49,7 @@ export default async function handler(
         primaryCol: data[0][5],
         secondaryCol: data[0][6],
         atkDef: data[0][8].toUpperCase(),
+        advInfo: data[0][10],
       },
       team2: {
         name: data[1][1],
@@ -60,6 +61,7 @@ export default async function handler(
         primaryCol: data[1][5],
         secondaryCol: data[1][6],
         atkDef: data[1][8].toUpperCase(),
+        advInfo: data[1][10],
       },
     },
     twitch: response.data.values

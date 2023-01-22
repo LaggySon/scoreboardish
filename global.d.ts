@@ -16,6 +16,7 @@ declare global {
     code: string;
     primaryCol: string;
     secondaryCol: string;
+    advInfo: string;
   };
 
   type MatchInfo = {

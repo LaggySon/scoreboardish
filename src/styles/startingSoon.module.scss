@@ -92,11 +92,12 @@
         text-align: center;
         color: white;
         .name {
-          background-color: #222222;
+          background-color: black;
           width: 100%;
         }
         .info {
-          background-color: #696969;
+          background-color: var(--accentcolor);
+          color: #fff;
           width: 100%;
 
           font-size: 2rem;
@@ -118,7 +119,7 @@
     }
     .startingAccent {
       height: 0.5rem;
-      background-color: red;
+      background-color: white;
       margin-bottom: 0.5rem;
       position: relative;
       transition: all 1000ms;
@@ -132,7 +133,7 @@
         }
         width: var(--percentage);
         content: "";
-        background-color: green;
+        background-color: var(--accentcolor);
         height: 100%;
         position: absolute;
         left: 0;
@@ -143,7 +144,7 @@
         }
         width: var(--percentage);
         content: "";
-        background-color: green;
+        background-color: var(--accentcolor);
         height: 100%;
         position: absolute;
         right: 0;
@@ -183,6 +184,9 @@
         width: fit-content;
         white-space: nowrap;
       }
+    }
+    .branding {
+      padding-right: 1rem;
     }
   }
 }

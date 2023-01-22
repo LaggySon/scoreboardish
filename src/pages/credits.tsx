@@ -99,14 +99,19 @@ const Credits = (props: any) => {
           <div className={styles.branding}>
             <Image
               className={styles.tranqLogo}
-              src="/tranquilityLogoMono.png"
+              src="/tranquilityLogoMono.svg"
               width="334"
-              height="113"
+              height="80"
               alt="Tranq Logo"
             ></Image>
           </div>
         </div>
-        <div className={styles.right}>
+        <div
+          className={[
+            styles.right,
+            data?.twitch.length >= 6 && styles.lots,
+          ].join(" ")}
+        >
           {data?.twitch
             .filter(
               (staff: TwitchStaff) =>
@@ -114,6 +119,8 @@ const Credits = (props: any) => {
                   "Play By Play".toLowerCase(),
                   "Analyst".toLowerCase(),
                   "Color".toLowerCase(),
+                  "Host".toLowerCase(),
+                  "Desk".toLowerCase(),
                 ].includes(staff.title.toLowerCase())
             )
             .map((staff: TwitchStaff) => (

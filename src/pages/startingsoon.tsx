@@ -99,7 +99,7 @@ const StartingSoon = (props: any) => {
             </div>
             <div className={styles.teamInfo}>
               <span className={styles.name}>{data?.teams?.team1?.name}</span>
-              <span className={styles.info}>{data?.teams?.team1?.info}</span>
+              <span className={styles.info}>{data?.teams?.team1?.advInfo}</span>
             </div>
           </div>
           <div className={[styles.team, styles.team2].join(" ")}>
@@ -114,7 +114,7 @@ const StartingSoon = (props: any) => {
             </div>
             <div className={styles.teamInfo}>
               <span className={styles.name}>{data?.teams?.team2?.name}</span>
-              <span className={styles.info}>{data?.teams?.team2?.info}</span>
+              <span className={styles.info}>{data?.teams?.team2?.advInfo}</span>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ const StartingSoon = (props: any) => {
           <div className={styles.branding}>
             <Image
               className={styles.tranqLogo}
-              src="/tranquilityLogoMono.png"
+              src="/tranquilityLogoMono.svg"
               width="334"
               height="113"
               alt="Tranq Logo"
