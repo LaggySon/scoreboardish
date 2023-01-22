@@ -21,6 +21,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <title>Scoreboardish</title>
       </Head>
 
       <Component {...pageProps} />

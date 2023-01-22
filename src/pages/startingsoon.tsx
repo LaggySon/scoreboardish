@@ -28,7 +28,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/sheets";
 
-const InGame: NextPage<PageProps> = (props) => {
+const StartingSoon = (props: any) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
@@ -182,4 +182,4 @@ const InGame: NextPage<PageProps> = (props) => {
   );
 };
 
-export default InGame;
+export default StartingSoon;

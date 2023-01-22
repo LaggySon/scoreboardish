@@ -51,9 +51,16 @@
   .teams {
     display: flex;
     justify-content: space-evenly;
+    .logoContainer {
+      background-image: url("/tranqLogoTransparent.png");
+      background-size: cover;
+      background-size: 175%;
+      background-position: center;
+    }
     .team1 {
       .logoContainer {
         background-color: var(--team1PrimaryColor);
+
         .logo {
           filter: drop-shadow(-2px 2px 1px black);
         }

@@ -35,6 +35,9 @@ const Landing = (props: any) => {
       <Link className={styles.link} href="/startingsoon">
         Starting Soon Scene
       </Link>
+      <Link className={styles.link} href="/credits">
+        Credits Scene
+      </Link>
     </div>
   );
 };
