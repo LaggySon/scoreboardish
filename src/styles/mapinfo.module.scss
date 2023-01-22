@@ -32,6 +32,10 @@
     // overflow: hidden;
     // max-height: 234px;
     // max-width: 250px;
+    background-image: url("/tranqLogoTransparent.png");
+    background-size: cover;
+    background-size: 175%;
+    background-position: center;
     .logo {
       filter: drop-shadow(-2px 2px 1px black);
     }

@@ -58,6 +58,11 @@
         }
         .logoContainer {
           background-color: var(--team1PrimaryColor);
+          background-image: url("/tranqLogoTransparent.png");
+          background-size: cover;
+          background-size: 175%;
+          background-position: center;
+          border-left: 0.5rem solid var(--team1SecondaryColor);
         }
       }
       .team2 {
@@ -68,6 +73,11 @@
         }
         .logoContainer {
           background-color: var(--team2PrimaryColor);
+          background-image: url("/tranqLogoTransparent.png");
+          background-size: cover;
+          background-size: 175%;
+          background-position: center;
+          border-right: 0.5rem solid var(--team2SecondaryColor);
         }
       }
     }

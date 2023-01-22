@@ -59,6 +59,7 @@
     }
     .team1 {
       .logoContainer {
+        border-bottom: 1rem solid var(--team1SecondaryColor);
         background-color: var(--team1PrimaryColor);
 
         .logo {
@@ -68,6 +69,7 @@
     }
     .team2 {
       .logoContainer {
+        border-bottom: 1rem solid var(--team2SecondaryColor);
         background-color: var(--team2PrimaryColor);
       }
       .logo {
