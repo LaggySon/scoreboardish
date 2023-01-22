@@ -3,17 +3,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto;
-  width: auto;
+  max-width: 100vw;
+  text-align: center;
+  h1 {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+  }
+  p {
+    background-color: black;
+    padding: 1rem;
+    color: white;
+    max-width: 40rem;
+  }
   .link {
-    font-size: 5rem;
+    transition: all 500ms;
+    font-size: 2rem;
     text-decoration: none;
     color: black;
-    &::before {
-      content: ">";
-    }
+
     &:hover {
+      scale: 1.5;
       color: var(--accentcolor);
+      filter: drop-shadow(30px 10px 1px #4444);
     }
   }
 }
