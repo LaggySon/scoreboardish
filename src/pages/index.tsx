@@ -1,10 +1,17 @@
 import styles from "../styles/index.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 const Landing = (props: any) => {
   return (
     <div className={styles.linkBox}>
-      <h1>Welcome to Scoreboardish!</h1>
+      <Image
+        className={styles.logo}
+        src="/laggishFull.svg"
+        width="334"
+        height="113"
+        alt="Tranq Logo"
+      ></Image>
 
       <Link className={styles.link} href="/ingame">
         In Game

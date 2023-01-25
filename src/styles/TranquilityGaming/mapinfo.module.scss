@@ -1,0 +1,261 @@
+//normal map size: 72px
+//up next map size: 48px
+//big map size: 96px
+//clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+
+// display: flex;
+// flex-direction: column;
+// gap: 1rem;
+// margin: 3rem;
+// // width: 600px;
+// .team1 {
+//   .codeBox {
+//     background-color: var(--team1PrimaryColor);
+//     color: var(--team1SecondaryColor);
+//   }
+// }
+// .team2 {
+//   .codeBox {
+//     background-color: var(--team2PrimaryColor);
+//     color: var(--team2SecondaryColor);
+//   }
+// }
+.team {
+  width: 410px;
+  height: 100vh;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .logoContainer {
+    // overflow: hidden;
+    // max-height: 234px;
+    // max-width: 250px;
+    background-image: url("/tranqLogoTransparent.png");
+    background-size: cover;
+    background-size: 175%;
+    background-position: center;
+    .logo {
+      filter: drop-shadow(-2px 2px 1px black);
+    }
+  }
+  .codeBox {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+
+    font-size: 3rem;
+    .code {
+      // width: 250px;
+
+      text-align: center;
+    }
+  }
+  .scoreBox {
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16rem;
+    line-height: 1px;
+    color: white;
+    background-color: black;
+    .score {
+      position: relative;
+      bottom: 0.5rem;
+    }
+  }
+}
+
+.mapInfo {
+  --bigheight: 300px;
+  --regheight: 90px;
+  display: flex;
+  // max-height: 100vh;
+  .mapBox {
+    margin-block: 2rem;
+    margin-inline: auto;
+    max-width: 1100px;
+    height: 95vh;
+    display: flex;
+    // gap: 3rem;
+
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    // overflow: scroll;
+    .mapTypeImage {
+      filter: drop-shadow(-2px 2px 1px black);
+    }
+
+    .map {
+      flex-shrink: 1;
+      flex-grow: 1;
+      min-height: 0;
+      // flex-basis: 10rem;
+      // background-color: aquamarine;
+      overflow: hidden;
+      position: relative;
+      padding-block: 0.2rem;
+      max-height: 10rem;
+      &::before {
+        content: "";
+        // background-color: black;
+        // color: white;
+        position: absolute;
+        width: 1100px; //change maybe;
+        // text-align: center;
+        // font-size: 2rem;
+        //!margin-bottom: var(--regheight);
+        margin-top: 2rem;
+        transition: all 1000ms;
+      }
+      .logoSizer {
+        .winnerLogo {
+          position: static !important;
+          // padding-top: 100%;
+          object-fit: scale-down;
+          max-width: 100px;
+        }
+        height: 100%;
+      }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1100px; //change maybe;
+      //! max-height: var(--regheight);
+      // overflow: hidden;
+      margin-bottom: 1rem;
+      transition: width 1000ms, height 1000ms, margin 1000ms;
+      &.active {
+        transition: width 1000ms, height 1000ms, margin 1000ms;
+        // margin-top: 1rem;
+        flex-grow: 8;
+        flex-basis: 50rem;
+        max-height: 605px;
+        &::before {
+          content: "UP NEXT";
+          background-color: black;
+          color: white;
+          position: absolute;
+          top: -2rem;
+          width: 1100px;
+          text-align: center;
+          font-size: 2rem;
+          //!margin-bottom: var(--bigheight);
+          // margin-top: 0.5rem;
+          transition: all 1000ms;
+        }
+        width: 1100px;
+
+        // height: var(--bigheight);
+        // max-height: var(--bigheight);
+
+        .mapImageContainer {
+          width: 1100px;
+          .mapImageMask {
+            transition: width 1000ms, height 1000ms,
+              margin 1000ms clip-path 1000ms;
+            //!height: var(--bigheight);
+            clip-path: polygon(14% 0%, 94% 0%, 86% 100%, 6% 100%);
+            width: 1100px;
+
+            .mapImage {
+              min-width: 1100px;
+              // min-height: 500px;
+              top: -50%;
+            }
+            video {
+              width: 1100px;
+            }
+          }
+        }
+      }
+      &.complete {
+        .mapImageContainer {
+          &::before {
+            content: "";
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--winnerPrimaryCol);
+            opacity: 40%;
+            z-index: 2;
+          }
+        }
+      }
+
+      .mapType {
+        & > * {
+          object-fit: scale-down;
+        }
+
+        height: 100%;
+        aspect-ratio: 1/1;
+        max-width: 100px;
+        object-fit: scale-down;
+        display: flex;
+      }
+      .mapText {
+        color: white;
+        font-size: 3rem;
+        filter: drop-shadow(-2px 2px 1px black);
+        position: relative;
+        .active & {
+        }
+        // margin-inline: auto;
+      }
+      .mapImageContainer {
+        position: absolute;
+        display: flex;
+        z-index: -1;
+        overflow: hidden;
+        width: 1100px; //change maybe;
+        height: 100%;
+        background-color: var(--winnerPrimaryCol);
+        // height: inherit;
+
+        .mapImageMask {
+          transition: width 1000ms, height 1000ms, margin 1000ms;
+          height: inherit;
+          width: 100%;
+          clip-path: polygon(12% 0%, 92% 0%, 88% 100%, 8% 100%);
+          .mapImage {
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            top: -50%;
+            max-width: 1100px; //change maybe;
+          }
+        }
+      }
+    }
+  }
+
+  .team1 {
+    .logoContainer {
+      border-bottom: 1rem solid var(--team1SecondaryColor);
+      background-color: var(--team1PrimaryColor);
+    }
+    .codeBox {
+      // border-bottom: 1rem solid var(--team1SecondaryColor);
+      // margin-bottom: 1rem;
+    }
+  }
+  .team2 {
+    right: 0;
+    .logoContainer {
+      border-bottom: 1rem solid var(--team2SecondaryColor);
+      background-color: var(--team2PrimaryColor);
+    }
+    .codeBox {
+      // border-bottom: 1rem solid var(--team2SecondaryColor);
+      // margin-bottom: 1rem;
+    }
+  }
+}

@@ -39,6 +39,12 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@600&display=swap"
+          rel="stylesheet"
+        />
         <title>Scoreboardish</title>
       </Head>
 

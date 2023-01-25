@@ -2,12 +2,13 @@
   font-family: "Industry";
   src: url("/fonts/Industry-Bold.woff") format("woff");
 }
-:root {
-  font-family: "Industry";
 
+:root {
+  font-family: "Heebo";
+  font-weight: 800;
   line-height: 1.2;
   --speed: 500ms;
-  --accentcolor: #c79334;
+  --accentcolor: rgb(57, 119, 235);
   --bgbase: 15, 15, 15;
   --bgopacity: 1;
   --bgcolor: rgba(var(--bgbase), var(--bgopacity));

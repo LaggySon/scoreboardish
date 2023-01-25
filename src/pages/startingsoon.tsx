@@ -170,7 +170,7 @@ const StartingSoon = (props: any) => {
           <div className={styles.branding}>
             <Image
               className={styles.tranqLogo}
-              src="/tranquilityLogoMono.svg"
+              src="/laggishFull.svg"
               width="334"
               height="113"
               alt="Tranq Logo"
