@@ -63,8 +63,8 @@ const HalfTime = (props: any) => {
             </SwitchTransition>
           </div>
         </div>
-        <div className={styles.centerStuff + " " + styles.noVideo}>
-          {/* <div className={styles.replayBox}></div> */}
+        <div className={styles.centerStuff}>
+          <div className={styles.replayBox}></div>
           <span className={styles.halfTimeText}>Half Time</span>
           <span className={styles.halfTimeTimer}>10:00</span>
         </div>

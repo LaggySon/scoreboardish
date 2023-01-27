@@ -34,7 +34,7 @@
           align-items: center;
           .score {
             position: relative;
-            bottom: 0.5rem;
+            top: 0.5rem;
           }
         }
         .code {
@@ -58,9 +58,9 @@
         }
         .logoContainer {
           background-color: var(--team1PrimaryColor);
-          background-image: url("/tranqLogoTransparent.png");
+          background-image: url("/laggishShapeTransparent.png");
           background-size: cover;
-          background-size: 175%;
+          background-size: 115%;
           background-position: center;
           border-left: 0.5rem solid var(--team1SecondaryColor);
         }
@@ -73,9 +73,9 @@
         }
         .logoContainer {
           background-color: var(--team2PrimaryColor);
-          background-image: url("/tranqLogoTransparent.png");
+          background-image: url("/laggishShapeTransparent.png");
           background-size: cover;
-          background-size: 175%;
+          background-size: 115%;
           background-position: center;
           border-right: 0.5rem solid var(--team2SecondaryColor);
         }

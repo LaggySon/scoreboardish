@@ -1,0 +1,192 @@
+.scrollText {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 25s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+.halfTime {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  //   .team1 {
+  //     background-color: blue;
+  //   }
+  //   .team2 {
+  //     background-color: red;
+  //   }
+}
+.centerStuff {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  &.noVideo {
+    .halfTimeTimer {
+      font-size: 15rem;
+    }
+  }
+  .replayBox {
+    aspect-ratio: 16/9;
+    height: 540px;
+    background-color: black;
+  }
+  .halfTimeText {
+    font-size: 6rem;
+    color: white;
+    background-color: black;
+    padding-inline: 2rem;
+  }
+  .halfTimeTimer {
+    font-size: 8rem;
+    color: white;
+    background-color: black;
+    padding-inline: 2rem;
+    // padding: 0;
+  }
+}
+.team {
+  //   width: 410px;
+  transform: scale(1.3);
+  height: 100vh;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .logoContainer {
+    // overflow: hidden;
+    // max-height: 234px;
+    // max-width: 250px;
+    background-image: url("/laggishShapeTransparent.png");
+    background-size: cover;
+    background-size: 115%;
+    background-position: center;
+    .logo {
+      filter: drop-shadow(-2px 2px 1px black);
+    }
+  }
+  .codeBox {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+
+    font-size: 3rem;
+    .code {
+      // width: 250px;
+
+      text-align: center;
+    }
+  }
+  .scoreBox {
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16rem;
+    line-height: 1px;
+    color: white;
+    background-color: black;
+    .score {
+      position: relative;
+      top: 0.5rem;
+    }
+  }
+}
+.team1 {
+  .logoContainer {
+    border-bottom: 1rem solid var(--team1SecondaryColor);
+    background-color: var(--team1PrimaryColor);
+  }
+  .codeBox {
+    // border-bottom: 1rem solid var(--team1SecondaryColor);
+    // margin-bottom: 1rem;
+  }
+}
+.team2 {
+  right: 0;
+  .logoContainer {
+    border-bottom: 1rem solid var(--team2SecondaryColor);
+    background-color: var(--team2PrimaryColor);
+  }
+  .codeBox {
+    // border-bottom: 1rem solid var(--team2SecondaryColor);
+    // margin-bottom: 1rem;
+  }
+}
+.botBar {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 6rem;
+  justify-content: space-between;
+  align-items: center;
+  .matchInfo {
+    padding-left: 1rem;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    //   padding-inline: 1rem;
+    width: 318px;
+    text-align: left;
+  }
+  .ticker {
+    border-inline: 2px solid white;
+    overflow: hidden;
+    width: 50rem;
+    .tickerText {
+      font-size: 2rem;
+      // min-width: 100rem;
+      width: fit-content;
+      white-space: nowrap;
+    }
+  }
+  .branding {
+    padding-right: 1rem;
+  }
+}

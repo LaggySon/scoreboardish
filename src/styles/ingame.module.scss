@@ -99,20 +99,12 @@
           top: 0;
           transform: rotate(-45deg) scale(var(--accentScale));
           overflow: hidden;
+          background-image: url("/laggishShapeTransparent.png");
+          background-size: cover;
+          // background-size: 10%;
+          background-position: center;
+          background-repeat: repeat;
           // z-index: 0;
-
-          &::before {
-            content: "";
-            position: absolute;
-            background: url("/tranqLogo.png") 0 0 no-repeat;
-            width: 250%;
-            height: 200%;
-            transform: scale(0.5) rotate(45deg) scale(var(--accentScale));
-            top: -9rem;
-            left: -7.5rem;
-            z-index: -1;
-            opacity: 30%;
-          }
         }
         &.outside2 {
           position: absolute;
@@ -124,18 +116,10 @@
           transform: rotate(-45deg) scale(var(--accentScale));
           // z-index: 0;
           overflow: hidden;
-          &::before {
-            content: "";
-            position: absolute;
-            background: url("/tranqLogo.png") 0 0 no-repeat;
-            width: 250%;
-            height: 200%;
-            transform: scale(0.5) rotate(45deg);
-            top: -8rem;
-            left: -6.5rem;
-            z-index: -1;
-            opacity: 30%;
-          }
+          background-image: url("/laggishShapeTransparent.png");
+          background-size: cover;
+          // background-size: 10%;
+          background-position: center;
         }
 
         &.inside2 {

@@ -99,7 +99,7 @@ const Credits = (props: any) => {
           <div className={styles.branding}>
             <Image
               className={styles.tranqLogo}
-              src="/tranquilityLogoMono.svg"
+              src="/laggishFull.svg"
               width="334"
               height="80"
               alt="Tranq Logo"
