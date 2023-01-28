@@ -186,7 +186,9 @@
       }
     }
     .branding {
-      padding-right: 1rem;
+      // padding-right: 1rem;
+      position: relative;
+      right: -55px;
     }
   }
 }

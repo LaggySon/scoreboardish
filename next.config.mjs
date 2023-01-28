@@ -18,6 +18,7 @@ const config = {
       "www.datocms-assets.com",
       "www.tranquility.gg",
       "via.placeholder.com",
+      "cdn.discordapp.com",
     ],
   },
 };

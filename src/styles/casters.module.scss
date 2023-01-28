@@ -45,16 +45,18 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          span {
-            position: relative;
-            top: -3px;
-          }
+          // span {
+          //   position: relative;
+          //   top: -3px;
+          // }
         }
       }
       .team1 {
         .code {
-          background-color: var(--team1PrimaryColor);
-          color: var(--team1SecondaryColor);
+          // background-color: var(--team1PrimaryColor);
+          // color: var(--team1SecondaryColor);
+          background-color: black;
+          color: white;
         }
         .logoContainer {
           background-color: var(--team1PrimaryColor);
@@ -68,8 +70,10 @@
       .team2 {
         flex-direction: row-reverse;
         .code {
-          background-color: var(--team2PrimaryColor);
-          color: var(--team2SecondaryColor);
+          // background-color: var(--team2PrimaryColor);
+          // color: var(--team2SecondaryColor);
+          background-color: black;
+          color: white;
         }
         .logoContainer {
           background-color: var(--team2PrimaryColor);

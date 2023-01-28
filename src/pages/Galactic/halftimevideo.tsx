@@ -1,11 +1,11 @@
-import styles from "../styles/halftime.module.scss";
+import styles from "../../styles/halftime.module.scss";
 import Image from "next/image";
 import { NextPage } from "next/types";
 import useSWR from "swr";
-import { env } from "../env/client.mjs";
+import { env } from "../../env/client.mjs";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import SvgAttack from "../components/icons/Attack";
-import SvgDefense from "../components/icons/Defense";
+import SvgAttack from "../../components/icons/Attack";
+import SvgDefense from "../../components/icons/Defense";
 import { discovery_v1 } from "googleapis";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -89,7 +89,7 @@ const HalfTime = (props: any) => {
         </div>
         <div className={styles.centerStuff}>
           <div className={styles.replayBox}></div>
-          <span className={styles.halfTimeText}>Half Time</span>
+          <span className={styles.halfTimeText}>{data?.match?.ticker2}</span>
           <span className={styles.halfTimeTimer}>
             {dayjsLeft.format("mm:ss")}
           </span>
@@ -113,9 +113,9 @@ const HalfTime = (props: any) => {
         </div>
         <div className={styles.botBar}>
           <div className={styles.matchInfo}>
-            <span className={styles.line1}>
+            {/* <span className={styles.line1}>
               {data?.match?.stage + " | Week " + data?.match?.week}
-            </span>
+            </span> */}
             <span className={styles.line2}>{data?.match?.tier}</span>
           </div>
           <div className={styles.ticker}>
@@ -128,7 +128,7 @@ const HalfTime = (props: any) => {
               className={styles.tranqLogo}
               src="/laggishFull.svg"
               width="334"
-              height="113"
+              height="50"
               alt="Tranq Logo"
             ></Image>
           </div>
