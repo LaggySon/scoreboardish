@@ -82,6 +82,7 @@ const StartingSoon = (props: any) => {
             --team2PrimaryColor: ${data?.teams?.team2.primaryCol ?? "black"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "black"};
+            --accentcolor: ${data?.match?.accColor};
           }
         `}
       </style>
@@ -157,9 +158,7 @@ const StartingSoon = (props: any) => {
         </div>
         <div className={styles.botBar}>
           <div className={styles.matchInfo}>
-            <span className={styles.line1}>
-              {data?.match?.stage + " | Week " + data?.match?.week}
-            </span>
+            <span className={styles.line1}>{data?.match?.addInfo}</span>
             <span className={styles.line2}>{data?.match?.tier}</span>
           </div>
           <div className={styles.ticker}>
@@ -172,7 +171,7 @@ const StartingSoon = (props: any) => {
               className={styles.tranqLogo}
               src="/laggishFull.svg"
               width="334"
-              height="113"
+              height="50"
               alt="Tranq Logo"
             ></Image>
           </div>

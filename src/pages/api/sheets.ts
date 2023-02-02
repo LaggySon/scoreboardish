@@ -99,6 +99,8 @@ export default async function handler(
       nextMap: data[3][6],
       ticker1: data[3][8],
       ticker2: data[3][9],
+      addInfo: data[5][1],
+      accColor: data[5][2],
     },
   };
   // console.log(result);

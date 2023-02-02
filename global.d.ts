@@ -30,6 +30,8 @@ declare global {
     nextMap: string;
     ticker1: string;
     ticker2: string;
+    addInfo: string;
+    accColor: string;
   };
 
   type MapType = {
