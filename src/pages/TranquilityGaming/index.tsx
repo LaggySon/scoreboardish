@@ -15,7 +15,9 @@ const Landing = (props: any) => {
           height="113"
           alt="Tranq Logo"
         ></Image>
-
+        <Link className={styles.link} href="/TranquilityGaming/ingame">
+          In Game
+        </Link>
         {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game
         </Link>

@@ -1,0 +1,234 @@
+@keyframes scaleDown {
+  0% {
+    scale: 2.75;
+  }
+  100% {
+    scale: 1;
+  }
+}
+.bg {
+  z-index: -10;
+  position: absolute;
+  display: none;
+}
+
+.scoreboard {
+  --tranqBlue: #0f1f2e;
+  --tranqYellow: #cd922e;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  font-size: 2rem;
+  // font-weight: bold;
+  font-family: "Industry";
+  height: 100%;
+  margin-top: 1rem;
+  .tierTag {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+    flex-direction: row;
+    margin-left: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-inline: 2rem;
+    padding-block: 0.2rem;
+    & > * {
+      //   background-color: black;
+      color: white;
+    }
+    .tierTagTier {
+      font-size: 1.5rem;
+    }
+    .tierTagSubtitle {
+      font-size: 0.8rem;
+    }
+    .infos {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .infoBox {
+    transform: translateY(-1.5rem);
+    font-size: 1.5rem;
+    height: 1.5rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+
+  .team {
+    display: flex;
+
+    .teamMain {
+      //   &::before {
+      //     content: "";
+      //     width: 100%;
+      //     height: 2px;
+      //     background-color: black;
+      //     position: absolute;
+      //     z-index: 1;
+      //     top: 5px;
+      //   }
+      //   &::after {
+      //     content: "";
+      //     width: 100%;
+      //     height: 2px;
+      //     background-color: black;
+      //     position: absolute;
+      //     bottom: 5px;
+      //     z-index: 1;
+      //   }
+      .name {
+        z-index: 1;
+        max-width: 290px;
+        flex-shrink: 1;
+        white-space: nowrap;
+      }
+      .accent {
+        z-index: 2;
+        // animation: 1s ease-out 0s 1 scaleDown;
+        --accentScale: 1;
+        transition: all 1500ms;
+        &.outside1 {
+          position: absolute;
+          background-color: var(--tranqBlue);
+          height: 200px;
+          width: 200px;
+          transform: rotate(-45deg) translateX(9.2rem) scale(var(--accentScale));
+        }
+        &.inside1 {
+          position: absolute;
+          background-color: var(--tranqBlue);
+          height: 200px;
+          width: 200px;
+          left: -5rem;
+          top: 0;
+          transform: rotate(-45deg) scale(var(--accentScale));
+          overflow: hidden;
+          background-image: url("/tranqLogoTransparent.png");
+          background-size: cover;
+          // background-size: 10%;
+          background-position: center;
+          background-repeat: repeat;
+          // z-index: 0;
+        }
+        &.outside2 {
+          position: absolute;
+          background-color: var(--tranqYellow);
+          height: 200px;
+          width: 200px;
+          top: 0;
+          right: -5rem;
+          transform: rotate(-45deg) scale(var(--accentScale));
+          // z-index: 0;
+          overflow: hidden;
+          background-image: url("/tranqLogoTransparent.png");
+          background-size: cover;
+          // background-size: 10%;
+          background-position: center;
+        }
+
+        &.inside2 {
+          position: absolute;
+          background-color: var(--tranqYellow);
+          height: 200px;
+          width: 200px;
+          transform: rotate(45deg) translateX(-9.2rem) scale(var(--accentScale));
+        }
+      }
+
+      background-color: var(--textcolor);
+      color: var(--bgcolor);
+      display: flex;
+      align-items: center;
+      height: 65px;
+      width: 567px;
+      gap: 0.5rem;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+
+      .record {
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+      }
+
+      .logoContainer {
+        // overflow: hidden;
+        z-index: 4;
+        // // background-color: white;
+        // max-height: 100%;
+        // padding: 0.5rem;
+        .logo {
+          z-index: 4;
+          transform: scale(1.2);
+          margin-top: 0.3rem;
+        }
+      }
+
+      .atkDef {
+        // margin-top: 0.4rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: white;
+        z-index: 3;
+        margin-bottom: 0.1rem;
+        font-size: 2.5rem;
+      }
+    }
+    .scoreBox {
+      overflow: hidden;
+      display: flex;
+      font-size: 3rem;
+      width: 65px;
+      height: 65px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      justify-content: center;
+      z-index: 2;
+      align-items: center;
+      .score {
+        position: relative;
+        bottom: 2px;
+      }
+    }
+    &.team1 {
+      .logo {
+        filter: drop-shadow(-2px 2px 1px black);
+      }
+      .scoreBox {
+        // margin-left: 0.25rem;
+        background-color: var(--tranqBlue);
+      }
+      .teamMain {
+        justify-content: right;
+      }
+      .atkDef {
+        margin-right: auto;
+        margin-left: 1rem;
+        filter: drop-shadow(-2px 2px 1px black);
+      }
+    }
+    &.team2 {
+      .logo {
+        filter: drop-shadow(2px 2px 1px black);
+      }
+      .scoreBox {
+        // margin-right: 0.25rem;
+        background-color: var(--tranqYellow);
+      }
+      .atkDef {
+        margin-left: auto;
+        margin-right: 1rem;
+        filter: drop-shadow(2px 2px 1px black);
+      }
+    }
+  }
+}

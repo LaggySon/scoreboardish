@@ -128,7 +128,7 @@ const HalfTime = (props: any) => {
               className={styles.tranqLogo}
               src="/laggishFull.svg"
               width="334"
-              height="113"
+              height="50"
               alt="Tranq Logo"
             ></Image>
           </div>

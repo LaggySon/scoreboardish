@@ -31,6 +31,10 @@ const Landing = (props: any) => {
       <Link className={styles.link} href="/halftime">
         Half Time
       </Link>
+      <hr />
+      <Link className={styles.link} href="/TranquilityGaming">
+        Tranquility Gaming
+      </Link>
       <p>
         - These pages only display properly on a 1920x1080 canvas.
         <br />
