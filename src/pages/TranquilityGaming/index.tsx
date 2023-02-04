@@ -18,12 +18,13 @@ const Landing = (props: any) => {
         <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game
         </Link>
-        {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
-          In Game
-        </Link>
         <Link className={styles.link} href="/TranquilityGaming/mapinfo">
           Map Info
         </Link>
+        {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
+          In Game
+        </Link>
+        
         <Link className={styles.link} href="/TranquilityGaming/casters">
           Casters
         </Link>

@@ -113,9 +113,7 @@ const HalfTime = (props: any) => {
         </div>
         <div className={styles.botBar}>
           <div className={styles.matchInfo}>
-            <span className={styles.line1}>
-              {data?.match?.stage + " | Week " + data?.match?.week}
-            </span>
+            <span className={styles.line1}>{data?.match?.addInfo}</span>
             <span className={styles.line2}>{data?.match?.tier}</span>
           </div>
           <div className={styles.ticker}>

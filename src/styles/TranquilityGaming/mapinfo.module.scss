@@ -32,9 +32,9 @@
     // overflow: hidden;
     // max-height: 234px;
     // max-width: 250px;
-    background-image: url("/tranqLogoTransparent.png");
+    background-image: url("/laggishShapeTransparent.png");
     background-size: cover;
-    background-size: 175%;
+    background-size: 115%;
     background-position: center;
     .logo {
       filter: drop-shadow(-2px 2px 1px black);
@@ -67,7 +67,7 @@
     background-color: black;
     .score {
       position: relative;
-      bottom: 0.5rem;
+      top: 0.5rem;
     }
   }
 }
@@ -224,7 +224,7 @@
           transition: width 1000ms, height 1000ms, margin 1000ms;
           height: inherit;
           width: 100%;
-          clip-path: polygon(12% 0%, 92% 0%, 88% 100%, 8% 100%);
+          clip-path: polygon(10% 0%, 90% 0%, 90% 100%, 10% 100%);
           .mapImage {
             min-height: 720px;
             overflow: hidden;

@@ -1,0 +1,124 @@
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 24.75rem;
+  overflow: hidden;
+  .teamBig {
+    display: flex;
+
+    .scoreBoxes {
+      height: 110%;
+      position: relative;
+      top: -0.5rem;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 0.25rem;
+      .scoreBox {
+        width: 0.5rem;
+        flex-grow: 1;
+        background-color: black;
+      }
+    }
+  }
+  .team {
+    display: flex;
+    justify-content: center;
+    font-size: 4.5rem;
+    width: 10rem;
+    position: relative;
+    height: 5.5rem;
+    // align-items: flex-end;
+    .name {
+      position: relative;
+      top: 0.2rem;
+      align-self: center;
+    }
+    .logoContainer {
+      display: none;
+      --size: 5rem;
+      height: var(--size);
+      width: var(--size);
+      margin-block: auto;
+      .logo {
+        height: var(--size);
+        width: var(--size);
+        aspect-ratio: 1/1;
+      }
+    }
+    &:after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      right: -10%;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: inherit;
+      -webkit-transform: skewX(-10deg);
+      -moz-transform: skewX(-10deg);
+      -ms-transform: skewX(-10deg);
+      transform: skewX(-10deg);
+    }
+    &:before {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      left: -10%;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: inherit;
+      -webkit-transform: skewX(-10deg);
+      -moz-transform: skewX(-10deg);
+      -ms-transform: skewX(-10deg);
+      transform: skewX(-10deg);
+    }
+  }
+  .teamBig1 {
+    flex-direction: row-reverse;
+
+    .scoreBoxes {
+      transform: rotate(-10deg);
+      left: -1.25rem;
+      .scoreBox {
+        &.won {
+          background-color: var(--team1SecondaryColor);
+        }
+      }
+    }
+    .team1 {
+      background-color: var(--team1PrimaryColor);
+      color: var(--team1SecondaryColor);
+      &::before,
+      &::after {
+        -webkit-transform: skewX(10deg);
+        -moz-transform: skewX(10deg);
+        -ms-transform: skewX(10deg);
+        transform: skewX(10deg);
+        border-bottom: 0.2rem solid var(--team1SecondaryColor);
+      }
+      flex-direction: row-reverse;
+      border-bottom: 0.2rem solid var(--team1SecondaryColor);
+    }
+  }
+  .teamBig2 {
+    .scoreBoxes {
+      transform: rotate(10deg);
+      right: -1.25rem;
+      .scoreBox {
+        &.won {
+          background-color: var(--team2SecondaryColor);
+        }
+      }
+    }
+    .team2 {
+      background-color: var(--team2PrimaryColor);
+      color: var(--team2SecondaryColor);
+      border-bottom: 0.2rem solid var(--team2SecondaryColor);
+      &::before,
+      &::after {
+        border-bottom: 0.2rem solid var(--team2SecondaryColor);
+      }
+    }
+  }
+}

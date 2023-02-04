@@ -19,6 +19,7 @@ const config = {
       "www.tranquility.gg",
       "via.placeholder.com",
       "cdn.discordapp.com",
+      "drive.google.com",
     ],
   },
 };

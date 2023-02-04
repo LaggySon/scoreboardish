@@ -1,7 +1,7 @@
 import { env } from "../../env/client.mjs";
 import useSWR from "swr";
 import { NextPage } from "next/types";
-import styles from "../../styles/mapinfo.module.scss";
+import styles from "../../styles/TranquilityGaming/mapinfo.module.scss";
 import Image from "next/image";
 import { Control, Hybrid, Escort, Push } from "../../components/svgs";
 import React, {
@@ -53,12 +53,10 @@ const MapInfo = (props: any) => {
       <style jsx global>
         {`
           :root {
-            --team1PrimaryColor: ${data?.teams?.team1.primaryCol ?? "black"};
-            --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
-            "black"};
-            --team2PrimaryColor: ${data?.teams?.team2.primaryCol ?? "black"};
-            --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
-            "black"};
+            --team1PrimaryColor: var(--tranqBlue);
+            --team1SecondaryColor: var(--tranqYellow);
+            --team2PrimaryColor: var(--tranqYellow);
+            --team2SecondaryColor: var(--tranqBlue);
             font-family: "Industry";
             font-weight: normal;
           }
@@ -122,8 +120,8 @@ const MapInfo = (props: any) => {
                         data?.teams?.team2?.short,
                       ].includes(map.winner)
                         ? map.winner === data?.teams?.team1?.short
-                          ? data?.teams.team1.primaryCol
-                          : data?.teams.team2.primaryCol
+                          ? "var(--tranqBlue)"
+                          : "var(--tranqYellow)"
                         : "#222222",
                     } as React.CSSProperties
                   }
