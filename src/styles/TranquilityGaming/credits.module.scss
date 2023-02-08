@@ -1,0 +1,39 @@
+.backgroundImage {
+  position: absolute;
+  z-index: 1;
+}
+.teams {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 0.5rem;
+  top: 22rem;
+  gap: 2.5rem;
+  .team {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .record,
+    .name,
+    .score {
+      z-index: 2;
+      font-size: 2rem;
+    }
+    .score {
+      position: absolute;
+    }
+  }
+}
+.team2 {
+  .logo {
+    background-color: var(--team2PrimaryColor);
+    background-image: url(/tranqLogoTransparent.png);
+  }
+}
+.team1 {
+  .logo {
+    background-color: var(--team1PrimaryColor);
+    background-image: url(/tranqLogoTransparent.png);
+  }
+}
