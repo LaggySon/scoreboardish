@@ -1,3 +1,7 @@
+.credits {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 .backgroundImage {
   position: absolute;
   z-index: 1;
@@ -5,35 +9,81 @@
 .teams {
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 2rem;
   position: relative;
-  left: 0.5rem;
-  top: 22rem;
-  gap: 2.5rem;
-  .team {
-    display: flex;
-    flex-direction: column;
+  top: 32vh;
+  .score {
+    // outline: 2px solid tomato;
+    width: 12rem;
+    height: 12rem;
+    position: absolute;
+    top: -1%;
+    font-size: 10rem;
+    z-index: 2;
     text-align: center;
-    .record,
-    .name,
-    .score {
-      z-index: 2;
-      font-size: 2rem;
-    }
-    .score {
-      position: absolute;
-    }
+  }
+  .name {
+    position: absolute;
+    font-size: 2.5rem;
+    z-index: 2;
+    // outline: 2px solid tomato;
+    height: 2.5rem;
+    width: 30rem;
+    text-align: center;
+    top: 98.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .record {
+    position: absolute;
+    font-size: 2.5rem;
+    z-index: 2;
+    top: 112%;
+    height: 2.5rem;
+    width: 11rem;
+    // outline: 2px solid tomato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
+
 .team2 {
   .logo {
-    background-color: var(--team2PrimaryColor);
-    background-image: url(/tranqLogoTransparent.png);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(59, 59, 59, 1) 100%
+    );
+  }
+  .score {
+    left: 81.5%;
+  }
+  .name {
+    left: 51.75%;
+  }
+  .record {
+    left: 67.8%;
   }
 }
 .team1 {
   .logo {
-    background-color: var(--team1PrimaryColor);
-    background-image: url(/tranqLogoTransparent.png);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(59, 59, 59, 1) 100%
+    );
+  }
+  .score {
+    left: 8.5%;
+  }
+  .name {
+    left: 23%;
+  }
+  .record {
+    left: 23%;
   }
 }

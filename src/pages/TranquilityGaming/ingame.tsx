@@ -38,12 +38,12 @@ const InGame: NextPage<PageProps> = (props) => {
       <style jsx global>
         {`
           :root {
-            --team1PrimaryColor: ${data?.teams?.team1.primaryCol ?? "black"};
-            --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
-            "black"};
-            --team2PrimaryColor: ${data?.teams?.team2.primaryCol ?? "black"};
-            --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
-            "black"};
+            --team1PrimaryColor: var(--tranqBlue);
+            --team1SecondaryColor: var(--tranqYellow);
+            --team2PrimaryColor: var(--tranqYellow);
+            --team2SecondaryColor: var(--tranqBlue);
+            font-family: "Industry";
+            font-weight: normal;
           }
         `}
       </style>

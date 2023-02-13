@@ -32,7 +32,7 @@
     // overflow: hidden;
     // max-height: 234px;
     // max-width: 250px;
-    background-image: url("/laggishShapeTransparent.png");
+    background-image: url("/tranqLogoTransparent.png");
     background-size: cover;
     background-size: 115%;
     background-position: center;
@@ -67,7 +67,7 @@
     background-color: black;
     .score {
       position: relative;
-      top: 0.5rem;
+      top: -0.5rem;
     }
   }
 }
@@ -240,7 +240,12 @@
   .team1 {
     .logoContainer {
       border-bottom: 1rem solid var(--team1SecondaryColor);
-      background-color: var(--team1PrimaryColor);
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(59, 59, 59, 1) 100%
+      );
     }
     .codeBox {
       // border-bottom: 1rem solid var(--team1SecondaryColor);
@@ -251,7 +256,12 @@
     right: 0;
     .logoContainer {
       border-bottom: 1rem solid var(--team2SecondaryColor);
-      background-color: var(--team2PrimaryColor);
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(59, 59, 59, 1) 100%
+      );
     }
     .codeBox {
       // border-bottom: 1rem solid var(--team2SecondaryColor);
