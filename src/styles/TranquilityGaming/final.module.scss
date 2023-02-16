@@ -1,3 +1,47 @@
+.scrollText {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 25s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
 .credits {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -6,6 +50,36 @@
   position: absolute;
   z-index: 1;
 }
+.startingTimer {
+  font-size: 7rem;
+  position: absolute;
+  color: white;
+  top: 15.5%;
+  left: 24.5%;
+  height: 7rem;
+  width: 21rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // outline: 2px solid tomato;
+}
+.tickerBox {
+  // outline: 2px solid tomato;
+  height: 3rem;
+  z-index: 2;
+  position: absolute;
+  width: 29.5rem;
+  overflow: hidden;
+  top: 90.75%;
+  left: 37.5%;
+
+  .halfTimeText {
+    font-size: 2.5rem;
+    width: 60rem;
+  }
+}
+
 .teams {
   display: flex;
   justify-content: center;

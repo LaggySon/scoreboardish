@@ -58,17 +58,31 @@ const Landing = (props: any) => {
         </Link>
         <Link
           className={styles.link}
+          href="https://scoreboardish.laggi.sh/TranquilityGaming/halftime"
+          title="Right click to copy!"
           onContextMenu={(e) => {
             e.preventDefault();
             navigator.clipboard.writeText(
-              "https://scoreboardish.laggi.sh/TranquilityGaming/credits"
+              "https://scoreboardish.laggi.sh/TranquilityGaming/final"
+            );
+          }}
+        >
+          Half Time
+        </Link>
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/final"
             );
           }}
           href="/TranquilityGaming/credits"
           title="Right click to copy!"
         >
-          Credits
+          Final Score
         </Link>
+
         {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game
         </Link>
@@ -80,9 +94,7 @@ const Landing = (props: any) => {
           Starting Soon
         </Link>
         
-        <Link className={styles.link} href="/TranquilityGaming/halftime">
-          Half Time
-        </Link> */}
+         */}
         <Link className={styles.link} href="/">
           Coming Soon
         </Link>

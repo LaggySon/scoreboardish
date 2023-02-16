@@ -1,11 +1,7 @@
 import styles from "../styles/startingSoon.module.scss";
 import Image from "next/image";
-import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../env/client.mjs";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import SvgAttack from "../components/icons/Attack";
-import SvgDefense from "../components/icons/Defense";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
