@@ -48,6 +48,19 @@ const Landing = (props: any) => {
           onContextMenu={(e) => {
             e.preventDefault();
             navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/replay"
+            );
+          }}
+          href="/TranquilityGaming/replay"
+          title="Right click to copy!"
+        >
+          Replay
+        </Link>
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
               "https://scoreboardish.laggi.sh/TranquilityGaming/mapinfo"
             );
           }}
@@ -77,7 +90,7 @@ const Landing = (props: any) => {
               "https://scoreboardish.laggi.sh/TranquilityGaming/final"
             );
           }}
-          href="/TranquilityGaming/credits"
+          href="/TranquilityGaming/final"
           title="Right click to copy!"
         >
           Final Score
