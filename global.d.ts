@@ -6,6 +6,11 @@ declare global {
     team2: Team;
   };
 
+  type PageProps = {
+    team1: Team;
+    team2: Team;
+  };
+
   type Team = {
     name: string;
     logoPath: string;

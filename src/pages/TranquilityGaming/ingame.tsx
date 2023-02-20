@@ -7,20 +7,6 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 import SvgAttack from "../../components/icons/Attack";
 import SvgDefense from "../../components/icons/Defense";
 
-type PageProps = {
-  team1: Team;
-  team2: Team;
-};
-
-type Team = {
-  name: string;
-  logoPath: string;
-  info: string;
-  score: string;
-  atkDef: string;
-  color: string;
-};
-
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/sheets";
@@ -39,9 +25,9 @@ const InGame: NextPage<PageProps> = (props) => {
         {`
           :root {
             --team1PrimaryColor: var(--tranqBlue);
-            --team1SecondaryColor: var(--tranqYellow);
+            --team1SecondaryColor: var(--tranqBlue);
             --team2PrimaryColor: var(--tranqYellow);
-            --team2SecondaryColor: var(--tranqBlue);
+            --team2SecondaryColor: var(--tranqYellow);
             font-family: "Industry";
             font-weight: normal;
           }

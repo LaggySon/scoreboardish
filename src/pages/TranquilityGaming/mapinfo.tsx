@@ -54,15 +54,16 @@ const MapInfo = (props: any) => {
         {`
           :root {
             --team1PrimaryColor: var(--tranqBlue);
-            --team1SecondaryColor: var(--tranqYellow);
+            --team1SecondaryColor: var(--tranqBlue);
             --team2PrimaryColor: var(--tranqYellow);
-            --team2SecondaryColor: var(--tranqBlue);
+            --team2SecondaryColor: var(--tranqYellow);
             font-family: "Industry";
             font-weight: normal;
           }
         `}
       </style>
       <div className={styles.mapInfo}>
+        <header className={styles.header}></header>
         <div className={[styles.team1, styles.team].join(" ")}>
           <div className={styles.logoContainer}>
             <Image
@@ -122,7 +123,7 @@ const MapInfo = (props: any) => {
                         ? map.winner === data?.teams?.team1?.short
                           ? "var(--tranqBlue)"
                           : "var(--tranqYellow)"
-                        : "#222222",
+                        : "#222",
                     } as React.CSSProperties
                   }
                 >
