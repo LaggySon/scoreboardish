@@ -95,6 +95,19 @@ const Landing = (props: any) => {
         >
           Final Score
         </Link>
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/casters"
+            );
+          }}
+          href="/TranquilityGaming/casters"
+          title="Right click to copy!"
+        >
+          Casters
+        </Link>
 
         {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game

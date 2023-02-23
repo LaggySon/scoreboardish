@@ -1,16 +1,8 @@
 import styles from "../../styles/TranquilityGaming/casters.module.scss";
 import Image from "next/image";
-import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import SvgAttack from "../../components/icons/Attack";
-import SvgDefense from "../../components/icons/Defense";
-import { discovery_v1 } from "googleapis";
-import dayjs from "dayjs";
-import duration from "dayjs/plugin/duration";
-import { CSSProperties, useEffect, useState } from "react";
-import InGame from "./ingame";
+import TranqScoreboard from "../../components/tranqScoreboard";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -39,6 +31,7 @@ const Casters = (props: any) => {
           }
         `}
       </style>
+      <TranqScoreboard data={data} />
       <Image
         src="https://www.tranquility.gg/package/digitize/Casters/CastersBG.png"
         alt="background"
