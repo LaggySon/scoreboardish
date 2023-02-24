@@ -32,23 +32,6 @@
     transform: translate(-50%);
     flex-direction: row;
     margin-left: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding-inline: 2rem;
-    padding-block: 0.2rem;
-    & > * {
-      //   background-color: black;
-      color: white;
-    }
-    .tierTagTier {
-      font-size: 1.5rem;
-    }
-    .tierTagSubtitle {
-      font-size: 0.8rem;
-    }
-    .infos {
-      display: flex;
-      flex-direction: column;
-    }
   }
   .infoBox {
     transform: translateY(-1.5rem);
@@ -109,7 +92,7 @@
           top: 0;
           transform: rotate(-45deg) scale(var(--accentScale));
           overflow: hidden;
-          background-image: url("/tranqLogoTransparent.png");
+          // background-image: url("/tranqLogoTransparent.png");
           background-size: cover;
           // background-size: 10%;
           background-position: center;
@@ -126,7 +109,7 @@
           transform: rotate(-45deg) scale(var(--accentScale));
           // z-index: 0;
           overflow: hidden;
-          background-image: url("/tranqLogoTransparent.png");
+          // background-image: url("/tranqLogoTransparent.png");
           background-size: cover;
           // background-size: 10%;
           background-position: center;

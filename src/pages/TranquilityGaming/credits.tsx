@@ -1,18 +1,40 @@
-import styles from "../../styles/TranquilityGaming/casters.module.scss";
+import styles from "../../styles/TranquilityGaming/credits.module.scss";
 import Image from "next/image";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
-import TranqScoreboard from "../../components/tranqScoreboard";
-import TranqCaster from "../../components/tranqCaster";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import { useEffect, useState } from "react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/sheets";
 
-const Casters = (props: any) => {
+const Credits = (props: any) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
+  });
+
+  //TIMER STUFF
+  dayjs.extend(duration);
+
+  const endTime = dayjs(data?.match?.dateTime * 1000);
+
+  const [dayjsLeft, setDayjsLeft] = useState(
+    dayjs.duration(endTime.diff(dayjs()))
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const diffMilli = endTime.diff(dayjs());
+      if (diffMilli > 0) {
+        setDayjsLeft(dayjs.duration(diffMilli));
+      } else {
+        setDayjsLeft(dayjs.duration(0));
+      }
+    }, 250);
+    return () => clearInterval(interval);
   });
 
   if (!data) {
@@ -32,21 +54,8 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      <TranqScoreboard data={data} />
-      <div className={styles.casters}>
-        {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
-        <TranqCaster
-          name="Dexatron"
-          link="https://vdo.ninja/?view=fdGjaBK&hash=30e9&label=Play_By_Play&password=gamer"
-        />
-        {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
-        <TranqCaster
-          name="Bowsy"
-          link="https://vdo.ninja/?view=fxj4Bub&hash=30e9&label=Analyst&password=gamer"
-        />
-      </div>
     </>
   );
 };
 
-export default Casters;
+export default Credits;

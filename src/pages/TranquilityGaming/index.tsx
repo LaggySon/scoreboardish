@@ -133,6 +133,18 @@ const Landing = (props: any) => {
           is to create the browser source at 1920x1080 and then stretch it to
           the desired size.
         </p>
+        <p>
+          Play By Play VDO Ninja Invite: <br />
+          <Link href="https://vdo.ninja/?push=fdGjaBK&hash=30e9&label=Play_By_Play">
+            https://vdo.ninja/?push=fdGjaBK&hash=30e9&label=Play_By_Play
+          </Link>
+        </p>
+        <p>
+          Analyst/Color VDO Ninja Invite: <br />
+          <Link href="https://vdo.ninja/?push=fxj4Bub&hash=30e9&label=Analyst">
+            https://vdo.ninja/?push=fxj4Bub&hash=30e9&label=Analyst
+          </Link>
+        </p>
       </div>
     </>
   );

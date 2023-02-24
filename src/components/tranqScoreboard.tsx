@@ -9,16 +9,11 @@ const TranqScoreboard = (props: any) => {
     <div className={styles.scoreboard}>
       <div className={styles.tierTag}>
         <Image
-          className={styles.tranqLogo}
-          src="/tranqLogo.png"
-          width="50"
-          height="50"
-          alt="Tranq Logo"
+          src={`https://www.tranquility.gg/package/tierTags/${data?.match?.tier.toLowerCase()}.png`}
+          alt="TierTag"
+          width="489"
+          height="81"
         ></Image>
-        <div className={styles.infos}>
-          <span className={styles.tierTagTier}>{data?.match?.tier}</span>
-          <span className={styles.tierTagSubtitle}>{data?.match?.tierTag}</span>
-        </div>
       </div>
       <div className={[styles.team, styles.team1].join(" ")}>
         <div className={styles.teamMain}>
