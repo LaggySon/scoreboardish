@@ -32,7 +32,6 @@ const StartingSoon = (props: any) => {
     "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground11.png",
     "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground12.png",
   ];
-
   //TIMER STUFF
   dayjs.extend(duration);
 
@@ -89,6 +88,47 @@ const StartingSoon = (props: any) => {
           ></Image>
         ))}
       </Fade>
+      <div className={styles.infos}>
+        <span className={styles.name1}>{data?.teams?.team1?.name}</span>
+        <span className={styles.name2}>{data?.teams?.team2?.name}</span>
+        <span className={styles.info1}>{data?.teams?.team1?.info}</span>
+        <span className={styles.info2}>{data?.teams?.team2?.info}</span>
+        <span className={styles.casterName1}>
+          {
+            data?.twitch?.find(
+              (staff: TwitchStaff) => staff.title === "Play By Play"
+            ).name
+          }
+        </span>
+        <span className={styles.casterName2}>
+          {
+            data?.twitch?.find(
+              (staff: TwitchStaff) => (staff.title = "Analyst")
+            ).name
+          }
+        </span>
+        <span className={styles.producerName}>
+          {
+            data?.twitch?.find(
+              (staff: TwitchStaff) => (staff.title = "Producer")
+            ).name
+          }
+        </span>
+        <Image
+          src={data?.teams?.team1.logoPath}
+          alt="team 1 logo"
+          height="600"
+          width="600"
+          className={styles.logo1}
+        ></Image>
+        <Image
+          src={data?.teams?.team2.logoPath}
+          alt="team 1 logo"
+          height="600"
+          className={styles.logo2}
+          width="600"
+        ></Image>
+      </div>
     </>
   );
 };
