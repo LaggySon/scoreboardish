@@ -5,6 +5,8 @@ import { env } from "../../env/client.mjs";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
+import "react-slideshow-image/dist/styles.css";
+import { Fade } from "react-slideshow-image";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -15,6 +17,21 @@ const StartingSoon = (props: any) => {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
+
+  const slides = [
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground1.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground2.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground3.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground4.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground5.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground6.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground7.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground8.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground9.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground10.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground11.png",
+    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground12.png",
+  ];
 
   //TIMER STUFF
   dayjs.extend(duration);
@@ -54,6 +71,24 @@ const StartingSoon = (props: any) => {
           }
         `}
       </style>
+      <Image
+        src="https://www.tranquility.gg/package/digitize/StartingSoon/Background.png"
+        alt="background"
+        height={1080}
+        width={1920}
+        className={styles.backgroundImage}
+      ></Image>
+      <Fade arrows={false} duration={1000} pauseOnHover={false} autoplay={true}>
+        {slides.map((slide, index) => (
+          <Image
+            key={index}
+            src={slide}
+            alt="Foreground"
+            height={1080}
+            width={1920}
+          ></Image>
+        ))}
+      </Fade>
     </>
   );
 };

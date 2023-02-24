@@ -35,6 +35,19 @@ const Landing = (props: any) => {
           onContextMenu={(e) => {
             e.preventDefault();
             navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/startingsoon"
+            );
+          }}
+          href="/TranquilityGaming/startingsoon"
+          title="Right click to copy!"
+        >
+          Starting Soon
+        </Link>
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
               "https://scoreboardish.laggi.sh/TranquilityGaming/ingame"
             );
           }}
@@ -108,7 +121,19 @@ const Landing = (props: any) => {
         >
           Casters
         </Link>
-
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/credits"
+            );
+          }}
+          href="/TranquilityGaming/credits"
+          title="Right click to copy!"
+        >
+          Credits
+        </Link>
         {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game
         </Link>
