@@ -18,6 +18,12 @@ const StartingSoon = (props: any) => {
     refreshInterval: 10000,
   });
 
+  // console.log(
+  //   data?.twitch?.filter(
+  //     (staff: TwitchStaff) => !["Play By Play", "Analyst"].includes(staff.title)
+  //   )
+  // );
+
   const slides = [
     "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground1.png",
     "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground2.png",
@@ -107,13 +113,19 @@ const StartingSoon = (props: any) => {
             ).name
           }
         </span>
-        <span className={styles.producerName}>
-          {
-            data?.twitch?.find(
-              (staff: TwitchStaff) => (staff.title = "Producer")
-            ).name
-          }
-        </span>
+        <div className={styles.otherStaff}>
+          {data?.twitch
+            ?.filter(
+              (staff: TwitchStaff) =>
+                !["Play By Play", "Analyst"].includes(staff.title) && staff.name
+            )
+            .slice(0, 4)
+            .map((staff: TwitchStaff, index: number) => (
+              <span key={index} className={styles.otherStaffName}>
+                {staff.title + ": " + staff.name}
+              </span>
+            ))}
+        </div>
         <Image
           src={data?.teams?.team1.logoPath}
           alt="team 1 logo"
@@ -128,6 +140,7 @@ const StartingSoon = (props: any) => {
           className={styles.logo2}
           width="600"
         ></Image>
+        <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
       </div>
     </>
   );

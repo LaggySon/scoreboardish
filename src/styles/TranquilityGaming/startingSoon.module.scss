@@ -7,5 +7,95 @@
     position: absolute;
     z-index: 2;
     top: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  font-size: 2rem;
+  .name1,
+  .name2 {
+    // outline: 2px solid red;
+    width: 30rem;
+    height: 4.2rem;
+    font-size: 2.5rem;
+  }
+  .info1,
+  .info2 {
+    // outline: 2px solid blue;
+    top: 62.25%;
+    width: 17rem;
+  }
+  .casterName1,
+  .casterName2,
+  .otherStaff {
+    // outline: 2px solid goldenrod;
+    width: 30rem;
+    color: white;
+    justify-content: left;
+    font-size: 1.9rem;
+  }
+  .logo1,
+  .logo2 {
+    // outline: 2px solid chartreuse;
+    width: 450px;
+    height: 450px;
+    top: 12.5%;
+  }
+  .startingTimer {
+    // outline: 2px solid black;
+    top: 79%;
+    left: 1%;
+    font-size: 7rem;
+    width: 20rem;
+    color: white;
+  }
+
+  .name1 {
+    top: 55.25%;
+    left: 36.5%;
+  }
+  .name2 {
+    top: 55.25%;
+    left: 72%;
+  }
+  .info1 {
+    left: 37%;
+  }
+  .info2 {
+    left: 82%;
+  }
+  .logo1 {
+    left: 37.5%;
+  }
+  .logo2 {
+    left: 73%;
+  }
+  .casterName1 {
+    top: 89%;
+    left: 39%;
+    &::before {
+      content: "Play By Play:";
+      margin-right: 1rem;
+    }
+  }
+  .casterName2 {
+    top: 94%;
+    left: 39%;
+    &::before {
+      content: "Analyst:";
+      margin-right: 1rem;
+    }
+  }
+  .otherStaff {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    top: 86.5%;
+    left: 71%;
+    height: 9rem;
+    // font-size: 5rem;
   }
 }
