@@ -8,6 +8,22 @@ import { useEffect, useState } from "react";
 import "react-slideshow-image/dist/styles.css";
 import { Fade } from "react-slideshow-image";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  EffectFade,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
+
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/sheets";
@@ -83,23 +99,50 @@ const StartingSoon = (props: any) => {
         width={1920}
         className={styles.backgroundImage}
       ></Image>
-      <Fade arrows={false} duration={1000} pauseOnHover={false} autoplay={true}>
+      <Swiper
+        modules={[
+          EffectFade,
+          Navigation,
+          Pagination,
+          Scrollbar,
+          A11y,
+          Autoplay,
+        ]}
+        spaceBetween={50}
+        slidesPerView={1}
+        fadeEffect={{
+          crossFade: true,
+        }}
+        autoplay={{
+          delay: 10000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        }}
+        // navigation
+        effect={"fade"}
+        speed={1000}
+        // pagination={{ clickable: true }}
+        loop
+      >
         {slides.map((slide, index) => (
-          <Image
-            key={index}
-            src={slide}
-            alt="Foreground"
-            height={1080}
-            width={1920}
-          ></Image>
+          <SwiperSlide key={index}>
+            <Image
+              key={index}
+              src={slide}
+              alt="Foreground"
+              height={1080}
+              width={1920}
+            ></Image>
+          </SwiperSlide>
         ))}
-      </Fade>
+      </Swiper>
       <div className={styles.infos}>
         <span className={styles.name1}>{data?.teams?.team1?.name}</span>
         <span className={styles.name2}>{data?.teams?.team2?.name}</span>
         <span className={styles.info1}>{data?.teams?.team1?.info}</span>
         <span className={styles.info2}>{data?.teams?.team2?.info}</span>
         <span className={styles.casterName1}>
+          <span>{"Play By Play"}</span>
           {
             data?.twitch?.find(
               (staff: TwitchStaff) => staff.title === "Play By Play"
@@ -107,6 +150,7 @@ const StartingSoon = (props: any) => {
           }
         </span>
         <span className={styles.casterName2}>
+          <span>{"Analyst"}</span>
           {
             data?.twitch?.find(
               (staff: TwitchStaff) => (staff.title = "Analyst")
@@ -122,7 +166,8 @@ const StartingSoon = (props: any) => {
             .slice(0, 4)
             .map((staff: TwitchStaff, index: number) => (
               <span key={index} className={styles.otherStaffName}>
-                {staff.title + ": " + staff.name}
+                <span>{staff.title}</span>
+                {staff.name}
               </span>
             ))}
         </div>
@@ -141,6 +186,11 @@ const StartingSoon = (props: any) => {
           width="600"
         ></Image>
         <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
+        <div className={styles.tickerBox}>
+          <div className={styles.halfTimeText + " " + styles.scrollText}>
+            {data?.match?.ticker2}
+          </div>
+        </div>
       </div>
     </>
   );

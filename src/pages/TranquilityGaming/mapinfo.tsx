@@ -63,7 +63,14 @@ const MapInfo = (props: any) => {
         `}
       </style>
       <div className={styles.mapInfo}>
-        <header className={styles.header}></header>
+        <header className={styles.header}>
+          <Image
+            src="/tranqMapsOverlay.png"
+            alt="overlay"
+            height={1080}
+            width={1920}
+          ></Image>
+        </header>
         <div className={[styles.team1, styles.team].join(" ")}>
           <div className={styles.logoContainer}>
             <Image
