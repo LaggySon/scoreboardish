@@ -1,45 +1,39 @@
-.scrollText {
-  /* animation properties */
-  -moz-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-
-  -moz-animation: my-animation 15s linear infinite;
-  -webkit-animation: my-animation 15s linear infinite;
-  animation: my-animation 25s linear infinite;
+/* (A) FIXED WRAPPER */
+.hwrap {
+  overflow: hidden; /* HIDE SCROLL BAR */
+  // background: #eee;
+  width: 100vw;
+  position: absolute;
+  margin-top: 46.1%;
+  z-index: 0 !important;
+  color: #474747;
 }
 
-/* for Firefox */
-@-moz-keyframes my-animation {
-  from {
-    -moz-transform: translateX(100%);
-  }
-  to {
-    -moz-transform: translateX(-100%);
-  }
+/* (B) MOVING TICKER WRAPPER */
+.hmove {
+  display: flex;
 }
 
-/* for Chrome */
-@-webkit-keyframes my-animation {
-  from {
-    -webkit-transform: translateX(100%);
-  }
-  to {
-    -webkit-transform: translateX(-100%);
-  }
+/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+.hitem {
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
 }
 
-@keyframes my-animation {
-  from {
-    -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
+@keyframes tickerh {
+  0% {
+    transform: translate3d(150%, 0, 0);
   }
-  to {
-    -moz-transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
+  100% {
+    transform: translate3d(-150%, 0, 0);
   }
+}
+.hmove {
+  animation: tickerh linear var(--tickerduration) infinite;
 }
 
 .backgroundImage {
@@ -81,8 +75,9 @@
     color: white;
     justify-content: space-between;
     font-size: 1.9rem;
+    color: var(--darkbluetext);
     span {
-      color: var(--darkbluetext);
+      color: white;
     }
   }
   .logo1,
@@ -133,17 +128,39 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
-    top: 86.5%;
+    justify-content: space-evenly;
+    top: 86.9%;
     left: 71%;
-    height: 9rem;
+    height: 8.5rem;
     width: 34rem;
     // font-size: 5rem;
     .otherStaffName {
       display: flex;
       justify-content: space-between;
+      flex-direction: row-reverse;
       width: 100%;
-      color: white;
+      color: var(--darkbluetext);
+    }
+  }
+  .matchInfo {
+    display: flex;
+    flex-direction: column;
+    top: 68.4%;
+    left: 33%;
+    // outline: 2px solid tomato;
+    width: 80rem;
+    font-family: "IndustryBlack";
+
+    .title,
+    .tier {
+      color: #474747;
+      font-size: 2.1rem;
+    }
+    .dateTime {
+      color: #333;
+      font-weight: 600;
+      font-size: 3.4rem;
+      text-shadow: 1px 1px 5px #474747;
     }
   }
 }

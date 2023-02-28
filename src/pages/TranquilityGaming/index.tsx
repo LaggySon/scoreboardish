@@ -89,11 +89,24 @@ const Landing = (props: any) => {
           onContextMenu={(e) => {
             e.preventDefault();
             navigator.clipboard.writeText(
-              "https://scoreboardish.laggi.sh/TranquilityGaming/final"
+              "https://scoreboardish.laggi.sh/TranquilityGaming/halftime"
             );
           }}
         >
           Half Time
+        </Link>
+        <Link
+          className={styles.link}
+          href="/TranquilityGaming/matchinprogress"
+          title="Right click to copy!"
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/matchinprogress"
+            );
+          }}
+        >
+          Match In Progress
         </Link>
         <Link
           className={styles.link}

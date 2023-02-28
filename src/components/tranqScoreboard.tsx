@@ -5,6 +5,7 @@ import SvgAttack from "./icons/Attack";
 import SvgDefense from "./icons/Defense";
 const TranqScoreboard = (props: any) => {
   const data = props.data;
+  const infoBox = !(props.info === false);
   return (
     <div className={styles.scoreboard}>
       <div className={styles.tierTag}>
@@ -59,7 +60,8 @@ const TranqScoreboard = (props: any) => {
         </div>
       </div>
       {/* INFO BOX */}
-      <div className={styles.infoBox}>{data?.match?.mapInfo}</div>
+      {infoBox && <div className={styles.infoBox}>{data?.match?.mapInfo}</div>}
+
       {/* START TEAM 2 */}
       <div className={[styles.team, styles.team2].join(" ")}>
         <div className={styles.scoreBox}>

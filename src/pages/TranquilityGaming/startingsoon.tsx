@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
 import "react-slideshow-image/dist/styles.css";
-import { Fade } from "react-slideshow-image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -34,12 +33,6 @@ const StartingSoon = (props: any) => {
     refreshInterval: 10000,
   });
 
-  // console.log(
-  //   data?.twitch?.filter(
-  //     (staff: TwitchStaff) => !["Play By Play", "Analyst"].includes(staff.title)
-  //   )
-  // );
-
   const slides = [
     "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground1.png",
     "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground2.png",
@@ -57,7 +50,7 @@ const StartingSoon = (props: any) => {
   //TIMER STUFF
   dayjs.extend(duration);
 
-  const endTime = dayjs(data?.match?.dateTime * 1000);
+  const endTime = dayjs(data?.match?.dateTime * 1000 + 120000);
 
   const [dayjsLeft, setDayjsLeft] = useState(
     dayjs.duration(endTime.diff(dayjs()))
@@ -89,6 +82,7 @@ const StartingSoon = (props: any) => {
             --team2SecondaryColor: var(--tranqBlue);
             font-family: "Industry";
             font-weight: normal;
+            --tickerduration: ${(15 * data?.match?.ticker1.length) / 40}s;
           }
         `}
       </style>
@@ -123,6 +117,7 @@ const StartingSoon = (props: any) => {
         speed={1000}
         // pagination={{ clickable: true }}
         loop
+        className={styles.slider}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -153,7 +148,7 @@ const StartingSoon = (props: any) => {
           <span>{"Analyst"}</span>
           {
             data?.twitch?.find(
-              (staff: TwitchStaff) => (staff.title = "Analyst")
+              (staff: TwitchStaff) => staff.title === "Analyst"
             ).name
           }
         </span>
@@ -163,7 +158,7 @@ const StartingSoon = (props: any) => {
               (staff: TwitchStaff) =>
                 !["Play By Play", "Analyst"].includes(staff.title) && staff.name
             )
-            .slice(0, 4)
+            .slice(0, 2)
             .map((staff: TwitchStaff, index: number) => (
               <span key={index} className={styles.otherStaffName}>
                 <span>{staff.title}</span>
@@ -186,10 +181,19 @@ const StartingSoon = (props: any) => {
           width="600"
         ></Image>
         <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
-        <div className={styles.tickerBox}>
-          <div className={styles.halfTimeText + " " + styles.scrollText}>
-            {data?.match?.ticker2}
+        <div className={styles.hwrap}>
+          <div className={styles.hmove}>
+            <div className={styles.hitem}>{data?.match?.ticker1}</div>
           </div>
+        </div>
+        <div className={styles.matchInfo}>
+          <div className={styles.title}>{data?.match?.addInfo}</div>
+          <div className={styles.dateTime}>
+            {dayjs(data?.match?.dateTime * 1000).format(
+              "ddd, MMM D, YYYY @ h:mm a"
+            )}
+          </div>
+          <div className={styles.tier}>{data?.match?.tier + " tier"}</div>
         </div>
       </div>
     </>

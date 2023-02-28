@@ -1,45 +1,42 @@
-.scrollText {
-  /* animation properties */
-  -moz-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-
-  -moz-animation: my-animation 15s linear infinite;
-  -webkit-animation: my-animation 15s linear infinite;
-  animation: my-animation 25s linear infinite;
+/* (A) FIXED WRAPPER */
+.hwrap {
+  overflow: hidden; /* HIDE SCROLL BAR */
+  // background: #eee;
+  // outline: 2px solid tomato;
+  width: 30rem;
+  position: absolute;
+  margin-top: 50.8%;
+  margin-left: 37.2%;
+  z-index: 2 !important;
+  color: rgb(71, 71, 71);
+  font-size: 2rem;
 }
 
-/* for Firefox */
-@-moz-keyframes my-animation {
-  from {
-    -moz-transform: translateX(100%);
-  }
-  to {
-    -moz-transform: translateX(-100%);
-  }
+/* (B) MOVING TICKER WRAPPER */
+.hmove {
+  display: flex;
 }
 
-/* for Chrome */
-@-webkit-keyframes my-animation {
-  from {
-    -webkit-transform: translateX(100%);
-  }
-  to {
-    -webkit-transform: translateX(-100%);
-  }
+/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+.hitem {
+  flex-shrink: 0;
+  width: fit-content;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
 }
 
-@keyframes my-animation {
-  from {
-    -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
+@keyframes tickerh {
+  0% {
+    transform: translate3d(300%, 0, 0);
   }
-  to {
-    -moz-transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
+  100% {
+    transform: translate3d(-300%, 0, 0);
   }
+}
+.hmove {
+  animation: tickerh linear var(--tickerduration) infinite;
 }
 
 .credits {

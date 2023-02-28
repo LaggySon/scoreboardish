@@ -7,9 +7,6 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 import SvgAttack from "../../components/icons/Attack";
 import SvgDefense from "../../components/icons/Defense";
 import { discovery_v1 } from "googleapis";
-import dayjs from "dayjs";
-import duration from "dayjs/plugin/duration";
-import { useEffect, useState } from "react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -20,28 +17,6 @@ const Credits = (props: any) => {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
-
-  //TIMER STUFF
-  dayjs.extend(duration);
-
-  const endTime = dayjs(data?.match?.dateTime * 1000);
-
-  const [dayjsLeft, setDayjsLeft] = useState(
-    dayjs.duration(endTime.diff(dayjs()))
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const diffMilli = endTime.diff(dayjs());
-      if (diffMilli > 0) {
-        setDayjsLeft(dayjs.duration(diffMilli));
-      } else {
-        setDayjsLeft(dayjs.duration(0));
-      }
-    }, 250);
-    return () => clearInterval(interval);
-  });
-
   if (!data) {
     return <>Loading...</>;
   }
@@ -56,24 +31,16 @@ const Credits = (props: any) => {
             --team2SecondaryColor: var(--tranqBlue);
             font-family: "Industry";
             font-weight: normal;
-            --tickerduration: ${(15 * data?.match?.ticker1.length) / 50}s;
           }
         `}
       </style>
       <Image
-        src="https://www.tranquility.gg/package/digitize/Halftime.png"
+        src="https://www.tranquility.gg/package/digitize/MatchInProgress.png"
         alt="background"
         height={1080}
         width={1920}
         className={styles.backgroundImage}
       ></Image>
-      <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
-      <div className={styles.hwrap}>
-        <div className={styles.hmove}>
-          <div className={styles.hitem}>{data?.match?.ticker1}</div>
-        </div>
-      </div>
-
       <div className={styles.teams}>
         <div className={[styles.team, styles.team1].join(" ")}>
           <Image

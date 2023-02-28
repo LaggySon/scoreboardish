@@ -20,7 +20,7 @@
   // font-weight: bold;
   font-family: "Industry";
   height: 100%;
-  margin-top: 1rem;
+  // margin-top: 1rem;
   .tierTag {
     position: absolute;
     display: flex;
@@ -34,13 +34,17 @@
     margin-left: auto;
   }
   .infoBox {
-    transform: translateY(-1.5rem);
     font-size: 1.5rem;
     height: 1.5rem;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
     padding-block: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 16% 100%);
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .team {
