@@ -5,7 +5,6 @@ import { env } from "../../env/client.mjs";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
-import "react-slideshow-image/dist/styles.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -132,8 +131,8 @@ const StartingSoon = (props: any) => {
         ))}
       </Swiper>
       <div className={styles.infos}>
-        <span className={styles.name1}>{data?.teams?.team1?.name}</span>
-        <span className={styles.name2}>{data?.teams?.team2?.name}</span>
+        <span className={styles.name1}>{data?.teams?.team1?.short}</span>
+        <span className={styles.name2}>{data?.teams?.team2?.short}</span>
         <span className={styles.info1}>{data?.teams?.team1?.info}</span>
         <span className={styles.info2}>{data?.teams?.team2?.info}</span>
         <span className={styles.casterName1}>

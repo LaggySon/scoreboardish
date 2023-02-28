@@ -71,7 +71,7 @@
       //   }
       .name {
         z-index: 1;
-        max-width: 290px;
+        max-width: 330px;
         flex-shrink: 1;
         white-space: nowrap;
       }
@@ -152,7 +152,7 @@
         // padding: 0.5rem;
         .logo {
           z-index: 4;
-          transform: scale(1.2);
+          // transform: scale(1.1);
           margin-top: 0.3rem;
         }
       }
