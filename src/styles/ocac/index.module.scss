@@ -1,0 +1,22 @@
+.linkBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  .link {
+    background-color: #f66018;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+
+    &:hover {
+      &::before {
+        content: ">";
+      }
+      &::after {
+        content: "<";
+      }
+    }
+  }
+}
