@@ -78,12 +78,17 @@ const StartingSoon = (props: any) => {
             --team2PrimaryColor: ${data?.teams?.team2.primaryCol ?? "black"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "black"};
-            --accentcolor: #f66018;
+            --accentcolor: #ff6600;
+            font-family: "TommyMedium";
+            text-transform: none;
           }
         `}
       </style>
       <div className={styles.startingSoon}>
-        <div className={styles.ocac}></div>
+        <div className={styles.ocac}>
+          <span className={styles.big}>Setting the Pace</span>
+          <span>w/ CaptJack, ClutchKey, and more!</span>
+        </div>
         <div className={styles.starting}>
           <span className={styles.startingText}>Starting Soon</span>
           <div
@@ -122,9 +127,14 @@ const StartingSoon = (props: any) => {
           </span>
         </div>
         <div className={styles.botBar}>
-          <div className={styles.matchInfo}>
-            <span className={styles.line1}>{data?.match?.addInfo}</span>
-            <span className={styles.line2}>{data?.match?.tier}</span>
+          <div className={styles.branding + " " + styles.laggish}>
+            <Image
+              className={styles.tranqLogo}
+              src="/laggishShapeTransparent.svg"
+              width="50"
+              height="50"
+              alt="Tranq Logo"
+            ></Image>
           </div>
           <div className={styles.ticker}>
             <div className={[styles.scrollText, styles.tickerText].join(" ")}>
@@ -132,10 +142,11 @@ const StartingSoon = (props: any) => {
             </div>
           </div>
           <div className={styles.branding}>
+            {/* Overwatch Community Amatuer Circuit */}
             <Image
               className={styles.tranqLogo}
-              src="/laggishFull.svg"
-              width="334"
+              src="https://drive.google.com/uc?export=download&id=1r3ruQvZM04FmOYfgyz2JoaFQr4SKkTGr"
+              width="50"
               height="50"
               alt="Tranq Logo"
             ></Image>

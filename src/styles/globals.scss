@@ -6,6 +6,14 @@
   font-family: "IndustryBlack";
   src: url("/fonts/Industry-Black.woff") format("woff");
 }
+@font-face {
+  font-family: "TommyMedium";
+  src: url("/fonts/Tommy-Medium.woff");
+}
+@font-face {
+  font-family: "TommyRegular";
+  src: url("/fonts/Tommy-Regular.woff");
+}
 
 :root {
   font-family: "Heebo";

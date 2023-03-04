@@ -48,6 +48,24 @@
   justify-content: space-evenly;
   //   align-items: center;
   height: 80vh;
+
+  .ocac {
+    .big {
+      font-size: 7.5rem;
+    }
+    font-size: 4rem;
+    font-family: "TommyRegular";
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--accentcolor);
+    width: 75rem;
+    margin-inline: auto;
+    padding: 1rem;
+    color: white;
+    text-transform: none;
+  }
+
   .teams {
     display: flex;
     justify-content: space-evenly;
@@ -159,25 +177,29 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: black;
-    color: white;
-    display: flex;
+    background-color: var(--accentcolor);
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     height: 6rem;
-    justify-content: space-between;
-    align-items: center;
+    & > * {
+      margin-block: auto;
+    }
+
     .matchInfo {
       padding-left: 1rem;
       font-size: 2rem;
       display: flex;
       flex-direction: column;
       //   padding-inline: 1rem;
-      width: 318px;
+
       text-align: left;
     }
     .ticker {
       border-inline: 2px solid white;
       overflow: hidden;
-      width: 50rem;
+      flex-grow: 1;
+
       .tickerText {
         font-size: 2rem;
         // min-width: 100rem;
@@ -186,9 +208,21 @@
       }
     }
     .branding {
-      // padding-right: 1rem;
-      position: relative;
-      right: -55px;
+      display: flex;
+      font-size: 1.5rem;
+      justify-content: right;
+      align-items: right;
+      flex-direction: row-reverse;
+      padding-right: 1rem;
+      &.laggish {
+        justify-content: left;
+        flex-direction: row;
+        padding-left: 1rem;
+        .tranqLogo {
+          // width: 120px;
+        }
+        // width: 100px;
+      }
     }
   }
 }
