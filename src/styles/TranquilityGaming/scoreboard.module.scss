@@ -82,14 +82,14 @@
         transition: all 1500ms;
         &.outside1 {
           position: absolute;
-          background-color: var(--tranqBlue);
+          background-color: var(--team1PrimaryColor);
           height: 200px;
           width: 200px;
           transform: rotate(-45deg) translateX(9.2rem) scale(var(--accentScale));
         }
         &.inside1 {
           position: absolute;
-          background-color: var(--tranqBlue);
+          background-color: var(--team1PrimaryColor);
           height: 200px;
           width: 200px;
           left: -5rem;
@@ -105,7 +105,7 @@
         }
         &.outside2 {
           position: absolute;
-          background-color: var(--tranqYellow);
+          background-color: var(--team2PrimaryColor);
           height: 200px;
           width: 200px;
           top: 0;
@@ -121,7 +121,7 @@
 
         &.inside2 {
           position: absolute;
-          background-color: var(--tranqYellow);
+          background-color: var(--team2PrimaryColor);
           height: 200px;
           width: 200px;
           transform: rotate(45deg) translateX(-9.2rem) scale(var(--accentScale));

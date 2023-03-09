@@ -19,16 +19,19 @@ const TranqScoreboard = (props: any) => {
       <div className={[styles.team, styles.team1].join(" ")}>
         <div className={styles.teamMain}>
           <div className={[styles.accent, styles.outside1].join(" ")} />
-          {["ATTACK", "DEFENSE"].includes(data?.teams?.team1.atkDef) && (
-            <div className={styles.atkDef}>
-              {data?.teams?.team1.atkDef === "ATTACK" ? (
-                <SvgAttack />
-              ) : (
-                <SvgDefense />
-              )}
-            </div>
-          )}
-          <div className={styles.record}>{data?.teams?.team1.info}</div>
+          {infoBox &&
+            ["ATTACK", "DEFENSE"].includes(data?.teams?.team1.atkDef) && (
+              <div className={styles.atkDef}>
+                {data?.teams?.team1.atkDef === "ATTACK" ? (
+                  <SvgAttack />
+                ) : (
+                  <SvgDefense />
+                )}
+              </div>
+            )}
+          <div className={styles.record}>
+            {data?.teams?.team1.info.split(" ").join("")}
+          </div>
           <div className={styles.name}>{data?.teams?.team1.short}</div>
           <div className={styles.logoContainer}>
             <Image
@@ -94,16 +97,19 @@ const TranqScoreboard = (props: any) => {
             />
           </div>
           <div className={styles.name}>{data?.teams?.team2.short}</div>
-          <div className={styles.record}>{data?.teams?.team2.info}</div>
-          {["ATTACK", "DEFENSE"].includes(data?.teams?.team2.atkDef) && (
-            <div className={styles.atkDef}>
-              {data?.teams?.team2.atkDef === "ATTACK" ? (
-                <SvgAttack />
-              ) : (
-                <SvgDefense />
-              )}
-            </div>
-          )}
+          <div className={styles.record}>
+            {data?.teams?.team2.info.split(" ").join("")}
+          </div>
+          {infoBox &&
+            ["ATTACK", "DEFENSE"].includes(data?.teams?.team2.atkDef) && (
+              <div className={styles.atkDef}>
+                {data?.teams?.team2.atkDef === "ATTACK" ? (
+                  <SvgAttack />
+                ) : (
+                  <SvgDefense />
+                )}
+              </div>
+            )}
           <div className={[styles.accent, styles.outside2].join(" ")} />
         </div>
       </div>
