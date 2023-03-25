@@ -167,7 +167,7 @@ const StartingSoon = (props: any) => {
           <div className={styles.branding}>
             <Image
               className={styles.tranqLogo}
-              src="https://drive.google.com/uc?export=download&id=1r3ruQvZM04FmOYfgyz2JoaFQr4SKkTGr"
+              src="https://cdn.discordapp.com/attachments/944093549958422528/1089324001630888047/ocac.png"
               width="50"
               height="50"
               alt="OCAC"
