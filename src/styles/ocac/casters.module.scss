@@ -4,18 +4,19 @@
   flex-direction: column;
   height: 100vh;
   .topBox {
-    margin-top: 3rem;
+    margin-top: 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transform: scale(0.8);
     .teams {
       display: flex;
       flex-direction: row;
       justify-content: center;
 
       .logo {
-        filter: drop-shadow(-2px 2px 1px var(--accentcolor));
+        filter: drop-shadow(-2px 2px 1px black);
       }
 
       .team1,
@@ -34,7 +35,7 @@
           align-items: center;
           .score {
             position: relative;
-            top: 0.5rem;
+            bottom: 0rem;
           }
         }
         .code {
@@ -55,12 +56,12 @@
         .code {
           // background-color: var(--team1PrimaryColor);
           // color: var(--team1SecondaryColor);
-          background-color: var(--accentcolor);
+          background-color: black;
           color: white;
         }
         .logoContainer {
           background-color: var(--team1PrimaryColor);
-          background-image: url("/laggishShapeTransparent.png");
+          // background-image: url("/laggishShapeTransparent.png");
           background-size: cover;
           background-size: 115%;
           background-position: center;
@@ -72,12 +73,12 @@
         .code {
           // background-color: var(--team2PrimaryColor);
           // color: var(--team2SecondaryColor);
-          background-color: var(--accentcolor);
+          background-color: black;
           color: white;
         }
         .logoContainer {
           background-color: var(--team2PrimaryColor);
-          background-image: url("/laggishShapeTransparent.png");
+          // background-image: url("/laggishShapeTransparent.png");
           background-size: cover;
           background-size: 115%;
           background-position: center;
@@ -86,11 +87,12 @@
       }
     }
     .tier {
-      background-color: var(--accentcolor);
+      background-color: black;
       color: white;
-      //   width: 350px;
+      width: 350px;
       text-align: center;
-      font-size: 5rem;
+      font-size: 2rem;
+      // padding: 0.5rem;
     }
   }
   .botBox {
@@ -109,7 +111,7 @@
     }
     .caster1,
     .caster2 {
-      background-color: var(--accentcolor);
+      background-color: black;
       color: white;
       width: 400px;
       height: 100px;

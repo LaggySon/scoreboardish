@@ -4,6 +4,10 @@ import useSWR from "swr";
 import { env } from "../../env/client.mjs";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+
 import { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -48,6 +52,9 @@ const StartingSoon = (props: any) => {
   ];
   //TIMER STUFF
   dayjs.extend(duration);
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.extend(advancedFormat);
 
   const endTime = dayjs(data?.match?.dateTime * 1000 + 120000);
 
@@ -189,7 +196,7 @@ const StartingSoon = (props: any) => {
           <div className={styles.title}>{data?.match?.addInfo}</div>
           <div className={styles.dateTime}>
             {dayjs(data?.match?.dateTime * 1000).format(
-              "ddd, MMM D, YYYY @ h:mm a"
+              "ddd, MMM D, YYYY @ h:mm a ZZ"
             )}
           </div>
           <div className={styles.tier}>{data?.match?.tier + " tier"}</div>

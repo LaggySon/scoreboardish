@@ -64,10 +64,9 @@
     font-size: 16rem;
     line-height: 1px;
     color: white;
-    background-color: black;
+    background-color: var(--accentcolor);
     .score {
       position: relative;
-      top: 0.5rem;
     }
   }
 }

@@ -95,7 +95,7 @@
     // overflow: hidden;
     // max-height: 234px;
     // max-width: 250px;
-    background-image: url("/laggishShapeTransparent.png");
+    // background-image: url("/laggishShapeTransparent.png");
     background-size: cover;
     background-size: 115%;
     background-position: center;
@@ -160,8 +160,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: var(--accentcolor);
+  color: black;
   display: flex;
   height: 6rem;
   justify-content: space-between;
@@ -190,5 +190,6 @@
     // padding-right: 1rem;
     position: relative;
     right: -55px;
+    width: 334px;
   }
 }
