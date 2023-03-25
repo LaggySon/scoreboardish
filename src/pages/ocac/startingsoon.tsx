@@ -170,7 +170,7 @@ const StartingSoon = (props: any) => {
               src="https://drive.google.com/uc?export=download&id=1r3ruQvZM04FmOYfgyz2JoaFQr4SKkTGr"
               width="50"
               height="50"
-              alt="Tranq Logo"
+              alt="OCAC"
             ></Image>
           </div>
         </div>

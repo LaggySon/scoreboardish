@@ -12,12 +12,15 @@ import React, {
   useState,
 } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import useWindowFocus from "use-window-focus";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + "/api/ocac";
 
 const Casters = (props: any) => {
+  const isFocused = useWindowFocus();
+
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
@@ -43,7 +46,9 @@ const Casters = (props: any) => {
         <div className={styles.topBox}>
           <div className={styles.teams}>
             <div className={styles.team1}>
-              <div className={styles.code}>
+              <div
+                className={[styles.code, isFocused && styles.focused].join(" ")}
+              >
                 <span>{data?.teams?.team1?.code}</span>
               </div>
               <div className={styles.logoContainer}>

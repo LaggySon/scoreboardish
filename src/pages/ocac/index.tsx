@@ -58,6 +58,62 @@ const Landing = (props: any) => {
           Casters
         </Link>
 
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/ocac/ingame"
+            );
+          }}
+          href="/ocac/ingame"
+          title="Right click to copy!"
+        >
+          In Game
+        </Link>
+
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/ocac/mapinfo"
+            );
+          }}
+          href="/ocac/mapinfo"
+          title="Right click to copy!"
+        >
+          Map Info
+        </Link>
+
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/ocac/halftime"
+            );
+          }}
+          href="/ocac/halftime"
+          title="Right click to copy!"
+        >
+          Half Time (No Video)
+        </Link>
+
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/ocac/halftimevideo"
+            );
+          }}
+          href="/ocac/halftimevideo"
+          title="Right click to copy!"
+        >
+          Half Time (With Video)
+        </Link>
+
         {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game
         </Link>

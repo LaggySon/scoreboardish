@@ -94,11 +94,14 @@
       }
     }
     .branding {
-      background-color: black;
+      color: black;
+      background-color: var(--accentcolor);
       width: 100%;
       display: flex;
       justify-content: center;
       margin: 0;
+      height: 80px;
+      font-size: 4rem;
     }
   }
   .right {
