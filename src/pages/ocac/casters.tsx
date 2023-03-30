@@ -13,6 +13,7 @@ import React, {
 } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import useWindowFocus from "use-window-focus";
+import { set } from "zod";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -20,6 +21,7 @@ const API = URL + "/api/ocac";
 
 const Casters = (props: any) => {
   const isFocused = useWindowFocus();
+  const [active, setActive] = useState(false);
 
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
@@ -42,12 +44,28 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      <div className={styles.casters}>
+      <div
+        className={styles.casters}
+        onKeyDown={() => {
+          setActive(true);
+          setTimeout(() => {
+            setActive(false);
+            console.log("reset");
+          }, 5000);
+        }}
+        onMouseOver={() => {
+          setActive(true);
+          setTimeout(() => {
+            setActive(false);
+            console.log("reset");
+          }, 5000);
+        }}
+      >
         <div className={styles.topBox}>
           <div className={styles.teams}>
             <div className={styles.team1}>
               <div
-                className={[styles.code, isFocused && styles.focused].join(" ")}
+                className={[styles.code, active && styles.focused].join(" ")}
               >
                 <span>{data?.teams?.team1?.code}</span>
               </div>

@@ -66,10 +66,10 @@
       }
       .team1 {
         .code {
-          // &.focused {
-          //   animation: 1s ease-out 0s 1 slideInLeft;
-          //   z-index: -1;
-          // }
+          &.focused {
+            animation: 1s ease-out 0s 1 slideInLeft;
+            z-index: -1;
+          }
           // background-color: var(--team1PrimaryColor);
           // color: var(--team1SecondaryColor);
           background-color: black;

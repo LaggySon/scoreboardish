@@ -196,7 +196,7 @@ const StartingSoon = (props: any) => {
           <div className={styles.title}>{data?.match?.addInfo}</div>
           <div className={styles.dateTime}>
             {dayjs(data?.match?.dateTime * 1000).format(
-              "ddd, MMM D, YYYY @ h:mm a ZZ"
+              "ddd, MMM D, YYYY @ h:mm a"
             )}
           </div>
           <div className={styles.tier}>{data?.match?.tier + " tier"}</div>
