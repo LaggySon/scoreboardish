@@ -9,12 +9,16 @@ const TranqScoreboard = (props: any) => {
   return (
     <div className={styles.scoreboard}>
       <div className={styles.tierTag}>
-        <Image
-          src={`https://www.tranquility.gg/package/tierTags/${data?.match?.tier.toLowerCase()}.png`}
-          alt="TierTag"
-          width="489"
-          height="81"
-        ></Image>
+        {["harmony", "discord", "transcendence"].includes(
+          data?.match?.tier.toLowerCase()
+        ) && (
+          <Image
+            src={`https://www.tranquility.gg/package/tierTags/${data?.match?.tier.toLowerCase()}.png`}
+            alt="TierTag"
+            width="489"
+            height="81"
+          ></Image>
+        )}
       </div>
       <div className={[styles.team, styles.team1].join(" ")}>
         <div className={styles.teamMain}>

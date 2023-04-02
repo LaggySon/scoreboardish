@@ -199,7 +199,14 @@ const StartingSoon = (props: any) => {
               "ddd, MMM D, YYYY @ h:mm a"
             )}
           </div>
-          <div className={styles.tier}>{data?.match?.tier + " tier"}</div>
+          <div className={styles.tier}>
+            {data?.match?.tier +
+              (["harmony", "discord", "transcendence"].includes(
+                data?.match?.tier.toLowerCase()
+              )
+                ? "tier"
+                : "")}
+          </div>
         </div>
       </div>
     </>

@@ -147,6 +147,19 @@ const Landing = (props: any) => {
         >
           Credits
         </Link>
+        <Link
+          className={styles.link}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(
+              "https://scoreboardish.laggi.sh/TranquilityGaming/megacast"
+            );
+          }}
+          href="/TranquilityGaming/megacast"
+          title="Right click to copy!"
+        >
+          Mega Cast
+        </Link>
         {/* <Link className={styles.link} href="/TranquilityGaming/ingame">
           In Game
         </Link>
