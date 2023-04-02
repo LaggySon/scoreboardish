@@ -3,6 +3,7 @@ import Image from "next/image";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
 import TranqScoreboard from "../../components/tranqScoreboard";
+import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 import TranqCaster from "../../components/tranqCaster";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -32,7 +33,14 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      <TranqScoreboard data={data} info={false} />
+      {["harmony", "discord", "transcendence"].includes(
+        data?.match?.tier.toLowerCase()
+      ) ? (
+        <TranqScoreboard data={data} info={false} />
+      ) : (
+        <TranqScoreboardEW data={data} info={false} />
+      )}
+
       <div className={styles.casters}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
         <TranqCaster

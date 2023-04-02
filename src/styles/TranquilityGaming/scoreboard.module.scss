@@ -217,3 +217,34 @@
     }
   }
 }
+.titleBox {
+  width: 35rem;
+  background-color: red;
+  margin-inline: auto;
+  background: rgb(15, 31, 46);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 31, 46, 1) 0%,
+    rgba(15, 31, 46, 1) 50%,
+    rgba(205, 146, 46, 1) 50%,
+    rgba(205, 146, 46, 1) 100%
+  );
+
+  .eventTitle {
+    white-space: nowrap;
+    height: 65px;
+    background-color: white;
+    text-align: center;
+    clip-path: polygon(5% 0, 95% 0, 90% 100%, 10% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 10%;
+    div p {
+      margin: 0;
+    }
+    .caption {
+      font-size: 1rem;
+    }
+  }
+}

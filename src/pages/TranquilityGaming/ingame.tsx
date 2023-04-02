@@ -2,6 +2,7 @@ import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
 import TranqScoreboard from "../../components/tranqScoreboard";
+import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -29,7 +30,13 @@ const InGame: NextPage<PageProps> = (props) => {
           }
         `}
       </style>
-      <TranqScoreboard data={data} />
+      {["harmony", "discord", "transcendence"].includes(
+        data?.match?.tier.toLowerCase()
+      ) ? (
+        <TranqScoreboard data={data} />
+      ) : (
+        <TranqScoreboardEW data={data} />
+      )}
     </>
   );
 };
