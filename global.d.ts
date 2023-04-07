@@ -59,6 +59,7 @@ declare global {
     teams: TeamData;
     maps: MapType[];
     match: MatchInfo;
+    cams?: string[];
   };
 }
 export default global;

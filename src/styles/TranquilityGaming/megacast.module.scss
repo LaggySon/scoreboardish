@@ -2,12 +2,14 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -5rem;
 }
 
 .casters {
-  outline: 2px solid tomato;
+  // outline: 2px solid tomato;
 
   // width: 95%;
   // display: flex;
@@ -15,12 +17,54 @@
   // flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  width: 90vw;
+  width: 95vw;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   .casterBox {
     flex: 1 1 20%;
+    max-width: 33%;
+  }
+}
+
+.castersCouch {
+  // flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 95vw;
+  display: flex;
+  // flex-wrap: wrap;
+  gap: 1rem;
+  .casterBox {
+    flex: 1 1 40%;
+    max-width: 33%;
+  }
+}
+
+.guest {
+  // flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 95vw;
+  display: flex;
+  // flex-wrap: wrap;
+  gap: 1rem;
+  .casterBox {
+    flex: 1 1 40%;
+    max-width: 33%;
+  }
+}
+
+.castersTri {
+  // flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 95vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  .casterBox {
+    flex: 1 1 50%;
     max-width: 33%;
   }
 }

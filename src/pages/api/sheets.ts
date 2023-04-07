@@ -34,9 +34,18 @@ export default async function handler(
     range,
   });
 
+  const newRange = "BroadcastPanel!B36:C48";
+
+  const newResponse: GaxiosResponse | null =
+    await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: newRange,
+    });
+
   // console.log(response.data.values);
 
   const data = response.data.values;
+  const cams = newResponse.data.values;
   const result: AllData = {
     teams: {
       team1: {
@@ -103,6 +112,7 @@ export default async function handler(
       accColor: data[5][2],
     },
   };
+  result["cams"] = cams;
   // console.log(result);
   res.status(200).json(result);
 }

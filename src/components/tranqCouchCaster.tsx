@@ -1,4 +1,4 @@
-import styles from "../styles/TranquilityGaming/megaCaster.module.scss";
+import styles from "../styles/TranquilityGaming/couchCaster.module.scss";
 import Image from "next/image";
 // import ScaleText from "react-scale-text";
 
