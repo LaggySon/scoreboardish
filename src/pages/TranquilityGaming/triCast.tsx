@@ -39,7 +39,7 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      {["harmony", "discord", "transcendence"].includes(
+      {["harmony", "discord", "transcendence", "admin pugs"].includes(
         data?.match?.tier.toLowerCase()
       ) ? (
         <TranqScoreboard data={data} />
@@ -51,15 +51,15 @@ const Casters = (props: any) => {
           {[
             [
               data?.twitch?.find(
-                (staff: TwitchStaff) => staff.title === "Analyst"
+                (staff: TwitchStaff) => staff.title === "Play By Play"
               ).name,
               "https://vdo.ninja/?view=fdGjaBK&hash=30e9&label=Play_By_Play&password=gamer",
             ],
             [
               data?.twitch?.find(
-                (staff: TwitchStaff) => staff.title === "Play By Play"
+                (staff: TwitchStaff) => staff.title === "Analyst"
               ).name,
-              "https://vdo.ninja/?view=fdGjaBK&hash=30e9&label=Play_By_Play&password=gamer",
+              "https://vdo.ninja/?view=fxj4Bub&hash=30e9&label=Analyst&password=gamer",
             ],
             users[1],
           ].map((user: any, index: number) => (

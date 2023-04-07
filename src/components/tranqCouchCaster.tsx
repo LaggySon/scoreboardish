@@ -14,7 +14,7 @@ const TranqCaster = (props: any) => {
           alt="Caster Frame"
           fill={true}
         />
-        <iframe src={link}></iframe>
+        <iframe src={link} scrolling="no"></iframe>
 
         <div className={styles.nameContainer}>
           <div className={styles.name}>

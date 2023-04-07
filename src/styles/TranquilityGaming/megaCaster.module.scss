@@ -5,9 +5,12 @@
 .casterFrame {
   aspect-ratio: 16 / 9;
   width: 100%;
+
   iframe {
-    height: 99%;
-    width: 99%;
+    max-height: 99%;
+    min-height: 99%;
+    max-width: 99%;
+    min-width: 99%;
   }
   position: relative;
   .nameContainer {
