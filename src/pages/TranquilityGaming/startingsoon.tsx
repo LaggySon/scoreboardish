@@ -205,7 +205,7 @@ const StartingSoon = (props: any) => {
               (["harmony", "discord", "transcendence"].includes(
                 data?.match?.tier.toLowerCase()
               )
-                ? "tier"
+                ? " tier"
                 : "")}
           </div>
         </div>
