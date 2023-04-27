@@ -5,7 +5,8 @@ import Image from "next/image";
 const TranqCaster = (props: any) => {
   const name = props.name;
   const link = props.link;
-
+  const customFontSize = props.font;
+  console.log(props);
   return (
     <div className={styles.casterSizer}>
       <div className={styles.casterFrame}>
@@ -19,7 +20,12 @@ const TranqCaster = (props: any) => {
         <div className={styles.nameContainer}>
           <div className={styles.name}>
             {/* <ScaleText widthOnly={false}> */}
-            <span className={styles.nameSpan}>{name}</span>
+            <span
+              style={{ fontSize: customFontSize }}
+              className={styles.nameSpan}
+            >
+              {name}
+            </span>
             {/* </ScaleText> */}
           </div>
         </div>
