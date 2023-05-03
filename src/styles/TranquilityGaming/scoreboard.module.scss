@@ -20,7 +20,7 @@
   // font-weight: bold;
   font-family: "Industry";
   height: 100%;
-  // margin-top: 1rem;
+  margin-top: 1rem;
   .tierTag {
     position: absolute;
     display: flex;
@@ -45,6 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -1rem;
   }
 
   .team {
