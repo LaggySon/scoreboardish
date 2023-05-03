@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { env } from "../../env/client.mjs";
 import TranqScoreboard from "../../components/tranqScoreboard";
 import TranqCaster from "../../components/tranqCouchCaster";
+import TranqTelestrator from "../../components/tranqTelestrator";
 import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -52,7 +53,7 @@ const Casters = (props: any) => {
           ))}
         </div>
         <div className={styles.teleBox}>
-          <TranqCaster
+          <TranqTelestrator
             name={users.slice(-1)[0][0]}
             link={users.slice(-1)[0][1]}
             font="2.2rem"
