@@ -5,6 +5,7 @@ import { env } from "../../env/client.mjs";
 import TranqScoreboard from "../../components/tranqScoreboard";
 import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 import TranqCaster from "../../components/tranqCaster";
+import TranqPred from "../../components/tranqPred";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -33,6 +34,10 @@ const Casters = (props: any) => {
           }
         `}
       </style>
+      <TranqPred
+        t1={data?.teams?.team1.name}
+        t2={data?.teams?.team2.name}
+      ></TranqPred>
       {["harmony", "discord", "transcendence", "admin"].includes(
         data?.match?.tier.toLowerCase()
       ) ? (

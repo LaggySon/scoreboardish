@@ -56,7 +56,7 @@ const StartingSoon = (props: any) => {
   dayjs.extend(timezone);
   dayjs.extend(advancedFormat);
 
-  const endTime = dayjs(data?.match?.dateTime * 1000 + 120000);
+  const endTime = dayjs(data?.match?.dateTime * 1000 - 120000);
 
   const [dayjsLeft, setDayjsLeft] = useState(
     dayjs.duration(endTime.diff(dayjs()))

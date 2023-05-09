@@ -1,0 +1,62 @@
+.predFrame {
+  position: absolute;
+  top: 85%;
+  transform: translateX(-100%);
+  &.active {
+    transform: translateX(0);
+    animation: slideIn 2s ease-in-out;
+  }
+  background-color: var(--team2PrimaryColor);
+  color: white;
+  height: 5rem;
+  width: 40rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .title {
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    transform: translateY(-3.3rem);
+    text-align: center;
+    padding: 0.2rem;
+    width: 100%;
+  }
+
+  font-size: 2rem;
+  .one,
+  .two {
+    height: 100%;
+    padding-inline: 1rem;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    & > * {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .two {
+    right: 0;
+    text-align: right;
+  }
+  .one {
+    // width: 80%;
+    background-color: var(--team1PrimaryColor);
+    // clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 100%, 0% 100%);
+  }
+  .one::before {
+    content: "";
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

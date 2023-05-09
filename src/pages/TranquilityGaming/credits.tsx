@@ -41,7 +41,7 @@ const Credits = (props: any) => {
   //TIMER STUFF
   dayjs.extend(duration);
 
-  const endTime = dayjs(data?.match?.dateTime * 1000);
+  const endTime = dayjs(data?.match?.dateTime * 1000 - 120000);
 
   const [dayjsLeft, setDayjsLeft] = useState(
     dayjs.duration(endTime.diff(dayjs()))

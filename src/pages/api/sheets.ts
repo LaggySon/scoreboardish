@@ -15,6 +15,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  function transpose(matrix: any) {
+    return matrix[0].map((col: any, i: number) =>
+      matrix.map((row: any) => row[i])
+    );
+  }
+
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     projectId: env.GOOGLE_PROJECTID,
@@ -41,8 +47,6 @@ export default async function handler(
       spreadsheetId,
       range: newRange,
     });
-
-  // console.log(response.data.values);
 
   const data = response.data.values;
   const cams = newResponse.data.values;
@@ -103,6 +107,7 @@ export default async function handler(
       dateTime: data[3][1],
       stage: data[3][5],
       week: data[3][4],
+      weekNum: data[3][11],
       mapInfo: data[3][7],
       tierTag: data[3][10],
       nextMap: data[3][6],
