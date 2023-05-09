@@ -10,11 +10,6 @@ const TranqCaster = (props: any) => {
   return (
     <div className={styles.casterSizer}>
       <div className={styles.casterFrame}>
-        <Image
-          src="https://www.tranquility.gg/package/digitize/CasterFrame.png"
-          alt="Caster Frame"
-          fill={true}
-        />
         <iframe src={link} scrolling="no"></iframe>
 
         <div className={styles.nameContainer}>
@@ -24,7 +19,7 @@ const TranqCaster = (props: any) => {
               style={{ fontSize: customFontSize }}
               className={styles.nameSpan}
             >
-              {name}
+              {/* {name} */}
             </span>
             {/* </ScaleText> */}
           </div>

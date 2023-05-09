@@ -45,7 +45,7 @@ export default async function handler(
     range: `'Week ${response.data.values[3][11]} Responses'!D1:CA20`,
   });
 
-  let predData = transpose(preds.data.values);
+  const predData = transpose(preds.data.values);
   // console.log(predData);
   const matchPreds: any = [];
   predData.forEach((pred: any, i: number) => {

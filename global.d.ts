@@ -30,7 +30,7 @@ declare global {
     dateTime: string;
     stage: string;
     week: string;
-    weekNum: string;
+    weekNum?: string;
     mapInfo: string;
     tierTag: string;
     nextMap: string;
