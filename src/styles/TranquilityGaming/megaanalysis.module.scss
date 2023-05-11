@@ -19,7 +19,7 @@
   .teleBox {
     width: 60vw;
     aspect-ratio: 16 / 9;
-    border: 0.5rem solid var(--tranqYellow);
+    border: 0.5rem solid var(--tranqBlue);
     position: relative;
     &:before {
       height: 100%;
@@ -30,7 +30,7 @@
       left: -0.5rem;
       -webkit-clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
       clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
-      border: 0.5rem solid var(--tranqBlue);
+      border: 0.5rem solid var(--tranqYellow);
       z-index: 5;
     }
   }
