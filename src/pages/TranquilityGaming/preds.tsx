@@ -34,34 +34,11 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      {["harmony", "discord", "transcendence", "admin"].includes(
-        data?.match?.tier.toLowerCase()
-      ) ? (
-        <TranqScoreboard data={data} info={false} />
-      ) : (
-        <TranqScoreboardEW data={data} info={false} />
-      )}
-
-      <div className={styles.casters}>
-        {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
-        <TranqCaster
-          name={
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Play By Play"
-            ).name
-          }
-          link="https://vdo.ninja/?view=fdGjaBK&hash=30e9&label=Play_By_Play&password=gamer"
-        />
-        {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
-        <TranqCaster
-          name={
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Analyst"
-            ).name
-          }
-          link="https://vdo.ninja/?view=fxj4Bub&hash=30e9&label=Analyst&password=gamer"
-        />
-      </div>
+      <TranqPred
+        t1={data?.teams?.team1.name}
+        t2={data?.teams?.team2.name}
+        active={data?.match?.showPreds}
+      ></TranqPred>
     </>
   );
 };

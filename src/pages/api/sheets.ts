@@ -33,7 +33,7 @@ export default async function handler(
   const sheets = google.sheets({ version: "v4", auth });
 
   const spreadsheetId = "15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o";
-  const range = `COMPRESS!A1:L50`;
+  const range = `COMPRESS!A1:M50`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({
     spreadsheetId,
@@ -115,6 +115,7 @@ export default async function handler(
       ticker2: data[3][9],
       addInfo: data[5][1],
       accColor: data[5][2],
+      showPreds: data[3][12] == "TRUE",
     },
   };
   result["cams"] = cams;

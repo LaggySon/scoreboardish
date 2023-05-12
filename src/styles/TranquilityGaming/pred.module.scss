@@ -1,11 +1,11 @@
 .predFrame {
   position: absolute;
   top: 85%;
-  transform: translateX(-100%);
-  &.active {
-    transform: translateX(0);
-    animation: slideIn 2s ease-in-out;
-  }
+  // transform: translateX(-100%);
+  // &.active {
+  //   transform: translateX(0);
+  //   animation: slideIn 2s ease-in-out;
+  // }
   background-color: var(--team2PrimaryColor);
   color: white;
   height: 5rem;

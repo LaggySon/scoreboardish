@@ -50,7 +50,7 @@ export default async function handler(
   const matchPreds: any = [];
   predData.forEach((pred: any, i: number) => {
     if (!matchPreds[Math.floor(i / 2)]) {
-      console.log(predData[i + 1]);
+      // console.log(predData[i + 1]);
       matchPreds[Math.floor(i / 2)] = {
         team1: pred[0].split("[")[1].slice(0, -1),
         team2: predData[i + 1][0].split("[")[1].slice(0, -1),

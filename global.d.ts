@@ -38,6 +38,7 @@ declare global {
     ticker2: string;
     addInfo: string;
     accColor: string;
+    showPreds: boolean;
   };
 
   type MapType = {
