@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { NextPage } from "next/types";
 import styles from "../../styles/TranquilityGaming/mapinfo.module.scss";
 import Image from "next/image";
-import { Control, Hybrid, Escort, Push } from "../../components/svgs/index.js";
+import { Control, Hybrid, Escort, Push } from "../../components/svgs/index";
 import React, {
   ReactNode,
   ReactSVGElement,
