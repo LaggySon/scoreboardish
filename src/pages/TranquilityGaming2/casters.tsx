@@ -10,7 +10,7 @@ import TranqPred from "../../components/tranqPred";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+  URL + `/api/sheets?sheet=1rV3UUFVUpBhkFg9YMXdV59rm7tmG0AXmcT0-qQqHGwU`;
 
 const Casters = (props: any) => {
   const { data } = useSWR(API, fetcher, {
@@ -35,11 +35,34 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      <TranqPred
-        t1={data?.teams?.team1.name}
-        t2={data?.teams?.team2.name}
-        active={data?.match?.showPreds}
-      ></TranqPred>
+      {["harmony", "discord", "transcendence", "admin"].includes(
+        data?.match?.tier.toLowerCase()
+      ) ? (
+        <TranqScoreboard data={data} info={false} />
+      ) : (
+        <TranqScoreboardEW data={data} info={false} />
+      )}
+
+      <div className={styles.casters}>
+        {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
+        <TranqCaster
+          name={
+            data?.twitch?.find(
+              (staff: TwitchStaff) => staff.title === "Play By Play"
+            ).name
+          }
+          link="https://vdo.ninja/?view=q3PUpE8&password=gamer&label=PlayByPlay2"
+        />
+        {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
+        <TranqCaster
+          name={
+            data?.twitch?.find(
+              (staff: TwitchStaff) => staff.title === "Analyst"
+            ).name
+          }
+          link="https://vdo.ninja/?view=sE3znDC&password=gamer&label=Analyst2"
+        />
+      </div>
     </>
   );
 };

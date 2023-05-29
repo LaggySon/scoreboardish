@@ -10,7 +10,8 @@ import { discovery_v1 } from "googleapis";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
-const API = URL + "/api/sheets";
+const API =
+  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
 
 const Credits = (props: any) => {
   const { data } = useSWR(API, fetcher, {

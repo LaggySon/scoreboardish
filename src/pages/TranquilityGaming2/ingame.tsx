@@ -1,13 +1,13 @@
 import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
-import TranqScoreboard from "../../components/tranqScoreboard";
-import TranqScoreboardEW from "../../components/tranqScoreboardEW";
+import TranqScoreboard from "../../components/tranqScoreboard.jsx";
+import TranqScoreboardEW from "../../components/tranqScoreboardEW.jsx";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+  URL + `/api/sheets?sheet=1rV3UUFVUpBhkFg9YMXdV59rm7tmG0AXmcT0-qQqHGwU`;
 
 const InGame: NextPage<PageProps> = (props) => {
   const { data } = useSWR(API, fetcher, {

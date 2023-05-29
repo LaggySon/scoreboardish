@@ -22,7 +22,8 @@ type Team = {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 // const API = env.URL + "/api/sheets";
 const URL = env.NEXT_PUBLIC_URL;
-const API = URL + "/api/sheets";
+const API =
+  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
 // const API = "http://localhost:3000/api/sheets";
 
 export async function getServerSideProps() {

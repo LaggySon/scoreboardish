@@ -20,6 +20,7 @@ export default async function handler(
       matrix.map((row: any) => row[i])
     );
   }
+  const { sheet } = req.query;
 
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
@@ -32,7 +33,7 @@ export default async function handler(
 
   const sheets = google.sheets({ version: "v4", auth });
 
-  const spreadsheetId = "15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o";
+  const spreadsheetId = String(sheet);
   const range = `COMPRESS!A1:M50`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({

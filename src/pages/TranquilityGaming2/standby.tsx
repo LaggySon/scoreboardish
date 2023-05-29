@@ -1,17 +1,12 @@
-import styles from "../../styles/TranquilityGaming/final.module.scss";
+import styles from "../../styles/TranquilityGaming/standby.module.scss";
 import Image from "next/image";
-import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import SvgAttack from "../../components/icons/Attack";
-import SvgDefense from "../../components/icons/Defense";
-import { discovery_v1 } from "googleapis";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+  URL + `/api/sheets?sheet=1rV3UUFVUpBhkFg9YMXdV59rm7tmG0AXmcT0-qQqHGwU`;
 
 const Credits = (props: any) => {
   const { data } = useSWR(API, fetcher, {
@@ -35,13 +30,16 @@ const Credits = (props: any) => {
           }
         `}
       </style>
-      <Image
-        src="https://www.tranquility.gg/package/digitize/Replay.png"
-        alt="background"
-        height={1080}
-        width={1920}
-        className={styles.backgroundImage}
-      ></Image>
+      <div className={styles.box}>
+        <Image
+          src="https://www.tranquility.gg/package/digitize/StandByLogo.png"
+          alt="background"
+          height={405}
+          width={891}
+          className={styles.tranqLogo}
+        ></Image>
+        <div className={styles.info}>{data?.match?.ticker2}</div>
+      </div>
     </>
   );
 };

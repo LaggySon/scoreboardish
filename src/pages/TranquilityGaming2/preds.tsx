@@ -1,23 +1,23 @@
-import styles from "../../styles/TranquilityGaming/final.module.scss";
+import styles from "../../styles/TranquilityGaming/casters.module.scss";
 import Image from "next/image";
-import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import SvgAttack from "../../components/icons/Attack";
-import SvgDefense from "../../components/icons/Defense";
-import { discovery_v1 } from "googleapis";
+import TranqScoreboard from "../../components/tranqScoreboard";
+import TranqScoreboardEW from "../../components/tranqScoreboardEW";
+import TranqCaster from "../../components/tranqCaster";
+import TranqPred from "../../components/tranqPred";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+  URL + `/api/sheets?sheet=1rV3UUFVUpBhkFg9YMXdV59rm7tmG0AXmcT0-qQqHGwU`;
 
-const Credits = (props: any) => {
+const Casters = (props: any) => {
   const { data } = useSWR(API, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
+
   if (!data) {
     return <>Loading...</>;
   }
@@ -35,15 +35,13 @@ const Credits = (props: any) => {
           }
         `}
       </style>
-      <Image
-        src="https://www.tranquility.gg/package/digitize/Replay.png"
-        alt="background"
-        height={1080}
-        width={1920}
-        className={styles.backgroundImage}
-      ></Image>
+      <TranqPred
+        t1={data?.teams?.team1.name}
+        t2={data?.teams?.team2.name}
+        active={data?.match?.showPreds}
+      ></TranqPred>
     </>
   );
 };
 
-export default Credits;
+export default Casters;

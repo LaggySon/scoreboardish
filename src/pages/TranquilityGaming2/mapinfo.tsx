@@ -1,9 +1,9 @@
 import { env } from "../../env/client.mjs";
 import useSWR from "swr";
 import { NextPage } from "next/types";
-import styles from "../../styles/mapinfo.module.scss";
+import styles from "../../styles/TranquilityGaming/mapinfo.module.scss";
 import Image from "next/image";
-import { Control, Hybrid, Escort, Push } from "../../components/svgs";
+import { Control, Hybrid, Escort, Push } from "../../components/svgs/index.js";
 import React, {
   ReactNode,
   ReactSVGElement,
@@ -16,7 +16,7 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+  URL + `/api/sheets?sheet=1rV3UUFVUpBhkFg9YMXdV59rm7tmG0AXmcT0-qQqHGwU`;
 
 const MapInfo = (props: any) => {
   function mapTypeSvg(map: MapType) {
@@ -54,16 +54,24 @@ const MapInfo = (props: any) => {
       <style jsx global>
         {`
           :root {
-            --team1PrimaryColor: ${data?.teams?.team1.primaryCol ?? "black"};
-            --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
-            "black"};
-            --team2PrimaryColor: ${data?.teams?.team2.primaryCol ?? "black"};
-            --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
-            "black"};
+            --team1PrimaryColor: var(--tranqBlue);
+            --team1SecondaryColor: var(--tranqBlue);
+            --team2PrimaryColor: var(--tranqYellow);
+            --team2SecondaryColor: var(--tranqYellow);
+            font-family: "Industry";
+            font-weight: normal;
           }
         `}
       </style>
       <div className={styles.mapInfo}>
+        <header className={styles.header}>
+          <Image
+            src="/tranqMapsOverlay.png"
+            alt="overlay"
+            height={1080}
+            width={1920}
+          ></Image>
+        </header>
         <div className={[styles.team1, styles.team].join(" ")}>
           <div className={styles.logoContainer}>
             <Image
@@ -77,7 +85,7 @@ const MapInfo = (props: any) => {
           <div className={styles.codeBox}>
             <span className={styles.code}>{data?.teams?.team1.code}</span>
           </div>
-          {/* <div className={styles.scoreBox}>
+          <div className={styles.scoreBox}>
             <SwitchTransition>
               <CSSTransition
                 key={data?.teams?.team1.score ?? "none"}
@@ -90,7 +98,7 @@ const MapInfo = (props: any) => {
                 <div className={styles.score}>{data?.teams?.team1.score}</div>
               </CSSTransition>
             </SwitchTransition>
-          </div> */}
+          </div>
         </div>
         <div className={styles.mapBox}>
           {data?.maps?.map((map: MapType, index: number) => {
@@ -121,9 +129,9 @@ const MapInfo = (props: any) => {
                         data?.teams?.team2?.short,
                       ].includes(map.winner)
                         ? map.winner === data?.teams?.team1?.short
-                          ? data?.teams.team1.primaryCol
-                          : data?.teams.team2.primaryCol
-                        : "#222222",
+                          ? "var(--tranqBlue)"
+                          : "var(--tranqYellow)"
+                        : "#222",
                     } as React.CSSProperties
                   }
                 >
@@ -185,9 +193,9 @@ const MapInfo = (props: any) => {
           <div className={styles.codeBox}>
             <span className={styles.code}>{data?.teams?.team2.code}</span>
           </div>
-          {/* <div className={styles.scoreBox}>
+          <div className={styles.scoreBox}>
             <span className={styles.score}>{data?.teams?.team2?.score}</span>
-          </div> */}
+          </div>
         </div>
       </div>
     </>
