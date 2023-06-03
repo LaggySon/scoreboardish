@@ -158,3 +158,98 @@
     left: 23%;
   }
 }
+.videoBlocker {
+  position: absolute;
+  background-color: black;
+  height: 29.7rem;
+  width: 63rem;
+  left: 23.86%;
+  top: 33%;
+  z-index: 10;
+}
+.teamsSide {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  z-index: 11;
+  column-gap: 50rem;
+  top: 31%;
+  .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+    // width: 410px;
+    height: 100vh;
+    gap: 1rem;
+  }
+  .logoContainer {
+    // overflow: hidden;
+    // max-height: 234px;
+    // max-width: 250px;
+    // background-image: url("/tranqLogoTransparent.png");
+    // background-size: cover;
+    // background-size: 115%;
+    // background-position: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    .logo {
+      // filter: drop-shadow(-2px 2px 1px black);
+      height: 100%;
+    }
+  }
+  .scoreBox {
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16rem;
+    line-height: 1px;
+    color: black;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    .score {
+      position: relative;
+      top: -0.5rem;
+    }
+  }
+  .codeBox {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: white;
+    box-shadow: 5px 5px 10px black;
+    font-size: 3rem;
+    display: none;
+    .code {
+      // width: 250px;
+
+      text-align: center;
+    }
+  }
+  .team1Side {
+    .logo {
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        180deg,
+        var(--team1PrimaryColor) 0%,
+        var(--team1SecondaryColor) 100%
+      );
+    }
+  }
+  .team2Side {
+    .logo {
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        180deg,
+        var(--team2PrimaryColor) 0%,
+        var(--team2SecondaryColor) 100%
+      );
+    }
+  }
+}

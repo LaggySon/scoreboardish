@@ -282,12 +282,12 @@
 
   .team1 {
     .logoContainer {
-      border-bottom: 1rem solid var(--team1PrimaryColor);
+      // border-bottom: 1rem solid var(--team1PrimaryColor);
       background: rgb(0, 0, 0);
       background: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(59, 59, 59, 1) 100%
+        var(--team1PrimaryColor) 0%,
+        var(--team1SecondaryColor) 100%
       );
     }
     .codeBox {
@@ -298,12 +298,12 @@
   .team2 {
     right: 0;
     .logoContainer {
-      border-bottom: 1rem solid var(--team2PrimaryColor);
+      // border-bottom: 1rem solid var(--team2PrimaryColor);
       background: rgb(0, 0, 0);
       background: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(59, 59, 59, 1) 100%
+        var(--team2PrimaryColor) 0%,
+        var(--team2SecondaryColor) 100%
       );
     }
     .codeBox {
