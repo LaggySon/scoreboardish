@@ -22,10 +22,14 @@ const InGame: NextPage<PageProps> = (props) => {
       <style jsx global>
         {`
           :root {
-            --team1PrimaryColor: var(--tranqBlue);
-            --team1SecondaryColor: var(--tranqBlue);
-            --team2PrimaryColor: var(--tranqYellow);
-            --team2SecondaryColor: var(--tranqYellow);
+            --team1PrimaryColor: ${data?.teams?.team1.primaryCol ??
+            "var(--tranqBlue)"};
+            --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
+            "var(--tranqBlue)"};
+            --team2PrimaryColor: ${data?.teams?.team2.primaryCol ??
+            "var(--tranqYellow)"};
+            --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
+            "var(--tranqYellow)"};
             font-family: "Industry";
             font-weight: normal;
           }

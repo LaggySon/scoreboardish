@@ -54,10 +54,14 @@ const MapInfo = (props: any) => {
       <style jsx global>
         {`
           :root {
-            --team1PrimaryColor: var(--tranqBlue);
-            --team1SecondaryColor: var(--tranqBlue);
-            --team2PrimaryColor: var(--tranqYellow);
-            --team2SecondaryColor: var(--tranqYellow);
+            --team1PrimaryColor: ${data?.teams?.team1.primaryCol ??
+            "var(--tranqBlue)"};
+            --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
+            "var(--tranqBlue)"};
+            --team2PrimaryColor: ${data?.teams?.team2.primaryCol ??
+            "var(--tranqYellow)"};
+            --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
+            "var(--tranqYellow)"};
             font-family: "Industry";
             font-weight: normal;
           }
@@ -129,8 +133,14 @@ const MapInfo = (props: any) => {
                         data?.teams?.team2?.short,
                       ].includes(map.winner)
                         ? map.winner === data?.teams?.team1?.short
-                          ? "var(--tranqBlue)"
-                          : "var(--tranqYellow)"
+                          ? `${
+                              data?.teams?.team1.primaryCol ??
+                              "var(--tranqBlue)"
+                            }`
+                          : `${
+                              data?.teams?.team2.primaryCol ??
+                              "var(--tranqYellow)"
+                            }`
                         : "#222",
                     } as React.CSSProperties
                   }
