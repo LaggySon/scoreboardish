@@ -73,33 +73,33 @@ const Credits = (props: any) => {
         className={styles.backgroundImage}
       ></Image>
       <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
-      <div className={styles.hwrap}>
+      {/* <div className={styles.hwrap}>
         <div className={styles.hmove}>
           <div className={styles.hitem}>{data?.match?.ticker1}</div>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.teams}>
-        <div className={[styles.team, styles.team1].join(" ")}>
-          <Image
+        <div className={[styles.teamVideo, styles.team1].join(" ")}>
+          {/* <Image
             src={data?.teams?.team1?.logoPath}
             alt="team 1 logo"
             height={500}
             width={500}
             className={styles.logo}
-          ></Image>
+          ></Image> */}
           {/* <p className={styles.score}>{data?.teams?.team1?.score}</p> */}
           <p className={styles.name}>{data?.teams?.team1?.short}</p>
           <p className={styles.record}>{data?.teams?.team1?.info}</p>
         </div>
-        <div className={[styles.team, styles.team2].join(" ")}>
-          <Image
+        <div className={[styles.teamVideo, styles.team2].join(" ")}>
+          {/* <Image
             src={data?.teams?.team2?.logoPath}
             alt="team 1 logo"
             height={500}
             width={500}
             className={styles.logo}
-          ></Image>
+          ></Image> */}
           {/* <p className={styles.score}>{data?.teams?.team2?.score}</p> */}
           <p className={styles.name}>{data?.teams?.team2?.short}</p>
           <p className={styles.record}>{data?.teams?.team2?.info}</p>

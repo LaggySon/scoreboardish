@@ -161,11 +161,14 @@
 .videoBlocker {
   position: absolute;
   background-color: black;
-  height: 29.7rem;
-  width: 63rem;
-  left: 23.86%;
-  top: 33%;
+  height: 35rem;
+  border: 1rem solid white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  // width: 63rem;
+  left: 23%;
+  top: 30%;
   z-index: 10;
+  aspect-ratio: 16/9;
 }
 .teamsSide {
   position: absolute;
@@ -176,7 +179,7 @@
   grid-template-columns: 1fr 1fr;
   z-index: 11;
   column-gap: 50rem;
-  top: 31%;
+  top: 33%;
   .team {
     display: flex;
     flex-direction: column;
@@ -194,6 +197,7 @@
     // background-size: cover;
     // background-size: 115%;
     // background-position: center;
+    // border: 1rem solid white;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     .logo {
       // filter: drop-shadow(-2px 2px 1px black);
@@ -251,5 +255,42 @@
         var(--team2SecondaryColor) 100%
       );
     }
+  }
+}
+.teamVideo {
+  &.team1 {
+    .logo {
+      background: rgb(0, 0, 0);
+      background: linear-gradient(
+        180deg,
+        var(--team1PrimaryColor) 0%,
+        var(--team1SecondaryColor) 100%
+      );
+    }
+  }
+  .name {
+    position: absolute;
+    font-size: 2.5rem;
+    z-index: 2;
+    // outline: 2px solid tomato;
+    height: 2.5rem;
+    width: 30rem;
+    text-align: center;
+    top: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .record {
+    position: absolute;
+    font-size: 2.5rem;
+    z-index: 2;
+    top: 39.5rem;
+    height: 2.5rem;
+    width: 11rem;
+    // outline: 2px solid tomato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
