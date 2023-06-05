@@ -72,7 +72,7 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
+      {/* <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div> */}
       {["harmony", "discord", "transcendence", "admin pugs"].includes(
         data?.match?.tier.toLowerCase()
       ) ? (
