@@ -1,17 +1,28 @@
 import { Howl, Howler } from "howler";
+import * as mediatags from "jsmediatags";
+import { useState } from "react";
+import Player from "./Player";
 
-const Music = (props: any) => {
-  const shuffleArray = (array: string[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = String(array[j]);
-      array[j] = String(temp);
-    }
+export const getServerSideProps = async () => {
+  const getTags = async (file: string) => {
+    return new Promise((res, rej) => {
+      new mediatags.Reader(file).read({
+        onSuccess: (data: any) => {
+          res(data);
+        },
+        onError: (error) => {
+          rej(error);
+        },
+      });
+    })
+      .then((data: any) => data)
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const url = "https://tranquility.gg/package/music/";
-  const songs: string[] = [
+  const songNames: string[] = [
     "Body Like (Body Shop)",
     "Deon Custom - Roses",
     "Earthbound",
@@ -26,23 +37,58 @@ const Music = (props: any) => {
     "Tuesday",
     "WRLD - Discovery",
   ];
-  const songurls = songs.map(
-    (song) => url + song.replaceAll(" ", "%20") + ".mp3"
+  const songs = await Promise.all(
+    songNames.map(async (song: string) => {
+      const songUrl = url + song.replaceAll(" ", "%20") + ".mp3";
+      const songData = await getTags(songUrl);
+      return {
+        file: songUrl,
+        title: songData.tags.title,
+        artist: songData.tags.artist,
+        howl: null,
+      };
+    })
   );
-  shuffleArray(songurls);
-  console.log(songurls);
+  // console.log(songs);
+  return { props: { songs } };
+};
 
-  const sound = new Howl({
-    src: [String(songurls[0])],
-    html5: true,
-    loop: true,
-    volume: 0.2,
-    onend: function () {
-      console.log("Finished!");
-    },
-  });
+const Music = (props: any) => {
+  let songs = props.songs.map((song: any) => ({
+    ...song,
+    howl: null,
+  }));
+  let currentIndex = 0;
 
-  sound.play();
+  const play = (index: number) => {
+    if (songs[index].howl) {
+      songs[index].howl.stop();
+    }
+    songs[index].howl = new Howl({
+      src: songs[index].file,
+      html5: true,
+      onend: handleSongEnd,
+    });
+    songs[index].howl.play();
+    currentIndex = index;
+  };
+
+  const skip = () => {
+    let newIndex = currentIndex;
+    while (newIndex === currentIndex) {
+      newIndex = Math.floor(Math.random() * songs.length);
+    }
+    if (songs[currentIndex].howl) {
+      songs[currentIndex].howl.stop();
+    }
+    play(newIndex);
+  };
+
+  const handleSongEnd = () => {
+    skip();
+  };
+
+  play(Math.floor(Math.random() * songs.length));
 
   return <></>;
 };
