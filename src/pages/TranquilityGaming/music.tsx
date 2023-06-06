@@ -1,7 +1,6 @@
 import { Howl, Howler } from "howler";
 import * as mediatags from "jsmediatags";
 import { useState } from "react";
-import Player from "./Player";
 
 export const getServerSideProps = async () => {
   const getTags = async (file: string) => {
@@ -54,7 +53,7 @@ export const getServerSideProps = async () => {
 };
 
 const Music = (props: any) => {
-  let songs = props.songs.map((song: any) => ({
+  const songs = props.songs.map((song: any) => ({
     ...song,
     howl: null,
   }));
