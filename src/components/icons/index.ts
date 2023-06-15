@@ -1,3 +1,4 @@
+export { default as Assault } from "./Assault";
 export { default as Attack } from "./Attack";
 export { default as Control } from "./Control";
 export { default as Defense } from "./Defense";
