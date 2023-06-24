@@ -9,7 +9,7 @@ const TranqScoreboard = (props: any) => {
   return (
     <div className={styles.scoreboard}>
       <div className={styles.tierTag}>
-        {["harmony", "discord", "transcendence"].includes(
+        {["harmony", "discord", "transcendence", "ascendant"].includes(
           data?.match?.tier.toLowerCase()
         ) && (
           <Image
