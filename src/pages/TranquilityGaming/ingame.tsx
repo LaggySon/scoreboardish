@@ -35,9 +35,13 @@ const InGame: NextPage<PageProps> = (props) => {
           }
         `}
       </style>
-      {["harmony", "discord", "transcendence", "admin pugs"].includes(
-        data?.match?.tier.toLowerCase()
-      ) ? (
+      {[
+        "harmony",
+        "discord",
+        "transcendence",
+        "admin pugs",
+        "ascendant",
+      ].includes(data?.match?.tier.toLowerCase()) ? (
         <TranqScoreboard data={data} />
       ) : (
         <TranqScoreboardEW data={data} />
