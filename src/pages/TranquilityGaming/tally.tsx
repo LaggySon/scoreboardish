@@ -48,13 +48,13 @@ const InGame: NextPage<PageProps> = (props) => {
     setMessage("");
   }
 
-  //OBS Websocket stuff
-  const obs = new obsSocket();
-  useEffect(() => {
-    console.log(obs.connect());
-    obs.getScene();
-    console.log(obs.scene);
-  }, []);
+  // //OBS Websocket stuff
+  // const obs = new obsSocket();
+  // useEffect(() => {
+  //   console.log(obs.connect());
+  //   obs.getScene();
+  //   console.log(obs.scene);
+  // }, []);
 
   //Get URL parameters
   const router = useRouter();
