@@ -7,7 +7,10 @@ export default function SocketHandler(req: any, res: any) {
     return;
   }
 
-  const io = new Server(res.socket.server);
+  const io = new Server(res.socket.server, {
+    path: "/api/socket",
+    addTrailingSlash: false,
+  });
   res.socket.server.io = io;
 
   io.on("connection", (socket) => {
