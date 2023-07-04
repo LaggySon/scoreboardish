@@ -10,11 +10,10 @@ export const pusher = new Pusher({
 });
 
 export default async function handler(req: any, res: any) {
-  const { message, sender } = req.body;
-  console.log(sender + ": " + message);
-  const response = await pusher.trigger("chat", "chat-event", {
-    message,
-    sender,
+  const { scene } = req.body;
+  console.log("New scene: " + scene);
+  const response = await pusher.trigger("tally", "tally-event", {
+    scene,
   });
 
   res.json({ message: "completed" });

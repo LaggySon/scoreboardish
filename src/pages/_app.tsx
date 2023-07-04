@@ -6,13 +6,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  const [sender, setSender] = useState("");
-  const router = useRouter();
-
-  const handleLogin = (e: any) => {
-    e.preventDefault();
-    router.push("/TranquilityGaming/tally");
-  };
   return (
     <>
       <Head>
@@ -57,12 +50,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <title>Scoreboardish</title>
       </Head>
 
-      <Component
-        handleLoginChange={(e: any) => setSender(e.target.value)}
-        sender={sender}
-        handleLogin={handleLogin}
-        {...pageProps}
-      />
+      <Component {...pageProps} />
     </>
   );
 };

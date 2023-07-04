@@ -4,44 +4,35 @@ import axios from "axios";
 import { env } from "../../env/client.mjs";
 
 const Chat = ({ sender }: any) => {
-  const [chats, setChats] = useState([]);
-  const [messageToSend, setMessageToSend] = useState("");
+  const [tally, setTally] = useState([]);
+  const [tallyToSend, setTallyToSend] = useState("");
 
   useEffect(() => {
     const pusher = new Pusher(env.NEXT_PUBLIC_KEY, {
       cluster: "us2",
     });
 
-    const channel = pusher.subscribe("chat");
+    const channel = pusher.subscribe("tally");
 
-    channel.bind("chat-event", function (data: any) {
-      setChats((prevState): any => [
-        ...prevState,
-        { sender: data.sender, message: data.message },
-      ]);
-      console.log(chats);
+    channel.bind("tally-event", function (data: any) {
+      setTally(data.scene);
     });
 
     return () => {
-      pusher.unsubscribe("chat");
+      pusher.unsubscribe("tally");
     };
   }, []);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await axios.post("/api/pusher", { message: messageToSend, sender });
+    await axios.post("/api/pusher", { scene: tallyToSend });
   };
 
   return (
     <>
-      <p>Hello, {sender}</p>
+      <p>Set The Scene</p>
       <div>
-        {chats.map((chat: any, id) => (
-          <>
-            <p>{chat.message}</p>
-            <small>{chat.sender}</small>
-          </>
-        ))}
+        <h1>Current Scene: {tally}</h1>
       </div>
 
       <form
@@ -51,9 +42,9 @@ const Chat = ({ sender }: any) => {
       >
         <input
           type="text"
-          value={messageToSend}
-          onChange={(e) => setMessageToSend(e.target.value)}
-          placeholder="start typing...."
+          value={tallyToSend}
+          onChange={(e) => setTallyToSend(e.target.value)}
+          placeholder="Scene Name"
         />
         <button type="submit">Send</button>
       </form>
