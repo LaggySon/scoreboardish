@@ -1,101 +1,64 @@
-import { NextPage } from "next/types";
-import { env } from "../../env/client.mjs";
-import { obsSocket } from "../../lib/obs";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import io from "socket.io-client";
+import Pusher from "pusher-js";
+import axios from "axios";
+import { env } from "../../env/client.mjs";
 
-let socket: any;
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-const URL = env.NEXT_PUBLIC_URL;
-const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
-
-const InGame: NextPage<PageProps> = (props) => {
-  const [message, setMessage] = useState("");
-  const [username, setUsername] = useState("");
-  const [allMessages, setAllMessages] = useState([]);
+const Chat = ({ sender }: any) => {
+  const [chats, setChats] = useState([]);
+  const [messageToSend, setMessageToSend] = useState("");
 
   useEffect(() => {
-    socketIntializer();
+    const pusher = new Pusher(env.NEXT_PUBLIC_KEY, {
+      cluster: "us2",
+    });
+
+    const channel = pusher.subscribe("chat");
+
+    channel.bind("chat-event", function (data: any) {
+      setChats((prevState): any => [
+        ...prevState,
+        { sender: data.sender, message: data.message },
+      ]);
+      console.log(chats);
+    });
 
     return () => {
-      socket.disconnect();
+      pusher.unsubscribe("chat");
     };
   }, []);
 
-  async function socketIntializer() {
-    await fetch("/api/socket");
-
-    socket = io();
-
-    socket.on("receive-message", (data: any) => {
-      setAllMessages((pre): any => [...pre, data]);
-    });
-  }
-
-  function handleSubmit(e: any) {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-
-    console.log("emitted");
-
-    socket.emit("send-message", {
-      username,
-      message,
-    });
-
-    setMessage("");
-  }
-
-  // //OBS Websocket stuff
-  // const obs = new obsSocket();
-  // useEffect(() => {
-  //   console.log(obs.connect());
-  //   obs.getScene();
-  //   console.log(obs.scene);
-  // }, []);
-
-  //Get URL parameters
-  const router = useRouter();
-  const [query, setQuery] = useState({});
-  useEffect(() => {
-    if (!router.isReady) return;
-    const query = router.query;
-    setQuery(query);
-  }, [router.isReady, router.query]);
+    await axios.post("/api/pusher", { message: messageToSend, sender });
+  };
 
   return (
-    <div>
-      <h1>Tranquility Messaging Application</h1>
-      <h1>Enter a username</h1>
-
-      <input value={username} onChange={(e) => setUsername(e.target.value)} />
-
-      <br />
-      <br />
-
+    <>
+      <p>Hello, {sender}</p>
       <div>
-        {allMessages.map(({ username, message }, index) => (
-          <div key={index}>
-            {username}: {message}
-          </div>
+        {chats.map((chat: any, id) => (
+          <>
+            <p>{chat.message}</p>
+            <small>{chat.sender}</small>
+          </>
         ))}
-
-        <br />
-
-        <form onSubmit={handleSubmit}>
-          <input
-            name="message"
-            placeholder="enter your message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            autoComplete={"off"}
-          />
-        </form>
       </div>
-    </div>
+
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <input
+          type="text"
+          value={messageToSend}
+          onChange={(e) => setMessageToSend(e.target.value)}
+          placeholder="start typing...."
+        />
+        <button type="submit">Send</button>
+      </form>
+    </>
   );
 };
 
-export default InGame;
+export default Chat;

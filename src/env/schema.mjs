@@ -10,6 +10,10 @@ export const serverSchema = z.object({
   GOOGLE_PROJECTID: z.string(),
   GOOGLE_PRIVATE_KEY: z.string(),
   GOOGLE_CLIENT_EMAIL: z.string(),
+  app_id: z.string(),
+  key: z.string(),
+  secret: z.string(),
+  cluster: z.string(),
 });
 
 /**
@@ -20,6 +24,7 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
   NEXT_PUBLIC_URL: z.string(),
+  NEXT_PUBLIC_KEY: z.string(),
 });
 
 /**
@@ -31,4 +36,5 @@ export const clientSchema = z.object({
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+  NEXT_PUBLIC_KEY: process.env.NEXT_PUBLIC_KEY,
 };
