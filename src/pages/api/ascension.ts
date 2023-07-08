@@ -34,7 +34,7 @@ export default async function handler(
   const sheets = google.sheets({ version: "v4", auth });
 
   const spreadsheetId = String("1qRG-6OqhHh9l648hkOqSFQV1kXKay52oTctVwx73J7U");
-  const range = `Player List!A2:I48`;
+  const range = `Player List!A2:I49`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({
     spreadsheetId,
