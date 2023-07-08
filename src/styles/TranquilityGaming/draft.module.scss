@@ -65,3 +65,23 @@
     }
   }
 }
+
+.host {
+  iframe {
+    // height: 100%;
+    // width: 100%;
+    border: 0.5rem solid var(--tranqBlue);
+    position: relative;
+    &:before {
+      height: 100%;
+      width: 100%;
+      content: "";
+      position: absolute;
+
+      // -webkit-clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
+      // clip-path: polygon(65% 0, 100% 0, 100% 100%, 35% 100%);
+      border: 0.5rem solid var(--tranqYellow);
+      z-index: 5;
+    }
+  }
+}

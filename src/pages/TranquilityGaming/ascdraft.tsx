@@ -15,14 +15,14 @@ const Draft = (props: any) => {
     refreshInterval: 10000,
   });
 
-  const cams = data?.cams.slice(0, 6);
+  const cams = data?.cams.slice(0, 7);
   console.log(cams);
 
   return (
     <div className={styles.draftContainer}>
       <div className={[styles.casterContainer, styles.top].join(" ")}>
         {cams &&
-          cams.slice(0, 3).map((user: any, index: number) => (
+          cams.slice(0, 3)?.map((user: any, index: number) => (
             <div className={styles.casterBox} key={index}>
               <TranqCaster font="0.9rem" name={user[0]} link={user[1]} />
             </div>
@@ -31,12 +31,12 @@ const Draft = (props: any) => {
       <div className={styles.middle}>
         <div className={styles.screenShare}>
           <TranqTelestrator
-            name={cams.slice(-1)[0][0]}
-            link={cams.slice(-1)[0][1]}
+            name={cams && cams[6][0]}
+            link={cams && cams[6][1]}
             font="2.2rem"
           />
         </div>
-        <div>
+        <div className={styles.host}>
           <TranqCaster
             font="0.6rem"
             name={
@@ -50,7 +50,7 @@ const Draft = (props: any) => {
       </div>
       <div className={[styles.casterContainer, styles.bottom].join(" ")}>
         {cams &&
-          cams.slice(3, 6).map((user: any, index: number) => (
+          cams.slice(3, 6)?.map((user: any, index: number) => (
             <div className={styles.casterBox} key={index}>
               <TranqCaster font="0.6rem" name={user[0]} link={user[1]} />
             </div>

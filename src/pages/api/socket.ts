@@ -1,29 +1,23 @@
 import { Server } from "socket.io";
 
-const ioHandler = (req, res) => {
-  if (!res.socket.server.io) {
-    console.log("*First use, starting socket.io");
-
-    const io = new Server(res.socket.server);
-
-    io.on("connection", (socket) => {
-      socket.broadcast.emit("a user connected");
-      socket.on("hello", (msg) => {
-        socket.emit("hello", "world!");
-      });
-    });
-
-    res.socket.server.io = io;
-  } else {
-    console.log("socket.io already running");
+export default function SocketHandler(req: any, res: any) {
+  if (res.socket.server.io) {
+    console.log("Already set up");
+    res.end();
+    return;
   }
-  res.end();
-};
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+  const io = new Server(res.socket.server, {
+    path: "/api/socket",
+    addTrailingSlash: false,
+  });
+  res.socket.server.io = io;
 
-export default ioHandler;
+  io.on("connection", (socket) => {
+    socket.on("send-message", (obj) => {
+      io.emit("receive-message", obj);
+    });
+  });
+
+  console.log("Setting up the socket");
+}
