@@ -10,14 +10,23 @@ import { discovery_v1 } from "googleapis";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
-const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+const API = URL + `/api/sheets`;
 
 const Credits = (props: any) => {
-  const { data } = useSWR(API, fetcher, {
+  //Get URL parameters
+  const router = useRouter();
+  const [query, setQuery] = useState({ sheet: "" });
+  useEffect(() => {
+    if (!router.isReady) return;
+    const { sheet } = router.query;
+    setQuery({ sheet: String(sheet) });
+  }, [router.isReady, router.query]);
+
+  const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });

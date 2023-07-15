@@ -12,11 +12,11 @@ import React, {
   useState,
 } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { useRouter } from "next/router";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
-const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+const API = URL + `/api/sheets`;
 
 const MapInfo = (props: any) => {
   function mapTypeSvg(map: MapType) {
@@ -36,16 +36,18 @@ const MapInfo = (props: any) => {
   function findActive() {
     return data?.maps?.findIndex((map: MapType) => map.isComplete === false);
   }
-  const { data } = useSWR(API, fetcher, {
+  //Get URL parameters
+  const router = useRouter();
+  const [query, setQuery] = useState({ sheet: "" });
+  useEffect(() => {
+    if (!router.isReady) return;
+    const { sheet } = router.query;
+    setQuery({ sheet: String(sheet) });
+  }, [router.isReady, router.query]);
+
+  const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
-    // onSuccess: (data, key, config) => {
-    //   if (data && data.maps.length > 8) {
-    //     divRef.current?.scrollIntoView();
-    //   } else {
-    //     window.scrollTo(0, 0);
-    //   }
-    // },
   });
   const divRef = useRef<null | HTMLDivElement>(null);
   if (!data) {

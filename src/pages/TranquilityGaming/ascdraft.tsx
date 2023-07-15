@@ -3,14 +3,24 @@ import { env } from "../../env/client.mjs";
 import TranqCaster from "../../components/tranqCaster2";
 import styles from "../../styles/TranquilityGaming/draft.module.scss";
 import TranqTelestrator from "../../components/tranqTelestrator";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
-const API =
-  URL + `/api/sheets?sheet=15lldKBTIAAzgKlg7SizMCJkx68OVyOiMlRonJJsHq5o`;
+const API = URL + `/api/sheets`;
 
 const Draft = (props: any) => {
-  const { data } = useSWR(API, fetcher, {
+  //Get URL parameters
+  const router = useRouter();
+  const [query, setQuery] = useState({ sheet: "" });
+  useEffect(() => {
+    if (!router.isReady) return;
+    const { sheet } = router.query;
+    setQuery({ sheet: String(sheet) });
+  }, [router.isReady, router.query]);
+
+  const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
