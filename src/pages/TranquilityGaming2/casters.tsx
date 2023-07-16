@@ -39,12 +39,16 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      {["harmony", "discord", "transcendence", "admin"].includes(
-        data?.match?.tier.toLowerCase()
-      ) ? (
-        <TranqScoreboard data={data} info={false} />
+      {[
+        "harmony",
+        "discord",
+        "transcendence",
+        "admin pugs",
+        "ascendant",
+      ].includes(data?.match?.tier.toLowerCase()) ? (
+        <TranqScoreboard data={data} />
       ) : (
-        <TranqScoreboardEW data={data} info={false} />
+        <TranqScoreboardEW data={data} />
       )}
 
       <div className={styles.casters}>
