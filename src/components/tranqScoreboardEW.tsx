@@ -13,7 +13,7 @@ export default function Scoreboard(props: any) {
             className={styles.logo}
           />
           <div>
-            <p className={styles.caption}>Event Week</p>
+            <p className={styles.caption}>Special Event</p>
             <p>{props?.data?.match?.tier}</p>
           </div>
 
