@@ -18,7 +18,7 @@ export default function Scoreboard(props: any) {
           </div>
 
           <Image
-            src={props?.data?.teams?.team1?.logoPath}
+            src={props?.data?.teams?.team2?.logoPath}
             height="60"
             width="60"
             alt="Tranq"

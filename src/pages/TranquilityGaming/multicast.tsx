@@ -56,6 +56,7 @@ const Casters = (props: any) => {
         "transcendence",
         "admin pugs",
         "ascendant",
+        "valorant",
       ].includes(data?.match?.tier.toLowerCase()) ? (
         <TranqScoreboard data={data} />
       ) : (

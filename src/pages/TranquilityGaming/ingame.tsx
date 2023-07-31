@@ -51,6 +51,7 @@ const InGame: NextPage<PageProps> = (props) => {
         "transcendence",
         "admin pugs",
         "ascendant",
+        "valorant",
       ].includes(data?.match?.tier.toLowerCase()) ? (
         <TranqScoreboard data={data} />
       ) : (
