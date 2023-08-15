@@ -1,18 +1,17 @@
-import styles from "../../styles/TranquilityGaming/megacast.module.scss";
-import Image from "next/image";
+import { NextPage } from "next/types";
 import useSWR from "swr";
 import { env } from "../../env/client.mjs";
 import TranqScoreboard from "../../components/tranqScoreboard";
-import TranqCaster from "../../components/tranqMegaCaster";
 import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import TranqValScoreboard from "../../components/tranqValorant";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
 const API = URL + `/api/sheets`;
 
-const Casters = (props: any) => {
+const InGame: NextPage<PageProps> = (props) => {
   //Get URL parameters
   const router = useRouter();
   const [query, setQuery] = useState({ sheet: "" });
@@ -26,9 +25,6 @@ const Casters = (props: any) => {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
-
-  const users = data?.cams.slice(0, 12);
-
   if (!data) {
     return <>Loading...</>;
   }
@@ -50,29 +46,9 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      {[
-        "harmony",
-        "discord",
-        "transcendence",
-        "admin pugs",
-        "ascendant",
-        "valorant",
-      ].includes(data?.match?.tier.toLowerCase()) ? (
-        <TranqScoreboard data={data} />
-      ) : (
-        <TranqScoreboardEW data={data} />
-      )}
-      <div className={styles.casterContainer}>
-        <div className={styles.casters}>
-          {users.map((user: any, index: number) => (
-            <div className={styles.casterBox} key={index}>
-              <TranqCaster name={user[0]} link={user[1]} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <TranqValScoreboard data={data}></TranqValScoreboard>
     </>
   );
 };
 
-export default Casters;
+export default InGame;

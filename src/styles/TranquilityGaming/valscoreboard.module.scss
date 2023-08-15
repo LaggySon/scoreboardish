@@ -1,0 +1,78 @@
+.scoreboard {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.logo1,
+.logo2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  //   outline: 2px solid tomato;
+  border-radius: 3rem;
+  object-fit: cover;
+}
+.name1,
+.name2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 4rem;
+  text-align: center;
+}
+.logo1 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    var(--team1PrimaryColor) 0%,
+    var(--team1SecondaryColor) 100%
+  );
+  top: -36px;
+  left: 36.7rem;
+  transform: scale(0.22);
+  -webkit-clip-path: polygon(0% 0%, 53% 0, 100% 50%, 53% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 53% 0, 100% 50%, 53% 100%, 0% 100%);
+}
+
+.logo2 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    var(--team2PrimaryColor) 0%,
+    var(--team2SecondaryColor) 100%
+  );
+  top: -36.1px;
+  left: 912px;
+  transform: scale(0.22);
+
+  -webkit-clip-path: polygon(53% 0, 100% 1%, 100% 100%, 53% 100%, 0% 50%);
+  clip-path: polygon(53% 0, 100% 1%, 100% 100%, 53% 100%, 0% 50%);
+}
+
+.name1 {
+  top: 87px;
+  left: 850px;
+}
+.name2 {
+  top: 87px;
+  left: 1005px;
+}
+
+.score1,
+.score2 {
+  position: absolute;
+  top: 0;
+  left: 1000px;
+  font-size: 1.2rem;
+  width: 1rem;
+  text-align: center;
+}
+.score1 {
+  top: 33px;
+  left: 864px;
+}
+.score2 {
+  top: 33px;
+  left: 1044px;
+}
