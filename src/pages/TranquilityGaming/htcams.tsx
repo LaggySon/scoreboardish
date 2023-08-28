@@ -32,7 +32,7 @@ const Casters = (props: any) => {
     refreshInterval: 10000,
   });
 
-  const users = data?.cams.slice(0, 4);
+  const users = data?.cams;
   console.log(users);
 
   //TIMER STUFF
@@ -90,7 +90,7 @@ const Casters = (props: any) => {
       )}
       <div className={styles.casterContainer}>
         <div className={styles.castersTri}>
-          {users.slice(0, -1).map((user: any, index: number) => (
+          {users.slice(2, -1).map((user: any, index: number) => (
             <div className={styles.casterBox} key={index}>
               <TranqCaster name={user[0]} link={user[1]} />
             </div>
