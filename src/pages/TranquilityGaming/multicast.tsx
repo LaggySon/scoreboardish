@@ -27,7 +27,7 @@ const Casters = (props: any) => {
     refreshInterval: 10000,
   });
 
-  const users = data?.cams.slice(0, 12);
+  const users = data?.cams.slice(2, 12);
 
   if (!data) {
     return <>Loading...</>;
