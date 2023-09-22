@@ -70,7 +70,7 @@ const Casters = (props: any) => {
               (staff: TwitchStaff) => staff.title === "Play By Play"
             ).name
           }
-          link="https://vdo.ninja/?view=fdGjaBK&hash=30e9&label=Play_By_Play&password=gamer"
+          link={data?.cams[0][1]}
         />
         {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
         <TranqCaster
@@ -79,7 +79,7 @@ const Casters = (props: any) => {
               (staff: TwitchStaff) => staff.title === "Analyst"
             ).name
           }
-          link="https://vdo.ninja/?view=fxj4Bub&hash=30e9&label=Analyst&password=gamer"
+          link={data?.cams[1][1]}
         />
       </div>
     </>
