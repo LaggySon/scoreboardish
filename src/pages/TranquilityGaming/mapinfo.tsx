@@ -3,7 +3,14 @@ import useSWR from "swr";
 import { NextPage } from "next/types";
 import styles from "../../styles/TranquilityGaming/mapinfo.module.scss";
 import Image from "next/image";
-import { Control, Hybrid, Escort, Push, Assault } from "../../components/svgs";
+import {
+  Control,
+  Hybrid,
+  Escort,
+  Push,
+  Assault,
+  Flashpoint,
+} from "../../components/svgs";
 import React, {
   ReactNode,
   ReactSVGElement,
@@ -31,6 +38,8 @@ const MapInfo = (props: any) => {
         return <Push />;
       case "Assault":
         return <Assault />;
+      case "Flashpoint":
+        return <Flashpoint />;
     }
   }
   function findActive() {
