@@ -3,7 +3,8 @@ import Image from "next/image";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import SvgAttack from "./icons/Attack";
 import SvgDefense from "./icons/Defense";
-import SvgTrapezoid from "./icons/Trapezoid";
+import SvgTrapezoids11FinalsL from "./icons/Trapezoids11FinalsL";
+import SvgTrapezoids11FinalsR from "./icons/Trapezoids11FinalsR";
 const TranqScoreboard = (props: any) => {
   const data = props.data;
   const infoBox = !(props.info === false);
@@ -14,7 +15,12 @@ const TranqScoreboard = (props: any) => {
         <div className={styles.teamMain}>
           <div className={styles.accentline} />
           <div className={styles.trapezoid}>
-            <SvgTrapezoid />
+            <span className={styles.tl}>
+              <SvgTrapezoids11FinalsL />
+            </span>
+            <span className={styles.tr}>
+              <SvgTrapezoids11FinalsR />
+            </span>
           </div>
           {infoBox &&
             ["ATTACK", "DEFENSE"].includes(

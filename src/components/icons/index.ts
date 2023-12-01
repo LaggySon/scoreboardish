@@ -7,3 +7,5 @@ export { default as Flashpoint } from "./Flashpoint";
 export { default as Hybrid } from "./Hybrid";
 export { default as Push } from "./Push";
 export { default as Trapezoid } from "./Trapezoid";
+export { default as Trapezoids11FinalsL } from "./Trapezoids11FinalsL";
+export { default as Trapezoids11FinalsR } from "./Trapezoids11FinalsR";

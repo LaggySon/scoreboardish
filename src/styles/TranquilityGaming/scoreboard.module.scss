@@ -62,11 +62,23 @@
       display: flex;
       position: relative;
       .trapezoid {
-        font-size: 10rem;
         position: absolute;
         left: -1.4rem;
-        transform: translateY(0.85rem);
+
+        transform: translateY(0.675rem);
         color: var(--team1PrimaryColor);
+        .tl {
+          font-size: 5.5rem;
+          transform: translateY(0.27rem);
+          position: absolute;
+          color: white;
+          top: 1rem;
+          color: var(--team1SecondaryColor);
+        }
+        .tr {
+          font-size: 8rem;
+          margin-inline-start: 3.5rem;
+        }
       }
       .accentline {
         position: absolute;
@@ -249,8 +261,11 @@
       .trapezoid {
         left: auto;
         right: -1.4rem;
-        transform: translateY(0.85rem) scaleX(-1);
+        transform: translateY(0.675rem) scaleX(-1);
         color: var(--team2PrimaryColor);
+        .tl {
+          color: var(--team2SecondaryColor);
+        }
       }
     }
   }

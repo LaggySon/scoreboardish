@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="93.65601" height="28" viewBox="0 0 93.65601 28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb287f;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="cls-1" points="5.656 0 0 0 28 28 33.656 28 5.656 0"/>
+    <polygon class="cls-1" points="15.656 0 10 0 38 28 43.656 28 15.656 0"/>
+    <polygon class="cls-1" points="25.656 0 20 0 48 28 53.656 28 25.656 0"/>
+    <polygon class="cls-1" points="55.656 0 50 0 78 28 83.656 28 55.656 0"/>
+    <polygon class="cls-1" points="65.656 0 60 0 88 28 93.656 28 65.656 0"/>
+    <polygon class="cls-1" points="45.656 0 40 0 68 28 73.656 28 45.656 0"/>
+    <polygon class="cls-1" points="35.656 0 30 0 58 28 63.656 28 35.656 0"/>
+  </g>
+</svg>
