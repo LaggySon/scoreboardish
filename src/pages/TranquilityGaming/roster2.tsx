@@ -77,7 +77,7 @@ const Casters = (props: any) => {
 
       <div className={[styles.roster, styles.team2].join(" ")}>
         {data.teams.team2.roster.map((player: Player, index: number) => (
-          <div className={styles.player}>
+          <div className={styles.player} key={index}>
             {player.swap && (
               <div className={styles.swap}>
                 <SvgSwap /> SWAP
