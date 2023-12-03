@@ -1,4 +1,4 @@
-import { string } from "zod";
+import { boolean, string } from "zod";
 
 declare global {
   type TeamData = {
@@ -9,6 +9,13 @@ declare global {
   type PageProps = {
     team1: Team;
     team2: Team;
+  };
+
+  type Player = {
+    name: string;
+    pronouns: string;
+    hero: string;
+    swap: boolean;
   };
 
   type Team = {
@@ -22,6 +29,7 @@ declare global {
     primaryCol: string;
     secondaryCol: string;
     advInfo: string;
+    roster: Player[];
   };
 
   type MatchInfo = {

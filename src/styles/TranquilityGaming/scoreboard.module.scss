@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   max-width: 100%;
-  font-size: 2rem;
+  font-size: 1.75rem;
   // font-weight: bold;
   font-family: "Industry";
   height: 100%;
@@ -50,31 +50,50 @@
 
   .team {
     display: flex;
+    &.team2 {
+      flex-direction: row-reverse;
+      .teamMain {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+    }
 
     .teamMain {
-      //   &::before {
-      //     content: "";
-      //     width: 100%;
-      //     height: 2px;
-      //     background-color: black;
-      //     position: absolute;
-      //     z-index: 1;
-      //     top: 5px;
-      //   }
-      //   &::after {
-      //     content: "";
-      //     width: 100%;
-      //     height: 2px;
-      //     background-color: black;
-      //     position: absolute;
-      //     bottom: 5px;
-      //     z-index: 1;
-      //   }
+      display: flex;
+      position: relative;
+      .trapezoid {
+        position: absolute;
+        left: -1.4rem;
+
+        transform: translateY(0.675rem);
+        color: var(--team1PrimaryColor);
+        .tl {
+          font-size: 5.5rem;
+          transform: translateY(0.27rem);
+          position: absolute;
+          color: white;
+          top: 1rem;
+          color: var(--team1SecondaryColor);
+        }
+        .tr {
+          font-size: 8rem;
+          margin-inline-start: 3.5rem;
+        }
+      }
+      .accentline {
+        position: absolute;
+        bottom: 0.75rem;
+        width: 87.5%;
+        left: 0;
+        height: 0.25rem;
+        background-color: var(--team1PrimaryColor);
+      }
       .name {
         z-index: 1;
         max-width: 330px;
         flex-shrink: 1;
         white-space: nowrap;
+        // margin-bottom: 0.25rem;
       }
       .accent {
         z-index: 2;
@@ -129,8 +148,8 @@
         }
       }
 
-      background-color: var(--textcolor);
-      color: var(--bgcolor);
+      background-color: black;
+      color: white;
       display: flex;
       align-items: center;
       height: 65px;
@@ -140,9 +159,28 @@
       padding: 0;
       position: relative;
 
+      &::before {
+        content: "";
+        width: 100%;
+        height: 0.25rem;
+        background-color: #b6ac6d;
+        position: absolute;
+        bottom: 0.25rem;
+      }
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 0.25rem;
+        background-color: #b6ac6d;
+        position: absolute;
+        top: 0.25rem;
+      }
+
       .record {
         font-size: 1.2rem;
         margin-top: 0.5rem;
+        // margin-bottom: 0.25rem;
       }
 
       .logoContainer {
@@ -191,7 +229,7 @@
       }
       .scoreBox {
         // margin-left: 0.25rem;
-        background-color: var(--team1PrimaryColor);
+        background-color: black;
       }
       .teamMain {
         justify-content: right;
@@ -199,7 +237,7 @@
       .atkDef {
         margin-right: auto;
         margin-left: 1rem;
-        filter: drop-shadow(-2px 2px 1px black);
+        filter: drop-shadow(-2px 2px 0px black);
       }
     }
     &.team2 {
@@ -208,12 +246,26 @@
       }
       .scoreBox {
         // margin-right: 0.25rem;
-        background-color: var(--team2PrimaryColor);
+        background-color: black;
       }
       .atkDef {
         margin-left: auto;
         margin-right: 1rem;
-        filter: drop-shadow(2px 2px 1px black);
+        filter: drop-shadow(2px 2px 0px black);
+      }
+      .accentline {
+        left: auto;
+        right: 0;
+        background-color: var(--team2PrimaryColor);
+      }
+      .trapezoid {
+        left: auto;
+        right: -1.4rem;
+        transform: translateY(0.675rem) scaleX(-1);
+        color: var(--team2PrimaryColor);
+        .tl {
+          color: var(--team2SecondaryColor);
+        }
       }
     }
   }
