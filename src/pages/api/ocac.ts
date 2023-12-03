@@ -50,6 +50,14 @@ export default async function handler(
         secondaryCol: data[0][6],
         atkDef: data[0][8].toUpperCase(),
         advInfo: data[0][10],
+        roster: response.data.values.slice(34, 39).map((row: string[]) => {
+          return {
+            name: row[0],
+            pronouns: row[1],
+            hero: row[2],
+            swap: row[3] === "TRUE",
+          };
+        }),
       },
       team2: {
         name: data[1][1],
@@ -62,6 +70,14 @@ export default async function handler(
         secondaryCol: data[1][6],
         atkDef: data[1][8].toUpperCase(),
         advInfo: data[1][10],
+        roster: response.data.values.slice(39, 44).map((row: string[]) => {
+          return {
+            name: row[0],
+            pronouns: row[1],
+            hero: row[2],
+            swap: row[3] === "TRUE",
+          };
+        }),
       },
     },
     twitch: response.data.values
