@@ -237,7 +237,7 @@
       .atkDef {
         margin-right: auto;
         margin-left: 1rem;
-        filter: drop-shadow(-2px 2px 1px black);
+        filter: drop-shadow(-2px 2px 0px black);
       }
     }
     &.team2 {
@@ -251,7 +251,7 @@
       .atkDef {
         margin-left: auto;
         margin-right: 1rem;
-        filter: drop-shadow(2px 2px 1px black);
+        filter: drop-shadow(2px 2px 0px black);
       }
       .accentline {
         left: auto;

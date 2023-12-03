@@ -1,0 +1,96 @@
+.roster {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-block: 2rem;
+  height: 45rem;
+  align-items: center;
+
+  .player {
+    overflow: hidden;
+    max-height: 40rem;
+    background-color: var(--team1PrimaryColor);
+    width: 20rem;
+    color: white;
+    position: relative;
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-block: 1.5rem;
+      background-color: black;
+
+      &::before {
+        content: "";
+        width: 100%;
+        height: 0.25rem;
+        background-color: #b6ac6d;
+        position: absolute;
+        bottom: 0.25rem;
+      }
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 0.25rem;
+        background-color: #b6ac6d;
+        position: absolute;
+        top: 0.25rem;
+      }
+
+      .name {
+        color: white;
+        font-size: 1.6rem;
+
+        //   outline: 2px solid tomato;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .role {
+        color: #b6ac6d;
+        font-size: 2rem;
+      }
+
+      .pronouns {
+        color: white;
+      }
+    }
+    .swap {
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem;
+      font-size: 3rem;
+      background-color: var(--team1SecondaryColor);
+    }
+    .hero {
+      overflow: hidden;
+      img {
+        transform: translateX(-35%) scale(0.75) translateY(-16.75%);
+        filter: drop-shadow(5px 5px 5px black);
+      }
+    }
+  }
+}
+
+.roster {
+  &.team2 {
+    .player {
+      background-color: var(--team2PrimaryColor);
+    }
+    .swap {
+      background-color: var(--team2SecondaryColor);
+    }
+  }
+}
