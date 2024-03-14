@@ -1,9 +1,11 @@
 .casterFrame {
-  aspect-ratio: 16 / 9;
   width: 100%;
+
   iframe {
     height: 99%;
     width: 99%;
+    border: none;
+    border-radius: 0.5rem;
   }
   position: relative;
   .info {

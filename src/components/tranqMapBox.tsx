@@ -48,8 +48,8 @@ export default function MapBox(props: any) {
           <Image
             src={team1.logoPath}
             alt={team1.short}
-            height={50}
-            width={50}
+            height={40}
+            width={40}
           ></Image>
         </div>
         <div className={styles.name}>{team1.name}</div>
@@ -71,8 +71,8 @@ export default function MapBox(props: any) {
           <Image
             src={team2.logoPath}
             alt={team2.short}
-            height={50}
-            width={50}
+            height={40}
+            width={40}
           ></Image>
         </div>
         <div className={styles.name}>{team2.name}</div>

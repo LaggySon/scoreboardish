@@ -1,7 +1,7 @@
 .types {
   display: flex;
   margin-left: 25rem;
-  gap: 1.6rem;
+  gap: 1.65rem;
   .divider {
     color: transparent;
     background-color: transparent;
@@ -56,10 +56,17 @@
     align-items: center;
     padding-right: 1rem;
   }
+  .team1 {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  .team2 {
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
   .team1,
   .team2 {
     display: flex;
     background-color: black;
+    height: 50px;
   }
   .team1 {
     .name {
@@ -70,5 +77,11 @@
     .name {
       background-color: var(--team2PrimaryColor);
     }
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 0.5rem;
   }
 }
