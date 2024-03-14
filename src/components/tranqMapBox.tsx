@@ -14,8 +14,9 @@ export default function MapBox(props: any) {
   const team1: Team = props.teams.team1;
   const team2: Team = props.teams.team2;
 
-  const t1scores = [1, 2, 3, 4, 0];
-  const t2scores = [4, 3, 2, 1, 4];
+  function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
 
   function mapTypeSvg(map: MapType) {
     switch (map.type) {
@@ -37,7 +38,9 @@ export default function MapBox(props: any) {
     <div className={styles.mapbox}>
       <div className={styles.types}>
         {maps.map((map: MapType, i: number) => (
-          <div className={styles.icon}>{mapTypeSvg(map)}</div>
+          <>
+            <div className={styles.icon}>{mapTypeSvg(map)}</div>
+          </>
         ))}
       </div>
       <div className={styles.team1}>
@@ -51,8 +54,14 @@ export default function MapBox(props: any) {
         </div>
         <div className={styles.name}>{team1.name}</div>
         <div className={styles.scores}>
-          {t1scores.map((score, i) => (
-            <div className={styles.score}>{score}</div>
+          {maps.map((map: MapType, i: number) => (
+            <>
+              {i !== 0 && <div className={styles.divider}>x</div>}
+              <div className={styles.score}>
+                {map.isComplete ? getRandomInt(4) : "-"}
+              </div>
+              {i === maps.length - 1 && <div className={styles.divider}>x</div>}
+            </>
           ))}
         </div>
         <div className={styles.matchScore}>{team2.score}</div>
@@ -68,8 +77,14 @@ export default function MapBox(props: any) {
         </div>
         <div className={styles.name}>{team2.name}</div>
         <div className={styles.scores}>
-          {t2scores.map((score, i) => (
-            <div className={styles.score}>{score}</div>
+          {maps.map((map: MapType, i: number) => (
+            <>
+              {i !== 0 && <div className={styles.divider}>x</div>}
+              <div className={styles.score}>
+                {map.isComplete ? getRandomInt(4) : "-"}
+              </div>
+              {i === maps.length - 1 && <div className={styles.divider}>x</div>}
+            </>
           ))}
         </div>
         <div className={styles.matchScore}>{team2.score}</div>
