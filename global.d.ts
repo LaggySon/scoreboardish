@@ -62,6 +62,7 @@ declare global {
     title: string;
     name: string;
     social: string;
+    pronouns: string;
   };
 
   type AllData = {

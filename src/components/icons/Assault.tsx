@@ -11,7 +11,7 @@ const SvgAssault = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <style>{".Assault_svg__cls-2{fill:#fff}"}</style>
+      <style>{".Assault_svg__cls-2{fill:currentcolor}"}</style>
     </defs>
     <path
       d="M314.822 513.801 563.62 265.003a51.45 51.45 0 0 1 72.76 0l248.798 248.798a51.45 51.45 0 0 1 0 72.76L636.38 835.36a51.45 51.45 0 0 1-72.76 0L314.822 586.562a51.45 51.45 0 0 1 0-72.76"

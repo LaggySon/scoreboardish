@@ -11,7 +11,7 @@ const SvgFlashpoint = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      <style>{".Flashpoint_svg__cls-1{fill:#fff}"}</style>
+      <style>{".Flashpoint_svg__cls-1{fill:currentcolor}"}</style>
     </defs>
     <path
       d="m311.104 373.621-58.806 58.806a32.536 32.536 0 0 1-46.012 0L26.156 252.298a32.536 32.536 0 0 1 0-46.012l180.13-180.13a32.536 32.536 0 0 1 46.012 0l58.806 58.807 12.166-12.166-57.82-57.82a51.136 51.136 0 0 0-72.317 0L14.977 193.134a51.136 51.136 0 0 0 0 72.318l178.156 178.155a51.136 51.136 0 0 0 72.318 0l57.82-57.819Z"

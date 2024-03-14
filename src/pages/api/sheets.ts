@@ -97,7 +97,7 @@ export default async function handler(
     twitch: response.data.values
       .slice(45, response.data.values.length)
       .map((row: string[]) => {
-        return { title: row[0], name: row[1], social: row[2] };
+        return { title: row[0], name: row[1], social: row[2], pronouns: "any" };
       }),
     maps: response.data.values
       .slice(10, 34)

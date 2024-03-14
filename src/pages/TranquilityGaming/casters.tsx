@@ -6,6 +6,7 @@ import TranqScoreboard from "../../components/tranqScoreboard";
 import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 import TranqCaster from "../../components/tranqCaster";
 import TranqPred from "../../components/tranqPred";
+import MapBox from "../../components/tranqMapBox";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -49,18 +50,7 @@ const Casters = (props: any) => {
           }
         `}
       </style>
-      {[
-        "harmony",
-        "discord",
-        "transcendence",
-        "admin pugs",
-        "ascendant",
-        "valorant",
-      ].includes(data?.match?.tier.toLowerCase()) ? (
-        <TranqScoreboard data={data} />
-      ) : (
-        <TranqScoreboardEW data={data} />
-      )}
+      
 
       <div className={styles.casters}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
@@ -82,6 +72,7 @@ const Casters = (props: any) => {
           link={data?.cams[1][1]}
         />
       </div>
+      <MapBox maps={data.maps} teams={data.teams}/>
     </>
   );
 };
