@@ -29,24 +29,28 @@ declare global {
     primaryCol: string;
     secondaryCol: string;
     advInfo: string;
-    roster: Player[];
+    cat:string;
   };
 
   type MatchInfo = {
     tier: string;
-    region: string;
     dateTime: string;
     stage: string;
     week: string;
     weekNum?: string;
-    mapInfo: string;
     tierTag: string;
-    nextMap: string;
-    ticker1: string;
-    ticker2: string;
-    addInfo: string;
-    accColor: string;
+    showTierTag:boolean;
     showPreds?: boolean;
+    TMInfo:string;
+    showTM:boolean;
+    TRInfo:string;
+    showTR:boolean;
+    TLInfo:string;
+    showTL:boolean;
+    currentMap:string;
+    currentGame:string;
+    showSides:boolean;
+    swapSides:boolean;
   };
 
   type MapType = {
@@ -63,6 +67,7 @@ declare global {
     name: string;
     social: string;
     pronouns: string;
+    cam:string;
   };
 
   type AllData = {
@@ -70,7 +75,6 @@ declare global {
     teams: TeamData;
     maps: MapType[];
     match: MatchInfo;
-    cams?: string[];
   };
 }
 export default global;

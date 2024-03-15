@@ -34,64 +34,44 @@ export default async function handler(
   const sheets = google.sheets({ version: "v4", auth });
 
   const spreadsheetId = String(sheet);
-  const range = `COMPRESS!A1:M60`;
+  const range = `Output!A1:T50`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
   });
 
-  const newRange = "BroadcastPanel!B36:C48";
-
-  const newResponse: GaxiosResponse | null =
-    await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: newRange,
-    });
-
   const data = response.data.values;
-  const cams = newResponse.data.values;
+
+  console.log(data);
+
   const result: AllData = {
     teams: {
       team1: {
-        name: data[0][1],
-        short: data[0][2],
-        code: data[0][3],
-        logoPath: data[0][4],
-        info: data[0][7],
-        score: data[0][9],
-        primaryCol: data[0][5],
-        secondaryCol: data[0][6],
-        atkDef: data[0][8].toUpperCase(),
-        advInfo: data[0][10],
-        roster: response.data.values.slice(34, 39).map((row: string[]) => {
-          return {
-            name: row[0],
-            pronouns: row[1],
-            hero: row[2],
-            swap: row[3] === "TRUE",
-          };
-        }),
-      },
-      team2: {
-        name: data[1][1],
-        short: data[1][2],
-        code: data[1][3],
-        logoPath: data[1][4],
-        info: data[1][7],
-        score: data[1][9],
+        name: data[1][0],
+        short: data[1][1],
+        code: data[1][2],
+        logoPath: data[1][3],
+        info: data[1][8],
+        score: data[1][10],
         primaryCol: data[1][5],
         secondaryCol: data[1][6],
-        atkDef: data[1][8].toUpperCase(),
-        advInfo: data[1][10],
-        roster: response.data.values.slice(39, 44).map((row: string[]) => {
-          return {
-            name: row[0],
-            pronouns: row[1],
-            hero: row[2],
-            swap: row[3] === "TRUE",
-          };
-        }),
+        atkDef: data[1][11],
+        cat:data[1][9]
+        
+      },
+      team2: {
+        name: data[2][0],
+        short: data[2][1],
+        code: data[2][2],
+        logoPath: data[2][3],
+        info: data[2][8],
+        score: data[2][10],
+        primaryCol: data[2][5],
+        secondaryCol: data[2][6],
+        atkDef: data[2][11],
+        cat: data[2][9],
+
       },
     },
     twitch: response.data.values
@@ -100,7 +80,7 @@ export default async function handler(
         return { title: row[0], name: row[1], social: row[2], pronouns: "any" };
       }),
     maps: response.data.values
-      .slice(10, 34)
+      .slice(13, 32)
       .filter((row: string[]) => row.length > 1)
       .map((row: string[]) => {
         let mapString = "";
@@ -119,23 +99,25 @@ export default async function handler(
         };
       }),
     match: {
-      tier: data[3][2],
-      region: data[3][3],
-      dateTime: data[3][1],
-      stage: data[3][5],
-      week: data[3][4],
-      weekNum: data[3][11],
-      mapInfo: data[3][7],
-      tierTag: data[3][10],
-      nextMap: data[3][6],
-      ticker1: data[3][8],
-      ticker2: data[3][9],
-      addInfo: data[5][1],
-      accColor: data[5][2],
-      showPreds: data[3][12] == "TRUE",
+      dateTime:data[5][0],
+      TMInfo:data[5][1],
+      showTM:data[5][2],
+      tierTag:data[5][3],
+      showTierTag:data[5][4]==="TRUE",
+      TLInfo:data[5][5],
+      showTL:data[5][6],
+      TRInfo:data[5][7],
+      showTR:data[5][8],
+      currentMap:data[5][9],
+      showSides:data[5][10]==="TRUE",
+      swapSides:data[5][11]==="TRUE",
+      currentGame:data[5][12],
+      tier:data[1][6],
+      week:"",
+      stage:""
     },
   };
-  result["cams"] = cams;
+  // result["cams"] = cams;
   // console.log(result);
   res.status(200).json(result);
 }
