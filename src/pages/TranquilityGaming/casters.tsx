@@ -45,12 +45,11 @@ const Casters = (props: any) => {
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
-            font-family: "Industry";
+            font-family: "OswaldBold";
             font-weight: normal;
           }
         `}
       </style>
-      
 
       <div className={styles.casters}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
@@ -72,7 +71,7 @@ const Casters = (props: any) => {
           link={data?.cams[1][1]}
         />
       </div>
-      <MapBox maps={data.maps} teams={data.teams}/>
+      <MapBox maps={data.maps} teams={data.teams} />
     </>
   );
 };

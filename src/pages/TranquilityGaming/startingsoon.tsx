@@ -100,129 +100,55 @@ const StartingSoon = (props: any) => {
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
-            font-family: "Industry";
+            font-family: "OswaldBold";
             font-weight: normal;
             --tickerduration: ${(15 * data?.match?.ticker1.length) / 40}s;
           }
         `}
       </style>
-      <Image
-        src="https://www.tranquility.gg/package/digitize/StartingSoon/Background.png"
-        alt="background"
-        height={1080}
-        width={1920}
-        className={styles.backgroundImage}
-      ></Image>
-      <Swiper
-        modules={[
-          EffectFade,
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          Autoplay,
-        ]}
-        spaceBetween={50}
-        slidesPerView={1}
-        fadeEffect={{
-          crossFade: true,
-        }}
-        autoplay={{
-          delay: 10000,
-          pauseOnMouseEnter: true,
-          disableOnInteraction: false,
-        }}
-        // navigation
-        effect={"fade"}
-        speed={1000}
-        // pagination={{ clickable: true }}
-        loop
-        className={styles.slider}
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <Image
-              key={index}
-              src={slide}
-              alt="Foreground"
-              height={1080}
-              width={1920}
-            ></Image>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className={styles.infos}>
-        <span className={styles.name1}>{data?.teams?.team1?.short}</span>
-        <span className={styles.name2}>{data?.teams?.team2?.short}</span>
-        <span className={styles.info1}>{data?.teams?.team1?.info}</span>
-        <span className={styles.info2}>{data?.teams?.team2?.info}</span>
-        <span className={styles.casterName1}>
-          <span>{"Play By Play"}</span>
-          {
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Play By Play"
-            ).name
-          }
-        </span>
-        <span className={styles.casterName2}>
-          <span>{"Analyst"}</span>
-          {
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Analyst"
-            ).name
-          }
-        </span>
-        <div className={styles.otherStaff}>
-          {data?.twitch
-            ?.filter(
-              (staff: TwitchStaff) =>
-                !["Play By Play", "Analyst"].includes(staff.title) && staff.name
-            )
-            .slice(0, 2)
-            .map((staff: TwitchStaff, index: number) => (
-              <span key={index} className={styles.otherStaffName}>
-                <span>{staff.title}</span>
-                {staff.name}
-              </span>
-            ))}
-        </div>
-        <Image
-          src={data?.teams?.team1.logoPath}
-          alt="team 1 logo"
-          height="600"
-          width="600"
-          className={styles.logo1}
-        ></Image>
-        <Image
-          src={data?.teams?.team2.logoPath}
-          alt="team 1 logo"
-          height="600"
-          className={styles.logo2}
-          width="600"
-        ></Image>
-        <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
-        <div className={styles.hwrap}>
-          <div className={styles.hmove}>
-            <div className={styles.hitem}>{data?.match?.ticker1}</div>
+      <div className={styles.parent}>
+        <div className={styles.branding}>Tranquility</div>
+        <div className={styles.current}>
+          <div className={styles.upnext}>Up Next</div>
+          <div className={styles.matchup}>
+            <div className={styles.logo1}>
+              <Image
+                width="200"
+                height="200"
+                src={data.teams.team1.logoPath}
+                alt={data.teams.team1.short}
+              ></Image>
+            </div>
+            <div className={styles.short1}>{data.teams.team1.short}</div>
+            <div className={styles.vs}>VS</div>
+            <div className={styles.short2}>{data.teams.team2.short}</div>
+            <div className={styles.logo2}>
+              <Image
+                width="200"
+                height="200"
+                src={data.teams.team2.logoPath}
+                alt={data.teams.team2.short}
+              ></Image>
+            </div>
           </div>
         </div>
-        <div className={styles.matchInfo}>
-          <div className={styles.title}>{data?.match?.addInfo}</div>
-          <div className={styles.dateTime}>
-            {dayjs(data?.match?.dateTime * 1000)
-              .tz("America/New_York")
-
-              .format("ddd, MMM D, YYYY @ h:mm a")}
-          </div>
-          <div className={styles.tier}>
-            {data?.match?.tier +
-              (["harmony", "discord", "transcendence"].includes(
-                data?.match?.tier.toLowerCase()
-              )
-                ? " tier"
-                : "")}
-          </div>
+        <div className={styles.timer}>
+          <div className={styles.startingsoon}>Starting Soon</div>
+          <div className={styles.timer}>00:00</div>
         </div>
+        <div className={styles.match1}>
+          <div className={styles.team1}>
+            <div className={styles.name}>{data.teams.team1.name}</div>
+            <div className={styles.record}>{data.teams.team2.info}</div>
+          </div>
+          <div className={styles.team2}>
+            <div className={styles.name}>{data.teams.team2.name}</div>
+            <div className={styles.record}>{data.teams.team1.info}</div>
+          </div>
+          <div className={styles.starttime}>Wed March 9 @ 9:30pm</div>
+        </div>
+        <div className={styles.match2}></div>
+        <div className={styles.match3}></div>
       </div>
     </>
   );
