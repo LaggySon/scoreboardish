@@ -107,7 +107,14 @@ const StartingSoon = (props: any) => {
         `}
       </style>
       <div className={styles.parent}>
-        <div className={styles.branding}>Tranquility</div>
+        <div className={styles.branding}>
+          <Image
+            src="/T_Wordmark_FW.svg"
+            alt="tranquility"
+            height={200}
+            width={800}
+          ></Image>
+        </div>
         <div className={styles.current}>
           <div className={styles.upnext}>Up Next</div>
           <div className={styles.matchup}>
@@ -119,9 +126,9 @@ const StartingSoon = (props: any) => {
                 alt={data.teams.team1.short}
               ></Image>
             </div>
-            <div className={styles.short1}>{data.teams.team1.short}</div>
+            <div className={styles.short1}>{data.teams.team1.code}</div>
             <div className={styles.vs}>VS</div>
-            <div className={styles.short2}>{data.teams.team2.short}</div>
+            <div className={styles.short2}>{data.teams.team2.code}</div>
             <div className={styles.logo2}>
               <Image
                 width="200"
@@ -134,15 +141,19 @@ const StartingSoon = (props: any) => {
         </div>
         <div className={styles.timer}>
           <div className={styles.startingsoon}>Starting Soon</div>
-          <div className={styles.timer}>00:00</div>
+          <div className={styles.timer}>{dayjsLeft.format("mm:ss")}</div>
         </div>
         <div className={styles.match1}>
           <div className={styles.team1}>
-            <div className={styles.name}>{data.teams.team1.name}</div>
+            <div className={styles.name}>
+              {data.teams.team1.short} <span>({data.teams.team1.code})</span>
+            </div>
             <div className={styles.record}>{data.teams.team2.info}</div>
           </div>
           <div className={styles.team2}>
-            <div className={styles.name}>{data.teams.team2.name}</div>
+            <div className={styles.name}>
+              {data.teams.team2.short} <span>({data.teams.team2.code})</span>
+            </div>
             <div className={styles.record}>{data.teams.team1.info}</div>
           </div>
           <div className={styles.starttime}>Wed March 9 @ 9:30pm</div>

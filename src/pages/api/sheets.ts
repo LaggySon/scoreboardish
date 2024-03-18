@@ -43,7 +43,6 @@ export default async function handler(
 
   const data = response.data.values;
 
-  console.log(data);
 
   const result: AllData = {
     teams: {
@@ -52,50 +51,44 @@ export default async function handler(
         short: data[1][1],
         code: data[1][2],
         logoPath: data[1][3],
-        info: data[1][8],
-        score: data[1][10],
-        primaryCol: data[1][5],
-        secondaryCol: data[1][6],
-        atkDef: data[1][11],
+        info: data[1][7],
+        score: data[1][9],
+        primaryCol: data[1][4],
+        secondaryCol: data[1][5],
+        atkDef: data[1][10],
         cat:data[1][9]
-        
       },
       team2: {
         name: data[2][0],
         short: data[2][1],
         code: data[2][2],
         logoPath: data[2][3],
-        info: data[2][8],
-        score: data[2][10],
-        primaryCol: data[2][5],
-        secondaryCol: data[2][6],
-        atkDef: data[2][11],
+        info: data[2][7],
+        score: data[2][9],
+        primaryCol: data[2][4],
+        secondaryCol: data[2][5],
+        atkDef: data[2][10],
         cat: data[2][9],
 
       },
     },
     twitch: response.data.values
-      .slice(45, response.data.values.length)
+      .slice(39,55)
       .map((row: string[]) => {
-        return { title: row[0], name: row[1], social: row[2], pronouns: "any" };
+        return { title: row[0], name: row[1], pronouns: row[2], social: row[3] ,cam: row[4]};
       }),
     maps: response.data.values
       .slice(13, 32)
       .filter((row: string[]) => row.length > 1)
       .map((row: string[]) => {
-        let mapString = "";
-        if (row[0]) {
-          mapString =
-            row[0].split("tranquility.gg/package/Maps/")[1] ?? "ERROR!.png";
-          mapString = mapString.slice(0, -4);
-        }
         return {
-          map: mapString,
-          image: "https://www." + row[0],
+          map: row[0],
+          image: "https://www." + row[2],
           type: row[1],
-          winner: row[2],
-          info: row[3],
-          isComplete: row[4] === "TRUE",
+          winner: row[3],
+          t1Score:row[4],
+          t2Score:row[5],
+          isComplete: row[6] === "TRUE",
         };
       }),
     match: {
@@ -114,7 +107,8 @@ export default async function handler(
       currentGame:data[5][12],
       tier:data[1][6],
       week:"",
-      stage:""
+      stage:"",
+      ticker1:data[5][13]
     },
   };
   // result["cams"] = cams;

@@ -58,7 +58,7 @@ export default function MapBox(props: any) {
             <>
               {i !== 0 && <div className={styles.divider}>x</div>}
               <div className={styles.score}>
-                {map.isComplete ? getRandomInt(4) : "-"}
+                {map.isComplete ? map.t1Score : "-"}
               </div>
               {i === maps.length - 1 && <div className={styles.divider}>x</div>}
             </>
@@ -81,7 +81,7 @@ export default function MapBox(props: any) {
             <>
               {i !== 0 && <div className={styles.divider}>x</div>}
               <div className={styles.score}>
-                {map.isComplete ? getRandomInt(4) : "-"}
+                {map.isComplete ? map.t2Score : "-"}
               </div>
               {i === maps.length - 1 && <div className={styles.divider}>x</div>}
             </>

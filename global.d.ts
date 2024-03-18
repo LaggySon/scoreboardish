@@ -28,7 +28,6 @@ declare global {
     code: string;
     primaryCol: string;
     secondaryCol: string;
-    advInfo: string;
     cat:string;
   };
 
@@ -51,14 +50,16 @@ declare global {
     currentGame:string;
     showSides:boolean;
     swapSides:boolean;
+    ticker1:string;
   };
 
   type MapType = {
     map: string;
     image: string;
     type: string;
-    info: string;
     winner: string;
+    t1Score:string;
+    t2Score:string;
     isComplete: boolean;
   };
 

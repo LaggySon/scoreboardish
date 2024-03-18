@@ -59,7 +59,11 @@ const Casters = (props: any) => {
               (staff: TwitchStaff) => staff.title === "Play By Play"
             ).name
           }
-          link={data?.cams[0][1]}
+          link={
+            data?.twitch?.find(
+              (staff: TwitchStaff) => staff.title === "Play By Play"
+            ).cam
+          }
         />
         {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
         <TranqCaster
@@ -68,7 +72,11 @@ const Casters = (props: any) => {
               (staff: TwitchStaff) => staff.title === "Analyst"
             ).name
           }
-          link={data?.cams[1][1]}
+          link={
+            data?.twitch?.find(
+              (staff: TwitchStaff) => staff.title === "Analyst"
+            ).cam
+          }
         />
       </div>
       <MapBox maps={data.maps} teams={data.teams} />

@@ -1,11 +1,14 @@
 .casterFrame {
   width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
 
   iframe {
     height: 100%;
     width: 100%;
+    transform: scale(1.5);
     border: none;
-    border-radius: 0.5rem;
+    box-sizing: border-box;
   }
   position: relative;
   .info {
