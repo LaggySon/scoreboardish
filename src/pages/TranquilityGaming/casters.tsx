@@ -54,11 +54,9 @@ const Casters = (props: any) => {
       <div className={styles.casters}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
         <TranqCaster
-          name={
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Play By Play"
-            ).name
-          }
+          staff={data?.twitch?.find(
+            (staff: TwitchStaff) => staff.title === "Play By Play"
+          )}
           link={
             data?.twitch?.find(
               (staff: TwitchStaff) => staff.title === "Play By Play"
@@ -67,11 +65,9 @@ const Casters = (props: any) => {
         />
         {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
         <TranqCaster
-          name={
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Analyst"
-            ).name
-          }
+          staff={data?.twitch?.find(
+            (staff: TwitchStaff) => staff.title === "Analyst"
+          )}
           link={
             data?.twitch?.find(
               (staff: TwitchStaff) => staff.title === "Analyst"

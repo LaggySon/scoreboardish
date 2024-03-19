@@ -1,7 +1,7 @@
 .parent {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(9, 1fr);
+  grid-template-rows: repeat(11, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: 100vh;
@@ -11,7 +11,7 @@
   color: white;
   & > * {
     background-color: black;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
   }
 }
 
@@ -54,15 +54,15 @@
 .timer {
   grid-area: 7 / 1 / 10 / 2;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 5rem;
-  font-size: 5rem;
+  font-size: 5.5rem;
   .startingsoon {
     color: var(--tranqYellow);
   }
   .timer {
     font-size: 7rem;
+    width: 15rem;
   }
 }
 .match1 {
@@ -74,29 +74,37 @@
 .match3 {
   grid-area: 7 / 2 / 10 / 3;
 }
+.ticker {
+  grid-area: 10/1/12/3;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .match1,
 .match2,
 .match3 {
   box-sizing: border-box;
-  padding: 2rem;
-  padding-bottom: 0;
+  padding: 1rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 
   .team1,
   .team2 {
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
     .name {
-      font-size: 5rem;
+      font-size: 4rem;
       span {
         font-size: 2.5rem;
       }
     }
     .record {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
     }
   }
   .team1 {
@@ -113,5 +121,6 @@
     text-align: center;
     color: var(--tranqYellow);
     font-size: 2rem;
+    padding-bottom: 1rem;
   }
 }

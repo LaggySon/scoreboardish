@@ -144,22 +144,25 @@ const StartingSoon = (props: any) => {
           <div className={styles.timer}>{dayjsLeft.format("mm:ss")}</div>
         </div>
         <div className={styles.match1}>
-          <div className={styles.team1}>
-            <div className={styles.name}>
-              {data.teams.team1.short} <span>({data.teams.team1.code})</span>
+          <div className={styles.teams}>
+            <div className={styles.team1}>
+              <div className={styles.name}>
+                {data.teams.team1.short} <span>({data.teams.team1.code})</span>
+              </div>
+              <div className={styles.record}>{data.teams.team2.info}</div>
             </div>
-            <div className={styles.record}>{data.teams.team2.info}</div>
-          </div>
-          <div className={styles.team2}>
-            <div className={styles.name}>
-              {data.teams.team2.short} <span>({data.teams.team2.code})</span>
+            <div className={styles.team2}>
+              <div className={styles.name}>
+                {data.teams.team2.short} <span>({data.teams.team2.code})</span>
+              </div>
+              <div className={styles.record}>{data.teams.team1.info}</div>
             </div>
-            <div className={styles.record}>{data.teams.team1.info}</div>
           </div>
           <div className={styles.starttime}>Wed March 9 @ 9:30pm</div>
         </div>
-        <div className={styles.match2}></div>
-        <div className={styles.match3}></div>
+        {/* <div className={styles.match2}></div>
+        <div className={styles.match3}></div> */}
+        <div className={styles.ticker}>{data.match.ticker1}</div>
       </div>
     </>
   );
