@@ -173,7 +173,10 @@ const MapInfo = (props: any) => {
                       <video
                         autoPlay
                         loop
-                        src={`https://tranquility.gg/package/Maps/Cinematics/${map.map}.mp4`}
+                        src={`https://tranquility.gg/package/Maps/Cinematics/${map.map.replace(
+                          /\s/g,
+                          ""
+                        )}.mp4`}
                       ></video>
                     )}
                   </div>

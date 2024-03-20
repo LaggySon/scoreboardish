@@ -33,7 +33,10 @@ export default async function handler(
 
   const sheets = google.sheets({ version: "v4", auth });
 
-  const spreadsheetId = String(sheet);
+  const spreadsheetId =
+    String(sheet) === "undefined"
+      ? "1XtHncu0QUb7viaQ0lq6onVJua_qy5oE8UoR1QJvibmo"
+      : String(sheet);
   const range = `Output!A1:T50`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({
@@ -42,7 +45,6 @@ export default async function handler(
   });
 
   const data = response.data.values;
-
 
   const result: AllData = {
     teams: {
@@ -56,7 +58,7 @@ export default async function handler(
         primaryCol: data[1][4],
         secondaryCol: data[1][5],
         atkDef: data[1][10],
-        cat:data[1][9]
+        cat: data[1][9],
       },
       team2: {
         name: data[2][0],
@@ -69,14 +71,17 @@ export default async function handler(
         secondaryCol: data[2][5],
         atkDef: data[2][10],
         cat: data[2][9],
-
       },
     },
-    twitch: response.data.values
-      .slice(39,55)
-      .map((row: string[]) => {
-        return { title: row[0], name: row[1], pronouns: row[2], social: row[3] ,cam: row[4]};
-      }),
+    twitch: response.data.values.slice(39, 55).map((row: string[]) => {
+      return {
+        title: row[0],
+        name: row[1],
+        pronouns: row[2],
+        social: row[3],
+        cam: row[4],
+      };
+    }),
     maps: response.data.values
       .slice(13, 32)
       .filter((row: string[]) => row.length > 1)
@@ -86,30 +91,45 @@ export default async function handler(
           image: "https://www." + row[2],
           type: row[1],
           winner: row[3],
-          t1Score:row[4],
-          t2Score:row[5],
+          t1Score: row[4],
+          t2Score: row[5],
           isComplete: row[6] === "TRUE",
+          info: row[7],
         };
       }),
     match: {
-      dateTime:data[5][0],
-      TMInfo:data[5][1],
-      showTM:data[5][2],
-      tierTag:data[5][3],
-      showTierTag:data[5][4]==="TRUE",
-      TLInfo:data[5][5],
-      showTL:data[5][6],
-      TRInfo:data[5][7],
-      showTR:data[5][8],
-      currentMap:data[5][9],
-      showSides:data[5][10]==="TRUE",
-      swapSides:data[5][11]==="TRUE",
-      currentGame:data[5][12],
-      tier:data[1][6],
-      week:"",
-      stage:"",
-      ticker1:data[5][13]
+      dateTime: data[5][0],
+      TMInfo: data[5][1],
+      showTM: data[5][2],
+      tierTag: data[5][3],
+      showTierTag: data[5][4] === "TRUE",
+      TLInfo: data[5][5],
+      showTL: data[5][6],
+      TRInfo: data[5][7],
+      showTR: data[5][8],
+      currentMap: data[5][9],
+      showSides: data[5][10] === "TRUE",
+      swapSides: data[5][11] === "TRUE",
+      currentGame: data[5][12],
+      tier: data[1][6],
+      week: "",
+      stage: "",
+      ticker1: data[5][13],
     },
+    matches: response.data.values
+      .slice(8, 11)
+      .map((row: string[], i: number) => {
+        return {
+          info: row[1],
+          team1: row[2],
+          team2: row[3],
+          team1info: row[4],
+          team2info: row[5],
+          team1color: row[6],
+          team2color: row[7],
+          show: row[8] === "TRUE",
+        };
+      }),
   };
   // result["cams"] = cams;
   // console.log(result);

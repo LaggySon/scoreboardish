@@ -34,6 +34,20 @@ export default function MapBox(props: any) {
         return <Flashpoint />;
     }
   }
+
+  function determineResult(map: MapType, team: number) {
+    if (map.isComplete) {
+      if (map.t1Score > map.t2Score) {
+        return team === 1 ? "won" : "lost";
+      } else if (map.t2Score > map.t1Score) {
+        return team === 2 ? "won" : "lost";
+      } else {
+        return "draw";
+      }
+    } else {
+      return "none";
+    }
+  }
   return (
     <div className={styles.mapbox}>
       <div className={styles.types}>
@@ -57,10 +71,21 @@ export default function MapBox(props: any) {
           {maps.map((map: MapType, i: number) => (
             <>
               {i !== 0 && <div className={styles.divider}>x</div>}
-              <div className={styles.score}>
+              <div
+                className={[styles.score, styles[determineResult(map, 1)]].join(
+                  " "
+                )}
+              >
                 {map.isComplete ? map.t1Score : "-"}
               </div>
-              {i === maps.length - 1 && <div className={styles.divider}>x</div>}
+              {i === maps.length - 1 && (
+                <div
+                  className={styles.divider + " " + styles.end}
+                  style={{ backgroundColor: team1.primaryCol }}
+                >
+                  x
+                </div>
+              )}
             </>
           ))}
         </div>
@@ -80,10 +105,21 @@ export default function MapBox(props: any) {
           {maps.map((map: MapType, i: number) => (
             <>
               {i !== 0 && <div className={styles.divider}>x</div>}
-              <div className={styles.score}>
+              <div
+                className={[styles.score, styles[determineResult(map, 2)]].join(
+                  " "
+                )}
+              >
                 {map.isComplete ? map.t2Score : "-"}
               </div>
-              {i === maps.length - 1 && <div className={styles.divider}>x</div>}
+              {i === maps.length - 1 && (
+                <div
+                  className={styles.divider + " " + styles.end}
+                  style={{ backgroundColor: team2.primaryCol }}
+                >
+                  x
+                </div>
+              )}
             </>
           ))}
         </div>

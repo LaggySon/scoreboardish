@@ -9,6 +9,7 @@ import TranqPred from "../../components/tranqPred";
 import MapBox from "../../components/tranqMapBox";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { TTierAw, TTierDw, TTierHw, TTierTw } from "../../components/icons";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -28,6 +29,18 @@ const Casters = (props: any) => {
     refreshWhenHidden: true,
     refreshInterval: 10000,
   });
+
+  function getIcon(tier: string) {
+    if (tier === "H") {
+      return <TTierHw />;
+    } else if (tier === "D") {
+      return <TTierDw />;
+    } else if (tier === "T") {
+      return <TTierTw />;
+    } else if (tier === "A") {
+      return <TTierAw />;
+    }
+  }
 
   if (!data) {
     return <>Loading...</>;
@@ -76,6 +89,9 @@ const Casters = (props: any) => {
         />
       </div>
       <MapBox maps={data.maps} teams={data.teams} />
+      <div className={styles.tierTag}>
+        {getIcon(data.match.tier)} {data?.match?.tierTag}
+      </div>
     </>
   );
 };

@@ -11,6 +11,10 @@
   .team2 {
     .teamMain {
       flex-direction: row-reverse;
+      background-color: var(--team2PrimaryColor);
+    }
+    .teamStats {
+      text-align: right;
     }
   }
 }

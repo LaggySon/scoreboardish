@@ -38,7 +38,9 @@ const StartingSoon = (props: any) => {
   useEffect(() => {
     if (!router.isReady) return;
     const { sheet } = router.query;
-    setQuery({ sheet: String(sheet) });
+    setQuery({
+      sheet: String(sheet),
+    });
   }, [router.isReady, router.query]);
 
   const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
@@ -46,20 +48,6 @@ const StartingSoon = (props: any) => {
     refreshInterval: 10000,
   });
 
-  const slides = [
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground1.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground2.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground3.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground4.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground5.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground6.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground7.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground8.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground9.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground10.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground11.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground12.png",
-  ];
   //TIMER STUFF
   dayjs.extend(duration);
   dayjs.extend(utc);
@@ -85,7 +73,7 @@ const StartingSoon = (props: any) => {
   });
 
   if (!data) {
-    return <>Loading...</>;
+    return <>Loading... ({query.sheet === "undefined" ? "hi" : "bye"})</>;
   }
   return (
     <>
@@ -107,58 +95,73 @@ const StartingSoon = (props: any) => {
         `}
       </style>
       <div className={styles.parent}>
-        <div className={styles.branding}>
-          <Image
-            src="/T_Wordmark_FW.svg"
-            alt="tranquility"
-            height={200}
-            width={800}
-          ></Image>
-        </div>
-        <div className={styles.current}>
-          <div className={styles.upnext}>Up Next</div>
-          <div className={styles.matchup}>
-            <div className={styles.logo1}>
-              <Image
-                width="200"
-                height="200"
-                src={data.teams.team1.logoPath}
-                alt={data.teams.team1.short}
-              ></Image>
-            </div>
-            <div className={styles.short1}>{data.teams.team1.code}</div>
-            <div className={styles.vs}>VS</div>
-            <div className={styles.short2}>{data.teams.team2.code}</div>
-            <div className={styles.logo2}>
-              <Image
-                width="200"
-                height="200"
-                src={data.teams.team2.logoPath}
-                alt={data.teams.team2.short}
-              ></Image>
+        <div className={styles.left}>
+          <div className={styles.branding}>
+            <Image
+              src="/T_Wordmark_FW.svg"
+              alt="tranquility"
+              height={200}
+              width={800}
+            ></Image>
+          </div>
+          <div className={styles.current}>
+            <div className={styles.upnext}>Up Next</div>
+            <div className={styles.matchup}>
+              <div className={styles.logo1}>
+                <Image
+                  width="200"
+                  height="200"
+                  src={data.teams.team1.logoPath}
+                  alt={data.teams.team1.short}
+                ></Image>
+              </div>
+              <div className={styles.short1}>{data.teams.team1.code}</div>
+              <div className={styles.vs}>VS</div>
+              <div className={styles.short2}>{data.teams.team2.code}</div>
+              <div className={styles.logo2}>
+                <Image
+                  width="200"
+                  height="200"
+                  src={data.teams.team2.logoPath}
+                  alt={data.teams.team2.short}
+                ></Image>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.timer}>
-          <div className={styles.startingsoon}>Starting Soon</div>
-          <div className={styles.timer}>{dayjsLeft.format("mm:ss")}</div>
-        </div>
-        <div className={styles.match1}>
-          <div className={styles.teams}>
-            <div className={styles.team1}>
-              <div className={styles.name}>
-                {data.teams.team1.short} <span>({data.teams.team1.code})</span>
-              </div>
-              <div className={styles.record}>{data.teams.team2.info}</div>
-            </div>
-            <div className={styles.team2}>
-              <div className={styles.name}>
-                {data.teams.team2.short} <span>({data.teams.team2.code})</span>
-              </div>
-              <div className={styles.record}>{data.teams.team1.info}</div>
-            </div>
+          <div className={styles.timer}>
+            <div className={styles.startingsoon}>Starting Soon</div>
+            <div className={styles.timer}>{dayjsLeft.format("mm:ss")}</div>
           </div>
-          <div className={styles.starttime}>Wed March 9 @ 9:30pm</div>
+        </div>
+        <div className={styles.matches}>
+          {data.matches.map(
+            (match: Match) =>
+              match.show && (
+                <div className={styles.match}>
+                  <div className={styles.teams}>
+                    <div className={styles.team1}>
+                      <div
+                        className={styles.name}
+                        style={{ color: match.team1color }}
+                      >
+                        {match.team1}
+                      </div>
+                      <div className={styles.record}>{match.team1info}</div>
+                    </div>
+                    <div className={styles.team2}>
+                      <div
+                        className={styles.name}
+                        style={{ color: match.team2color }}
+                      >
+                        {match.team2}
+                      </div>
+                      <div className={styles.record}>{match.team2info}</div>
+                    </div>
+                  </div>
+                  <div className={styles.starttime}>{match.info}</div>
+                </div>
+              )
+          )}
         </div>
         {/* <div className={styles.match2}></div>
         <div className={styles.match3}></div> */}

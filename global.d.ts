@@ -28,7 +28,7 @@ declare global {
     code: string;
     primaryCol: string;
     secondaryCol: string;
-    cat:string;
+    cat: string;
   };
 
   type MatchInfo = {
@@ -38,19 +38,19 @@ declare global {
     week: string;
     weekNum?: string;
     tierTag: string;
-    showTierTag:boolean;
+    showTierTag: boolean;
     showPreds?: boolean;
-    TMInfo:string;
-    showTM:boolean;
-    TRInfo:string;
-    showTR:boolean;
-    TLInfo:string;
-    showTL:boolean;
-    currentMap:string;
-    currentGame:string;
-    showSides:boolean;
-    swapSides:boolean;
-    ticker1:string;
+    TMInfo: string;
+    showTM: boolean;
+    TRInfo: string;
+    showTR: boolean;
+    TLInfo: string;
+    showTL: boolean;
+    currentMap: string;
+    currentGame: string;
+    showSides: boolean;
+    swapSides: boolean;
+    ticker1: string;
   };
 
   type MapType = {
@@ -58,9 +58,10 @@ declare global {
     image: string;
     type: string;
     winner: string;
-    t1Score:string;
-    t2Score:string;
+    t1Score: string;
+    t2Score: string;
     isComplete: boolean;
+    info: string;
   };
 
   type TwitchStaff = {
@@ -68,7 +69,7 @@ declare global {
     name: string;
     social: string;
     pronouns: string;
-    cam:string;
+    cam: string;
   };
 
   type AllData = {
@@ -76,6 +77,18 @@ declare global {
     teams: TeamData;
     maps: MapType[];
     match: MatchInfo;
+    matches: Match[];
+  };
+
+  type Match = {
+    info: string;
+    team1: string;
+    team2: string;
+    team1info: string;
+    team2info: string;
+    team1color: string;
+    team2color: string;
+    show: boolean;
   };
 }
 export default global;

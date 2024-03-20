@@ -3,19 +3,34 @@ import Image from "next/image";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import SvgAttack from "./icons/Attack";
 import SvgDefense from "./icons/Defense";
+import { TTierAw, TTierDw, TTierHw, TTierTw } from "./icons";
 import SvgTrapezoids11FinalsL from "./icons/Trapezoids11FinalsL";
 import SvgTrapezoids11FinalsR from "./icons/Trapezoids11FinalsR";
 const TranqScoreboard = (props: any) => {
-  const data = props.data;
+  const data: AllData = props.data;
   const infoBox = !(props.info === false);
 
+  function getIcon(tier: string) {
+    if (tier === "H") {
+      return <TTierHw />;
+    } else if (tier === "D") {
+      return <TTierDw />;
+    } else if (tier === "T") {
+      return <TTierTw />;
+    } else if (tier === "A") {
+      return <TTierAw />;
+    }
+  }
+
   const Team = (props: { team: number }) => {
-    const team = data?.teams["team" + props.team];
+    const team = props.team === 1 ? data.teams.team1 : data.teams.team2;
     console.log(team);
     return (
       <div className={[styles.team, styles["team" + props.team]].join(" ")}>
         <div className={styles.teamBox}>
-          <div className={styles.teamStats}>This team is really cool</div>
+          <div className={styles.teamStats}>
+            {props.team === 1 ? data.match.TLInfo : data.match.TRInfo}
+          </div>
           <div className={styles.teamMain}>
             <div className={styles.record}>{team.info}</div>
             <div className={styles.name}>{team.short}</div>
@@ -32,27 +47,22 @@ const TranqScoreboard = (props: any) => {
           </div>
         </div>
 
-        {infoBox &&
-          ["ATTACK", "DEFENSE"].includes(
-            data?.teams["team" + props.team].atkDef
-          ) && (
-            <div className={styles.atkDef}>
-              {data?.teams["team" + props.team].atkDef === "ATTACK" ? (
-                <SvgAttack />
-              ) : (
-                <SvgDefense />
-              )}
-            </div>
-          )}
+        {infoBox && ["ATTACK", "DEFENSE"].includes(team.atkDef) && (
+          <div className={styles.atkDef}>
+            {team.atkDef === "ATTACK" ? <SvgAttack /> : <SvgDefense />}
+          </div>
+        )}
       </div>
     );
   };
 
   return (
     <div className={styles.scoreboard}>
-      <div className={styles.tierTag}>{data?.match?.tier + " tier"}</div>
+      <div className={styles.tierTag}>
+        {getIcon(data.match.tier)} {data?.match?.tierTag}
+      </div>
       {/* INFO BOX */}
-      {infoBox && <div className={styles.infoBox}>{data?.match?.mapInfo}</div>}
+      {infoBox && <div className={styles.infoBox}>{data?.match?.TMInfo}</div>}
       <div className={styles.teams}>
         <Team team={1} />
         <Team team={2} />

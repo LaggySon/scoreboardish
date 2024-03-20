@@ -12,7 +12,7 @@
   }
   position: relative;
   .info {
-    background-color: black;
+    background-color: #101010;
     color: white;
     display: flex;
     justify-content: center;
@@ -21,7 +21,8 @@
     align-items: center;
     width: 20rem;
     margin-inline: auto;
-    transform: translateY(-5rem);
+    transform: translateY(-7rem);
+    padding-block: 0.5rem;
     .sub {
       font-size: 1rem;
       display: flex;
