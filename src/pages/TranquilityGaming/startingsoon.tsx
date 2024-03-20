@@ -137,7 +137,7 @@ const StartingSoon = (props: any) => {
           {data.matches.map(
             (match: Match) =>
               match.show && (
-                <div className={styles.match}>
+                <div className={styles.match} key={match.team1 + match.team2}>
                   <div className={styles.teams}>
                     <div className={styles.team1}>
                       <div
@@ -163,8 +163,6 @@ const StartingSoon = (props: any) => {
               )
           )}
         </div>
-        {/* <div className={styles.match2}></div>
-        <div className={styles.match3}></div> */}
         <div className={styles.ticker}>{data.match.ticker1}</div>
       </div>
     </>
