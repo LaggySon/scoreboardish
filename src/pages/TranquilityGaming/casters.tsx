@@ -90,7 +90,7 @@ const Casters = (props: any) => {
       </div>
       <MapBox maps={data.maps} teams={data.teams} />
       <div className={styles.tierTag}>
-        {getIcon(data.match.tier)} {data?.match?.tierTag}
+        <span>{getIcon(data.match.tier)}</span> {data?.match?.tierTag}
       </div>
     </>
   );

@@ -43,10 +43,14 @@ const StartingSoon = (props: any) => {
     });
   }, [router.isReady, router.query]);
 
-  const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
-    refreshWhenHidden: true,
-    refreshInterval: 10000,
-  });
+  const { data }: { data: AllData } = useSWR(
+    API + `?sheet=${query?.sheet}`,
+    fetcher,
+    {
+      refreshWhenHidden: true,
+      refreshInterval: 10000,
+    }
+  );
 
   //TIMER STUFF
   dayjs.extend(duration);
@@ -54,7 +58,7 @@ const StartingSoon = (props: any) => {
   dayjs.extend(timezone);
   dayjs.extend(advancedFormat);
 
-  const endTime = dayjs(data?.match?.dateTime * 1000 - 120000);
+  const endTime = dayjs(Number(data?.match?.dateTime) * 1000 - 120000);
 
   const [dayjsLeft, setDayjsLeft] = useState(
     dayjs.duration(endTime.diff(dayjs()))
@@ -71,6 +75,25 @@ const StartingSoon = (props: any) => {
     }, 250);
     return () => clearInterval(interval);
   });
+
+  function getCurrentMatch() {
+    return data.matches[Number(data?.match?.currentGame) - 1];
+  }
+
+  function hexToRGBA(hex: string, opacity: number) {
+    // Remove '#' if present
+    hex = hex.replace("#", "");
+
+    // Parse the hex string into individual RGB values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    // Create the RGBA string
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  }
+
+  const match = getCurrentMatch();
 
   if (!data) {
     return <>Loading... ({query.sheet === "undefined" ? "hi" : "bye"})</>;
@@ -104,26 +127,47 @@ const StartingSoon = (props: any) => {
               width={800}
             ></Image>
           </div>
-          <div className={styles.current}>
+          <div
+            className={styles.current}
+            style={{
+              background: `linear-gradient(105deg, ${hexToRGBA(
+                match!.team1color,
+                1
+              )} 0%,  
+              rgba(0,0,0,1) 50%,
+              
+                ${hexToRGBA(match!.team2color, 1)} 100%)`,
+            }}
+          >
             <div className={styles.upnext}>Up Next</div>
             <div className={styles.matchup}>
               <div className={styles.logo1}>
                 <Image
                   width="200"
                   height="200"
-                  src={data.teams.team1.logoPath}
-                  alt={data.teams.team1.short}
+                  src={match!.team1logo}
+                  alt={match!.team1}
                 ></Image>
               </div>
-              <div className={styles.short1}>{data.teams.team1.code}</div>
+              <div
+                className={styles.short1}
+                style={{ color: match!.team1color }}
+              >
+                {match!.team1code}
+              </div>
               <div className={styles.vs}>VS</div>
-              <div className={styles.short2}>{data.teams.team2.code}</div>
+              <div
+                className={styles.short2}
+                style={{ color: match!.team2color }}
+              >
+                {match!.team2code}
+              </div>
               <div className={styles.logo2}>
                 <Image
                   width="200"
                   height="200"
-                  src={data.teams.team2.logoPath}
-                  alt={data.teams.team2.short}
+                  src={match!.team2logo}
+                  alt={match!.team2}
                 ></Image>
               </div>
             </div>
@@ -135,16 +179,22 @@ const StartingSoon = (props: any) => {
         </div>
         <div className={styles.matches}>
           {data.matches.map(
-            (match: Match) =>
+            (match: Match, i: number) =>
               match.show && (
-                <div className={styles.match} key={match.team1 + match.team2}>
+                <div
+                  className={[
+                    styles.match,
+                    Number(data.match.currentGame) - 1 === i && styles.active,
+                  ].join(" ")}
+                  key={match.team1 + match.team2}
+                >
                   <div className={styles.teams}>
                     <div className={styles.team1}>
                       <div
                         className={styles.name}
                         style={{ color: match.team1color }}
                       >
-                        {match.team1}
+                        {match.team1} <span>{match.team1code}</span>
                       </div>
                       <div className={styles.record}>{match.team1info}</div>
                     </div>
@@ -153,7 +203,7 @@ const StartingSoon = (props: any) => {
                         className={styles.name}
                         style={{ color: match.team2color }}
                       >
-                        {match.team2}
+                        {match.team2} <span>{match.team2code}</span>
                       </div>
                       <div className={styles.record}>{match.team2info}</div>
                     </div>
@@ -163,7 +213,9 @@ const StartingSoon = (props: any) => {
               )
           )}
         </div>
-        <div className={styles.ticker}>{data.match.ticker1}</div>
+        <div className={styles.ticker}>
+          <span>{data.match.ticker1}</span>
+        </div>
       </div>
     </>
   );
