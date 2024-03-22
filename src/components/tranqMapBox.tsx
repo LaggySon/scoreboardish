@@ -89,7 +89,7 @@ export default function MapBox(props: any) {
             </>
           ))}
         </div>
-        <div className={styles.matchScore}>{team2.score}</div>
+        <div className={styles.matchScore}>{team1.score}</div>
       </div>
       <div className={styles.team2}>
         <div className={styles.logo}>
