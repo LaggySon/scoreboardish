@@ -24,14 +24,20 @@ const TranqScoreboard = (props: any) => {
     }
   }
 
-  const Team = (props: { team: number }) => {
+  const Team = (props: { team: number; side: string }) => {
     const team = props.team === 1 ? data.teams.team1 : data.teams.team2;
     console.log(team);
     return (
-      <div className={[styles.team, styles["team" + props.team]].join(" ")}>
+      <div
+        className={[
+          styles.team,
+          styles["team" + props.team],
+          styles[props.side],
+        ].join(" ")}
+      >
         <div className={styles.teamBox}>
           <div className={styles.teamStats}>
-            {props.team === 1 ? data.match.TLInfo : data.match.TRInfo}
+            {props.side === "left" ? data.match.TLInfo : data.match.TRInfo}
           </div>
           <div className={styles.teamMain}>
             <div className={styles.bgwrapper}>
@@ -54,11 +60,16 @@ const TranqScoreboard = (props: any) => {
           </div>
         </div>
 
-        {infoBox && ["ATTACK", "DEFENSE"].includes(team.atkDef) && (
-          <div className={styles.atkDef}>
-            {team.atkDef === "ATTACK" ? <SvgAttack /> : <SvgDefense />}
-          </div>
-        )}
+        {infoBox &&
+          ["ATTACK", "DEFENSE"].includes(team.atkDef.toUpperCase()) && (
+            <div className={styles.atkDef}>
+              {team.atkDef.toUpperCase() === "ATTACK" ? (
+                <SvgAttack />
+              ) : (
+                <SvgDefense />
+              )}
+            </div>
+          )}
       </div>
     );
   };
@@ -71,8 +82,8 @@ const TranqScoreboard = (props: any) => {
       {/* INFO BOX */}
       {infoBox && <div className={styles.infoBox}>{data?.match?.TMInfo}</div>}
       <div className={styles.teams}>
-        <Team team={1} />
-        <Team team={2} />
+        <Team team={data?.match?.swapSides ? 2 : 1} side="left" />
+        <Team team={data?.match?.swapSides ? 1 : 2} side="right" />
       </div>
     </div>
   );

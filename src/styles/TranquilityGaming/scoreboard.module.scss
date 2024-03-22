@@ -5,8 +5,22 @@
   position: absolute;
   width: 100%;
   top: 0;
-  .team1 {
+  .left {
     flex-direction: row;
+  }
+  .right {
+    flex-direction: row-reverse !important;
+    .teamMain {
+      flex-direction: row-reverse;
+    }
+    .teamStats {
+      text-align: right;
+    }
+    .bgwrapper {
+      transform: scaleX(-1) translateX(-1.5rem);
+    }
+  }
+  .team1 {
     .logo {
       background-color: var(--team1PrimaryColor);
       background-image: linear-gradient(
@@ -23,13 +37,9 @@
   }
   .team2 {
     .teamMain {
-      flex-direction: row-reverse;
-
       background-color: var(--team2PrimaryColor);
     }
-    .teamStats {
-      text-align: right;
-    }
+
     .logo {
       background-color: var(--team2PrimaryColor);
       background-image: linear-gradient(
@@ -38,9 +48,7 @@
         rgba(0, 0, 0, 0.3)
       );
     }
-    .bgwrapper {
-      transform: scaleX(-1) translateX(1rem);
-    }
+
     .bgimg,
     .name,
     .record {
