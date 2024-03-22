@@ -43,6 +43,7 @@
     // background-size: 115%;
     // background-position: center;
     box-shadow: 5px 5px 10px black;
+    border-radius: 1rem;
     .logo {
       filter: drop-shadow(-2px 2px 1px black);
     }
@@ -55,6 +56,7 @@
     background-color: white;
     box-shadow: 5px 5px 10px black;
     font-size: 3rem;
+    border-radius: 1rem;
     .code {
       // width: 250px;
 
@@ -73,6 +75,7 @@
     color: black;
     background-color: white;
     box-shadow: 5px 5px 10px black;
+    border-radius: 1rem;
     .score {
       position: relative;
       top: -0.5rem;
@@ -117,6 +120,7 @@
       padding-block: 0.2rem;
       max-height: 10rem;
       box-shadow: 5px 5px 10px black;
+      border-radius: 1rem;
 
       &::before {
         content: "";
@@ -184,6 +188,7 @@
 
         .mapImageContainer {
           width: 1100px;
+
           .mapImageMask {
             transition: width 1000ms, height 1000ms,
               margin 1000ms clip-path 1000ms;
@@ -262,6 +267,7 @@
           rgba(0, 0, 0, 1) 0%,
           rgba(59, 59, 59, 1) 100%
         );
+
         // height: inherit;
 
         .mapImageMask {

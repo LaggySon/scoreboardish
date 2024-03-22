@@ -12,7 +12,7 @@
 
 .left {
   & > * {
-    background-color: black;
+    background-color: #101010;
     border-radius: 1rem;
   }
   display: flex;
@@ -80,7 +80,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #101010;
   transform: translateY(-4rem);
   border-radius: 1rem;
   padding: 1rem;
@@ -96,7 +96,7 @@
   background-color: transparent;
 }
 .match {
-  background-color: black;
+  background-color: #101010;
   border-radius: 1rem;
   grid-column-start: 2;
   padding: 1rem;

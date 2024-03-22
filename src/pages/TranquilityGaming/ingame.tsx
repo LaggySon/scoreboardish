@@ -5,6 +5,7 @@ import TranqScoreboard from "../../components/tranqScoreboard";
 import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { getTextColorForContrast } from "../../lib/tools";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -36,10 +37,16 @@ const InGame: NextPage<PageProps> = (props) => {
             "var(--tranqBlue)"};
             --team1SecondaryColor: ${data?.teams?.team1.secondaryCol ??
             "var(--tranqBlue)"};
+            --team1AccentColor: ${getTextColorForContrast(
+              data?.teams?.team1.primaryCol
+            )};
             --team2PrimaryColor: ${data?.teams?.team2.primaryCol ??
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
+            --team2AccentColor: ${getTextColorForContrast(
+              data?.teams?.team2.primaryCol
+            )};
             font-family: "OswaldBold";
             font-weight: normal;
           }

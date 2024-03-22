@@ -6,6 +6,8 @@ import SvgDefense from "./icons/Defense";
 import { TTierAw, TTierDw, TTierHw, TTierTw } from "./icons";
 import SvgTrapezoids11FinalsL from "./icons/Trapezoids11FinalsL";
 import SvgTrapezoids11FinalsR from "./icons/Trapezoids11FinalsR";
+import { TIconInvertedW } from "./icons";
+
 const TranqScoreboard = (props: any) => {
   const data: AllData = props.data;
   const infoBox = !(props.info === false);
@@ -32,6 +34,11 @@ const TranqScoreboard = (props: any) => {
             {props.team === 1 ? data.match.TLInfo : data.match.TRInfo}
           </div>
           <div className={styles.teamMain}>
+            <div className={styles.bgwrapper}>
+              <div className={styles.bgimg}>
+                <TIconInvertedW />
+              </div>
+            </div>
             <div className={styles.record}>{team.info}</div>
             <div className={styles.name}>{team.short}</div>
             <div className={styles.logo}>
