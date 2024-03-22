@@ -3,7 +3,6 @@ import useSWR from "swr";
 import { NextPage } from "next/types";
 import styles from "../styles/casters.module.scss";
 import Image from "next/image";
-import { Control, Hybrid, Escort, Push } from "../components/icons";
 import React, {
   ReactNode,
   ReactSVGElement,
