@@ -54,14 +54,62 @@ const MapInfo = (props: any) => {
     setQuery({ sheet: String(sheet) });
   }, [router.isReady, router.query]);
 
-  const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
-    refreshWhenHidden: true,
-    refreshInterval: 10000,
-  });
+  const { data }: { data: AllData } = useSWR(
+    API + `?sheet=${query?.sheet}`,
+    fetcher,
+    {
+      refreshWhenHidden: true,
+      refreshInterval: 10000,
+    }
+  );
   const divRef = useRef<null | HTMLDivElement>(null);
+
+  function TeamBar() {
+    const team1 = data?.teams?.team1;
+    const team2 = data?.teams?.team2;
+    return (
+      <div className={styles.teamBar}>
+        <div className={styles.team1}>
+          <div className={styles.name}>{team1.short}</div>
+          <div className={styles.logo}>
+            <Image
+              src={team1.logoPath}
+              alt={team1.code}
+              height={90}
+              width={90}
+            />
+          </div>
+          <div className={styles.score}>{team1.score}</div>
+        </div>
+        <div className={styles.team2}>
+          <div className={styles.name}>{team2.short}</div>
+          <div className={styles.logo}>
+            <Image
+              src={team2.logoPath}
+              alt={team2.code}
+              height={90}
+              width={90}
+            />
+          </div>
+          <div className={styles.score}>{team2.score}</div>
+        </div>
+      </div>
+    );
+  }
+
   if (!data) {
     return <>Loading...</>;
   }
+  function getWinLogo(map: MapType): string {
+    if (map.t1Score > map.t2Score) {
+      return data?.teams?.team1?.logoPath;
+    } else if (map.t1Score < map.t2Score) {
+      return data?.teams?.team2?.logoPath;
+    } else {
+      return "";
+    }
+  }
+
   return (
     <>
       <style jsx global>
@@ -80,148 +128,28 @@ const MapInfo = (props: any) => {
           }
         `}
       </style>
-      <div className={styles.mapInfo}>
-        <header className={styles.header}>
-          <Image
-            src="/tranqMapsOverlay.png"
-            alt="overlay"
-            height={1080}
-            width={1920}
-          ></Image>
-        </header>
-        <div className={[styles.team1, styles.team].join(" ")}>
-          <div className={styles.logoContainer}>
-            <Image
-              className={styles.logo}
-              src={data?.teams?.team1?.logoPath}
-              alt={data?.teams?.team1?.name + " Logo"}
-              width="250"
-              height="250"
-            />
-          </div>
-          <div className={styles.codeBox}>
-            <span className={styles.code}>{data?.teams?.team1.code}</span>
-          </div>
-          <div className={styles.scoreBox}>
-            <SwitchTransition>
-              <CSSTransition
-                key={data?.teams?.team1.score ?? "none"}
-                addEndListener={(node, done) => {
-                  // use the css transitionend event to mark the finish of a transition
-                  node.addEventListener("transitionend", done, false);
-                }}
-                classNames="fade"
-              >
-                <div className={styles.score}>{data?.teams?.team1.score}</div>
-              </CSSTransition>
-            </SwitchTransition>
-          </div>
-        </div>
-        <div className={styles.mapBox}>
-          {data?.maps?.map((map: MapType, index: number) => {
-            const isActive = index === findActive();
-            console.log(`${map.map}: ${map.winner}`);
-            return (
+      <div className={styles.mapinfo}>
+        <TeamBar />
+        <div className={styles.maps}>
+          {data?.maps.map((map: MapType, i: number) => (
+            <div className={styles.map}>
               <div
-                className={[
-                  styles.map,
-                  isActive && styles.active,
-                  map.isComplete && styles.complete,
-                ].join(" ")}
-                key={map.map + index}
-              >
-                <div
-                  className={styles.mapType}
-                  style={{} as React.CSSProperties}
-                >
-                  {mapTypeSvg(map)}
-                </div>
-                <span className={styles.mapText}>{map.info}</span>
-                <div
-                  className={styles.mapImageContainer}
-                  style={
-                    {
-                      "--winnerPrimaryCol": [
-                        data?.teams?.team1?.short,
-                        data?.teams?.team2?.short,
-                      ].includes(map.winner)
-                        ? map.winner === data?.teams?.team1?.short
-                          ? `${
-                              data?.teams?.team1.primaryCol ??
-                              "var(--tranqBlue)"
-                            }`
-                          : `${
-                              data?.teams?.team2.primaryCol ??
-                              "var(--tranqYellow)"
-                            }`
-                        : "#222",
-                    } as React.CSSProperties
-                  }
-                >
-                  <div className={styles.mapImageMask}>
-                    {!isActive ? (
-                      <Image
-                        className={styles.mapImage}
-                        src={map.image}
-                        alt={map.map}
-                        quality={50}
-                        // width="1280"
-                        // height="720"
-                        fill={true}
-                      />
-                    ) : (
-                      <video
-                        autoPlay
-                        loop
-                        src={`https://tranquility.gg/package/Maps/Cinematics/${map.map.replace(
-                          /\s/g,
-                          ""
-                        )}.mp4`}
-                      ></video>
-                    )}
-                  </div>
-                </div>
-
-                <div className={styles.logoSizer}>
-                  <Image
-                    className={styles.winnerLogo}
-                    src={
-                      [
-                        data?.teams?.team1?.short,
-                        data?.teams?.team2?.short,
-                      ].includes(map.winner)
-                        ? map.winner === data?.teams?.team1?.short
-                          ? data?.teams.team1.logoPath
-                          : data?.teams.team2.logoPath
-                        : index === findActive()
-                        ? "/elipses.png"
-                        : "/hyphen.png"
-                    }
-                    alt={"Winning Team Logo"}
-                    fill={true}
-                  ></Image>
-                </div>
+                className={styles.image}
+                style={{ backgroundImage: `url(${map.image})` }}
+              ></div>
+              <div className={styles.name}>
+                <span>{map.map}</span>
               </div>
-            );
-          })}
-          <div ref={divRef}></div>
-        </div>
-        <div className={[styles.team2, styles.team].join(" ")}>
-          <div className={styles.logoContainer}>
-            <Image
-              className={styles.logo}
-              src={data?.teams?.team2?.logoPath}
-              alt={data?.teams?.team2?.name + " Logo"}
-              width="250"
-              height="250"
-            />
-          </div>
-          <div className={styles.codeBox}>
-            <span className={styles.code}>{data?.teams?.team2.code}</span>
-          </div>
-          <div className={styles.scoreBox}>
-            <span className={styles.score}>{data?.teams?.team2?.score}</span>
-          </div>
+              <div className={styles.winlogo}>
+                <Image
+                  height={200}
+                  width={200}
+                  src={getWinLogo(map)}
+                  alt="winner"
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>
