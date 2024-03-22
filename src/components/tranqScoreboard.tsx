@@ -66,7 +66,7 @@ const TranqScoreboard = (props: any) => {
   return (
     <div className={styles.scoreboard}>
       <div className={styles.tierTag}>
-        {getIcon(data.match.tier)} {data?.match?.tierTag}
+        <span>{getIcon(data.match.tier)}</span> {data?.match?.tierTag}
       </div>
       {/* INFO BOX */}
       {infoBox && <div className={styles.infoBox}>{data?.match?.TMInfo}</div>}

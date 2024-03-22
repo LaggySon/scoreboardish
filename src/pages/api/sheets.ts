@@ -128,6 +128,10 @@ export default async function handler(
           team1color: row[6],
           team2color: row[7],
           show: row[8] === "TRUE",
+          team1code: row[9],
+          team2code: row[10],
+          team1logo: row[11],
+          team2logo: row[12],
         };
       }),
   };

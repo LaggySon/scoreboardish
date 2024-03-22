@@ -88,6 +88,10 @@ declare global {
     team2info: string;
     team1color: string;
     team2color: string;
+    team1code: string;
+    team2code: string;
+    team1logo: string;
+    team2logo: string;
     show: boolean;
   };
 }
