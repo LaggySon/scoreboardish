@@ -36,7 +36,16 @@ const TranqScoreboard = (props: any) => {
         ].join(" ")}
       >
         <div className={styles.teamBox}>
-          <div className={styles.teamStats}>
+          <div
+            className={[
+              styles.teamStats,
+              styles[
+                String(
+                  props.side === "left" ? data.match.showTL : data.match.showTR
+                )
+              ],
+            ].join(" ")}
+          >
             {props.side === "left" ? data.match.TLInfo : data.match.TRInfo}
           </div>
           <div className={styles.teamMain}>
@@ -76,11 +85,24 @@ const TranqScoreboard = (props: any) => {
 
   return (
     <div className={styles.scoreboard}>
-      <div className={styles.tierTag}>
+      <div
+        className={[
+          styles.tierTag,
+          styles[String(data.match.showTierTag)],
+        ].join(" ")}
+      >
         <span>{getIcon(data.match.tier)}</span> {data?.match?.tierTag}
       </div>
       {/* INFO BOX */}
-      {infoBox && <div className={styles.infoBox}>{data?.match?.TMInfo}</div>}
+      {infoBox && (
+        <div
+          className={[styles.infoBox, styles[String(data.match.showTM)]].join(
+            " "
+          )}
+        >
+          {data?.match?.TMInfo}
+        </div>
+      )}
       <div className={styles.teams}>
         <Team team={data?.match?.swapSides ? 2 : 1} side="left" />
         <Team team={data?.match?.swapSides ? 1 : 2} side="right" />
