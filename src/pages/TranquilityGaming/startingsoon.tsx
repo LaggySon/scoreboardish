@@ -77,7 +77,7 @@ const StartingSoon = (props: any) => {
   });
 
   function getCurrentMatch() {
-    return data.matches[Number(data?.match?.currentGame) - 1];
+    return data?.matches[Number(data?.match?.currentGame) - 1];
   }
 
   function hexToRGBA(hex: string, opacity: number) {
@@ -93,11 +93,10 @@ const StartingSoon = (props: any) => {
     return `rgba(${r}, ${g}, ${b}, ${opacity})`;
   }
 
-  const match = getCurrentMatch();
-
   if (!data) {
     return <>Loading... ({query.sheet === "undefined" ? "hi" : "bye"})</>;
   }
+  const match = getCurrentMatch();
   return (
     <>
       <style jsx global>
