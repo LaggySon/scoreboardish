@@ -28,40 +28,48 @@ declare global {
     code: string;
     primaryCol: string;
     secondaryCol: string;
-    advInfo: string;
-    roster: Player[];
+    cat: string;
   };
 
   type MatchInfo = {
     tier: string;
-    region: string;
     dateTime: string;
     stage: string;
     week: string;
     weekNum?: string;
-    mapInfo: string;
     tierTag: string;
-    nextMap: string;
-    ticker1: string;
-    ticker2: string;
-    addInfo: string;
-    accColor: string;
+    showTierTag: boolean;
     showPreds?: boolean;
+    TMInfo: string;
+    showTM: boolean;
+    TRInfo: string;
+    showTR: boolean;
+    TLInfo: string;
+    showTL: boolean;
+    currentMap: string;
+    currentGame: string;
+    showSides: boolean;
+    swapSides: boolean;
+    ticker1: string;
   };
 
   type MapType = {
     map: string;
     image: string;
     type: string;
-    info: string;
     winner: string;
+    t1Score: string;
+    t2Score: string;
     isComplete: boolean;
+    info: string;
   };
 
   type TwitchStaff = {
     title: string;
     name: string;
     social: string;
+    pronouns: string;
+    cam: string;
   };
 
   type AllData = {
@@ -69,7 +77,18 @@ declare global {
     teams: TeamData;
     maps: MapType[];
     match: MatchInfo;
-    cams?: string[];
+    matches: Match[];
+  };
+
+  type Match = {
+    info: string;
+    team1: string;
+    team2: string;
+    team1info: string;
+    team2info: string;
+    team1color: string;
+    team2color: string;
+    show: boolean;
   };
 }
 export default global;

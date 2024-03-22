@@ -1,21 +1,40 @@
 .casterFrame {
-  aspect-ratio: 16 / 9;
   width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+
   iframe {
-    height: 99%;
-    width: 99%;
+    height: 100%;
+    width: 100%;
+    transform: scale(1.5);
+    border: none;
+    box-sizing: border-box;
   }
   position: relative;
-  .name {
-    color: var(--tranqYellow);
-    z-index: 2;
+  .info {
+    background-color: #101010;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     font-size: 1.8rem;
-    span {
-      position: absolute;
-      bottom: 0.3em;
-      //   left: 50%;
-      width: 100%;
-      text-align: center;
+    align-items: center;
+    width: 20rem;
+    margin-inline: auto;
+    transform: translateY(-7rem);
+    padding-block: 0.5rem;
+    .sub {
+      font-size: 1rem;
+      display: flex;
+      gap: 1rem;
+      .pronouns {
+        &::before {
+          content: "(";
+        }
+        &::after {
+          content: ")";
+        }
+      }
     }
   }
 }

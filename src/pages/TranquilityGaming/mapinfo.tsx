@@ -75,7 +75,7 @@ const MapInfo = (props: any) => {
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
-            font-family: "Industry";
+            font-family: "OswaldBold";
             font-weight: normal;
           }
         `}
@@ -173,7 +173,10 @@ const MapInfo = (props: any) => {
                       <video
                         autoPlay
                         loop
-                        src={`https://tranquility.gg/package/Maps/Cinematics/${map.map}.mp4`}
+                        src={`https://tranquility.gg/package/Maps/Cinematics/${map.map.replace(
+                          /\s/g,
+                          ""
+                        )}.mp4`}
                       ></video>
                     )}
                   </div>

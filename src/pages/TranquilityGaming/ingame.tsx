@@ -40,23 +40,13 @@ const InGame: NextPage<PageProps> = (props) => {
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
-            font-family: "Industry";
+            font-family: "OswaldBold";
             font-weight: normal;
           }
         `}
       </style>
-      {[
-        "harmony",
-        "discord",
-        "transcendence",
-        "admin pugs",
-        "ascendant",
-        "valorant",
-      ].includes(data?.match?.tier.toLowerCase()) ? (
-        <TranqScoreboard data={data} />
-      ) : (
-        <TranqScoreboardEW data={data} />
-      )}
+
+      <TranqScoreboard data={data} />
     </>
   );
 };

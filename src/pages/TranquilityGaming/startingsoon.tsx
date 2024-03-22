@@ -38,7 +38,9 @@ const StartingSoon = (props: any) => {
   useEffect(() => {
     if (!router.isReady) return;
     const { sheet } = router.query;
-    setQuery({ sheet: String(sheet) });
+    setQuery({
+      sheet: String(sheet),
+    });
   }, [router.isReady, router.query]);
 
   const { data } = useSWR(API + `?sheet=${query?.sheet}`, fetcher, {
@@ -46,20 +48,6 @@ const StartingSoon = (props: any) => {
     refreshInterval: 10000,
   });
 
-  const slides = [
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground1.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground2.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground3.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground4.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground5.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground6.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground7.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground8.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground9.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground10.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground11.png",
-    "https://www.tranquility.gg/package/digitize/StartingSoon/Foreground12.png",
-  ];
   //TIMER STUFF
   dayjs.extend(duration);
   dayjs.extend(utc);
@@ -85,7 +73,7 @@ const StartingSoon = (props: any) => {
   });
 
   if (!data) {
-    return <>Loading...</>;
+    return <>Loading... ({query.sheet === "undefined" ? "hi" : "bye"})</>;
   }
   return (
     <>
@@ -100,129 +88,82 @@ const StartingSoon = (props: any) => {
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
-            font-family: "Industry";
+            font-family: "OswaldBold";
             font-weight: normal;
             --tickerduration: ${(15 * data?.match?.ticker1.length) / 40}s;
           }
         `}
       </style>
-      <Image
-        src="https://www.tranquility.gg/package/digitize/StartingSoon/Background.png"
-        alt="background"
-        height={1080}
-        width={1920}
-        className={styles.backgroundImage}
-      ></Image>
-      <Swiper
-        modules={[
-          EffectFade,
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          Autoplay,
-        ]}
-        spaceBetween={50}
-        slidesPerView={1}
-        fadeEffect={{
-          crossFade: true,
-        }}
-        autoplay={{
-          delay: 10000,
-          pauseOnMouseEnter: true,
-          disableOnInteraction: false,
-        }}
-        // navigation
-        effect={"fade"}
-        speed={1000}
-        // pagination={{ clickable: true }}
-        loop
-        className={styles.slider}
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
+      <div className={styles.parent}>
+        <div className={styles.left}>
+          <div className={styles.branding}>
             <Image
-              key={index}
-              src={slide}
-              alt="Foreground"
-              height={1080}
-              width={1920}
+              src="/T_Wordmark_FW.svg"
+              alt="tranquility"
+              height={200}
+              width={800}
             ></Image>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className={styles.infos}>
-        <span className={styles.name1}>{data?.teams?.team1?.short}</span>
-        <span className={styles.name2}>{data?.teams?.team2?.short}</span>
-        <span className={styles.info1}>{data?.teams?.team1?.info}</span>
-        <span className={styles.info2}>{data?.teams?.team2?.info}</span>
-        <span className={styles.casterName1}>
-          <span>{"Play By Play"}</span>
-          {
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Play By Play"
-            ).name
-          }
-        </span>
-        <span className={styles.casterName2}>
-          <span>{"Analyst"}</span>
-          {
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Analyst"
-            ).name
-          }
-        </span>
-        <div className={styles.otherStaff}>
-          {data?.twitch
-            ?.filter(
-              (staff: TwitchStaff) =>
-                !["Play By Play", "Analyst"].includes(staff.title) && staff.name
-            )
-            .slice(0, 2)
-            .map((staff: TwitchStaff, index: number) => (
-              <span key={index} className={styles.otherStaffName}>
-                <span>{staff.title}</span>
-                {staff.name}
-              </span>
-            ))}
-        </div>
-        <Image
-          src={data?.teams?.team1.logoPath}
-          alt="team 1 logo"
-          height="600"
-          width="600"
-          className={styles.logo1}
-        ></Image>
-        <Image
-          src={data?.teams?.team2.logoPath}
-          alt="team 1 logo"
-          height="600"
-          className={styles.logo2}
-          width="600"
-        ></Image>
-        <div className={styles.startingTimer}>{dayjsLeft.format("mm:ss")}</div>
-        <div className={styles.hwrap}>
-          <div className={styles.hmove}>
-            <div className={styles.hitem}>{data?.match?.ticker1}</div>
+          </div>
+          <div className={styles.current}>
+            <div className={styles.upnext}>Up Next</div>
+            <div className={styles.matchup}>
+              <div className={styles.logo1}>
+                <Image
+                  width="200"
+                  height="200"
+                  src={data.teams.team1.logoPath}
+                  alt={data.teams.team1.short}
+                ></Image>
+              </div>
+              <div className={styles.short1}>{data.teams.team1.code}</div>
+              <div className={styles.vs}>VS</div>
+              <div className={styles.short2}>{data.teams.team2.code}</div>
+              <div className={styles.logo2}>
+                <Image
+                  width="200"
+                  height="200"
+                  src={data.teams.team2.logoPath}
+                  alt={data.teams.team2.short}
+                ></Image>
+              </div>
+            </div>
+          </div>
+          <div className={styles.timer}>
+            <div className={styles.startingsoon}>Starting Soon</div>
+            <div className={styles.timer}>{dayjsLeft.format("mm:ss")}</div>
           </div>
         </div>
-        <div className={styles.matchInfo}>
-          <div className={styles.title}>{data?.match?.addInfo}</div>
-          <div className={styles.dateTime}>
-            {dayjs(data?.match?.dateTime * 1000)
-              .tz("America/New_York")
-
-              .format("ddd, MMM D, YYYY @ h:mm a")}
-          </div>
-          <div className={styles.tier}>
-            {data?.match?.tier +
-              (["harmony", "discord", "transcendence"].includes(
-                data?.match?.tier.toLowerCase()
+        <div className={styles.matches}>
+          {data.matches.map(
+            (match: Match) =>
+              match.show && (
+                <div className={styles.match} key={match.team1 + match.team2}>
+                  <div className={styles.teams}>
+                    <div className={styles.team1}>
+                      <div
+                        className={styles.name}
+                        style={{ color: match.team1color }}
+                      >
+                        {match.team1}
+                      </div>
+                      <div className={styles.record}>{match.team1info}</div>
+                    </div>
+                    <div className={styles.team2}>
+                      <div
+                        className={styles.name}
+                        style={{ color: match.team2color }}
+                      >
+                        {match.team2}
+                      </div>
+                      <div className={styles.record}>{match.team2info}</div>
+                    </div>
+                  </div>
+                  <div className={styles.starttime}>{match.info}</div>
+                </div>
               )
-                ? " tier"
-                : "")}
-          </div>
+          )}
         </div>
+        <div className={styles.ticker}>{data.match.ticker1}</div>
       </div>
     </>
   );

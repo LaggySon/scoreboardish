@@ -6,8 +6,10 @@ import TranqScoreboard from "../../components/tranqScoreboard";
 import TranqScoreboardEW from "../../components/tranqScoreboardEW";
 import TranqCaster from "../../components/tranqCaster";
 import TranqPred from "../../components/tranqPred";
+import MapBox from "../../components/tranqMapBox";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { TTierAw, TTierDw, TTierHw, TTierTw } from "../../components/icons";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const URL = env.NEXT_PUBLIC_URL;
@@ -28,6 +30,18 @@ const Casters = (props: any) => {
     refreshInterval: 10000,
   });
 
+  function getIcon(tier: string) {
+    if (tier === "H") {
+      return <TTierHw />;
+    } else if (tier === "D") {
+      return <TTierDw />;
+    } else if (tier === "T") {
+      return <TTierTw />;
+    } else if (tier === "A") {
+      return <TTierAw />;
+    }
+  }
+
   if (!data) {
     return <>Loading...</>;
   }
@@ -44,43 +58,39 @@ const Casters = (props: any) => {
             "var(--tranqYellow)"};
             --team2SecondaryColor: ${data?.teams?.team2.secondaryCol ??
             "var(--tranqYellow)"};
-            font-family: "Industry";
+            font-family: "OswaldBold";
             font-weight: normal;
           }
         `}
       </style>
-      {[
-        "harmony",
-        "discord",
-        "transcendence",
-        "admin pugs",
-        "ascendant",
-        "valorant",
-      ].includes(data?.match?.tier.toLowerCase()) ? (
-        <TranqScoreboard data={data} />
-      ) : (
-        <TranqScoreboardEW data={data} />
-      )}
 
       <div className={styles.casters}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
         <TranqCaster
-          name={
+          staff={data?.twitch?.find(
+            (staff: TwitchStaff) => staff.title === "Play By Play"
+          )}
+          link={
             data?.twitch?.find(
               (staff: TwitchStaff) => staff.title === "Play By Play"
-            ).name
+            ).cam
           }
-          link={data?.cams[0][1]}
         />
         {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
         <TranqCaster
-          name={
+          staff={data?.twitch?.find(
+            (staff: TwitchStaff) => staff.title === "Analyst"
+          )}
+          link={
             data?.twitch?.find(
               (staff: TwitchStaff) => staff.title === "Analyst"
-            ).name
+            ).cam
           }
-          link={data?.cams[1][1]}
         />
+      </div>
+      <MapBox maps={data.maps} teams={data.teams} />
+      <div className={styles.tierTag}>
+        {getIcon(data.match.tier)} {data?.match?.tierTag}
       </div>
     </>
   );
