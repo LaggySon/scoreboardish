@@ -70,7 +70,7 @@ const TranqScoreboard = (props: any) => {
         </div>
 
         {infoBox &&
-          ["ATTACK", "DEFENSE"].includes(team.atkDef.toUpperCase()) && (
+          data?.match?.showSides && (
             <div className={styles.atkDef}>
               {team.atkDef.toUpperCase() === "ATTACK" ? (
                 <SvgAttack />
