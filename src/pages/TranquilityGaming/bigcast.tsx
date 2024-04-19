@@ -76,7 +76,8 @@ const Casters = (props: any) => {
           />
         )}
       </div>
-      <MapBox maps={data.maps} teams={data.teams} />
+      <div className={styles.mapboxbig}><MapBox maps={data.maps} teams={data.teams} /></div>
+      
     </>
   );
 };
