@@ -37,7 +37,7 @@ export default async function handler(
     String(sheet) === "undefined"
       ? "1XtHncu0QUb7viaQ0lq6onVJua_qy5oE8UoR1QJvibmo"
       : String(sheet);
-  const range = `Output!A1:T50`;
+  const range = `Output!A1:T55`;
 
   const response: GaxiosResponse | null = await sheets.spreadsheets.values.get({
     spreadsheetId,
@@ -102,7 +102,7 @@ export default async function handler(
       TMInfo: data[5][1],
       showTM: data[5][2],
       tierTag: data[5][3],
-      showTierTag: data[5][4] === "TRUE",
+      showTierTag: data[5][4],
       TLInfo: data[5][5],
       showTL: data[5][6],
       TRInfo: data[5][7],

@@ -14,3 +14,16 @@ export function getTextColorForContrast(hexColor: string) {
   const textColor = luminance > 0.75 ? "black" : "white";
   return textColor;
 }
+
+export function hexToRGBA(hex: string, opacity: number) {
+  // Remove '#' if present
+  hex = hex.replace("#", "");
+
+  // Parse the hex string into individual RGB values
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  // Create the RGBA string
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}

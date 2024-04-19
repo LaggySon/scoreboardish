@@ -77,3 +77,10 @@
 .fade-exit-active {
   transition: all 500ms;
 }
+
+.FALSE {
+  opacity: 0 !important;
+}
+.TRUE {
+  opacity: 1;
+}

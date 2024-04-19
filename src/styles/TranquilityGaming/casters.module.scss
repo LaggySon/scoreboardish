@@ -7,6 +7,14 @@
   font-size: 1.8rem;
   height: 600px;
   max-width: 100vw;
+  // flex-wrap: wrap;
+  &.big{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap:2rem;
+    height: 700px;
+  }
 }
 
 .infoBox,
