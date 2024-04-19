@@ -9,6 +9,9 @@
     transform: scale(1.5);
     border: none;
     box-sizing: border-box;
+    &.big{
+      transform: scale(2.1);
+    }
   }
   position: relative;
   .info {

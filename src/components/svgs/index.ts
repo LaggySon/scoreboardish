@@ -6,3 +6,4 @@ export { default as Hybrid } from "./Hybrid";
 export { default as Push } from "./Push";
 export { default as Assault } from "./Assault";
 export { default as Flashpoint } from "./Flashpoint";
+export { default as Clash } from "./Clash";

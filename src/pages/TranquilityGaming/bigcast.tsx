@@ -64,53 +64,18 @@ const Casters = (props: any) => {
         `}
       </style>
 
-      <div className={styles.casters}>
+      <div className={styles.casters + " " + styles.big}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
-        <TranqCaster
-          staff={data?.twitch?.find(
-            (staff: TwitchStaff) => staff.title === "Play By Play"
-          )}
-          link={
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Play By Play"
-            ).cam
-          }
-          big={true}
-        />
-        {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
-        <TranqCaster
-        staff={data?.twitch?.find(
-          (staff: TwitchStaff) => staff.title === "Host"
+        {data?.twitch?.filter((staff:TwitchStaff)=> (staff.title === "Admin")).map((staff:TwitchStaff)=>
+            <TranqCaster
+            staff={staff}
+            link={
+              staff.cam
+            }
+          />
         )}
-        link={
-          data?.twitch?.find(
-            (staff: TwitchStaff) => staff.title === "Host"
-          )?.cam
-        }
-        big={true}
-      />
-      <TranqCaster
-        staff={data?.twitch?.find(
-          (staff: TwitchStaff) => staff.title === "Analyst"
-        )}
-        link={
-          data?.twitch?.find(
-            (staff: TwitchStaff) => staff.title === "Analyst"
-          ).cam
-        }
-        big={true}
-      />
-
       </div>
       <MapBox maps={data.maps} teams={data.teams} />
-      <div
-        className={[
-          styles.tierTag,
-          String(data.match.showTierTag),
-        ].join(" ")}
-      >
-        <span>{getIcon(data.match.tier)}</span> {data?.match?.tierTag}
-      </div>
     </>
   );
 };

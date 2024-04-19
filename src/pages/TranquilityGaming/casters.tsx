@@ -78,18 +78,24 @@ const Casters = (props: any) => {
         />
         {/* https://vdo.ninja/?push=cxaQbCv&hash=30e9 */}
         <TranqCaster
-          staff={data?.twitch?.find(
+        staff={data?.twitch?.find(
+          (staff: TwitchStaff) => staff.title === "Analyst"
+        )}
+        link={
+          data?.twitch?.find(
             (staff: TwitchStaff) => staff.title === "Analyst"
-          )}
-          link={
-            data?.twitch?.find(
-              (staff: TwitchStaff) => staff.title === "Analyst"
-            ).cam
-          }
-        />
+          ).cam
+        }
+      />
+
       </div>
       <MapBox maps={data.maps} teams={data.teams} />
-      <div className={styles.tierTag}>
+      <div
+        className={[
+          styles.tierTag,
+          String(data.match.showTierTag),
+        ].join(" ")}
+      >
         <span>{getIcon(data.match.tier)}</span> {data?.match?.tierTag}
       </div>
     </>

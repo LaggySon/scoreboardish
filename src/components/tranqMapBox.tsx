@@ -6,6 +6,7 @@ import {
   Push,
   Assault,
   Flashpoint,
+  Clash,
 } from "../components/svgs";
 import Image from "next/image";
 
@@ -32,6 +33,8 @@ export default function MapBox(props: any) {
         return <Assault />;
       case "Flashpoint":
         return <Flashpoint />;
+      case "Clash":
+        return <Clash />;
     }
   }
 
