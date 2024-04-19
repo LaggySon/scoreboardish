@@ -66,12 +66,13 @@ const Casters = (props: any) => {
 
       <div className={styles.casters + " " + styles.big}>
         {/* https://vdo.ninja/?push=6VEzggu&hash=30e9 */}
-        {data?.twitch?.filter((staff:TwitchStaff)=> (staff.title === "Admin")).map((staff:TwitchStaff)=>
+        {data?.twitch?.filter((staff:TwitchStaff)=> (staff.title === "Admin")).map((staff:TwitchStaff, index:number)=>
             <TranqCaster
             staff={staff}
             link={
               staff.cam
             }
+            key={index}
           />
         )}
       </div>
